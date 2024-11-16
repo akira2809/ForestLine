@@ -23,6 +23,41 @@
         font-weight: 700;
         letter-spacing: 9px;
     }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 60vh;
+        /* Chiều cao chiếm toàn màn hình */
+        object-fit: cover;
+        /* Đảm bảo hình ảnh không bị méo */
+    }
+
+    .row.align-items-center {
+        min-height: 100vh;
+        /* Đảm bảo chiều cao tối thiểu cho hàng */
+    }
+
+
+    .content-wrapper h2 {
+        color: #37474f;
+        font-size: 1.8rem;
+        line-height: 1.5;
+        text-align: left;
+        /* Giữ chữ về bên trái */
+    }
+
+    .content-wrapper p {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left;
+        /* Giữ chữ về bên trái */
+    }
 </style>
 
 <body>
@@ -71,6 +106,68 @@
                 </div>
             </nav>
     </header>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Content -->
+                <div class="col-md-5">
+                    <div class="content-wrapper">
+                        <h2 class="fw-bold mb-4">
+                            Chúng Tôi Tin Tưởng Những điều Thay Đổi Lớn Nhất Có Thể Bắt Đầu Từ Những Việc Nhỏ Nhất
+                        </h2>
+                        <p>
+                            Nhỏ như việc mang túi cá nhân bên mình đến cửa hàng tạp hóa, hoặc uống từ chai nước tái sử
+                            dụng—hoặc đưa ra những lựa chọn bền vững khi bạn mua sắm.
+                        </p>
+                        <p>
+                            Đối với mỗi mặt hàng được mua, chúng tôi trồng cây, trong nỗ lực tái tạo hệ sinh thái, giữ
+                            carbon và giảm cuộc sống chịu tác động của các cộng đồng trên khắp thế giới. Tất cả các sản
+                            phẩm của chúng tôi đều được tạo ra theo phương pháp Earth-First, nghĩa là hàng được sản xuất
+                            trong điều kiện làm việc công bằng, an toàn và sử dụng vật liệu tái chế và có nguồn gốc bền
+                            vững.
+                        </p>
+                    </div>
+                </div>
+                <!-- Featured Image -->
+                <div class="col-md-6">
+                    <div class="image-container">
+                        <img src="../public/imgs/SustainabilityPage_Hero_Image_FA_740x540_crop_center.webp"
+                            class="img-fluid rounded w-100" alt="Main image" />
+                    </div>
+                </div>
+            </div>
+            <!-- Gallery Section -->
+            <div class="row mt-5">
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image1.jpg" class="img-fluid rounded shadow-sm" alt="Image 1" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image2.jpg" class="img-fluid rounded shadow-sm" alt="Image 2" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image3.jpg" class="img-fluid rounded shadow-sm" alt="Image 3" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image4.jpg" class="img-fluid rounded shadow-sm" alt="Image 4" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image5.jpg" class="img-fluid rounded shadow-sm" alt="Image 5" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image6.jpg" class="img-fluid rounded shadow-sm" alt="Image 6" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image7.jpg" class="img-fluid rounded shadow-sm" alt="Image 7" />
+                </div>
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="image8.jpg" class="img-fluid rounded shadow-sm" alt="Image 8" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 </body>
 
 </html>
