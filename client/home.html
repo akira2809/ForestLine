@@ -36,6 +36,17 @@
                 /* Kích thước font chữ cho điện thoại */
             }
         }
+
+        .divider {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            /* Độ rộng mỏng hơn */
+            background-color: #ddd;
+            /* Màu xám nhạt */
+        }
     </style>
 </head>
 
@@ -198,11 +209,40 @@
             </div>
         </div>
     </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Section -->
+                <div class="col-md-4">
+                    <h2 class="fw-bold">NHỮNG MẪU MỚI NHẤT</h2>
+                    <p class="text-muted">
+                        Khám phá những bộ sưu tập mới nhất với những phụ kiện gắn liền với brand của chúng tôi, và nhiều
+                        hơn.
+                    </p>
+                </div>
+                <!-- Image Section -->
+                <div class="col-md-8">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <img src="../public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
+                                alt="Hình ảnh 1">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
+                                alt="Hình ảnh 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-light text-dark pt-5">
         <div class="container">
+            <hr class="my-4">
             <div class="row">
                 <!-- Dịch vụ khách hàng -->
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-4 position-relative">
                     <h5 class="fw-bold">Dịch vụ khách hàng</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-dark text-decoration-none">Tài khoản</a></li>
@@ -214,10 +254,11 @@
                         <li><a href="#" class="text-dark text-decoration-none">Kiểm tra trạng thái đơn hàng</a></li>
                         <li><a href="#" class="text-dark text-decoration-none">Thẻ quà tặng</a></li>
                     </ul>
+                    <!-- Đường kẻ dọc -->
+                    <div class="divider"></div>
                 </div>
-
                 <!-- FORESTLINE -->
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-4 position-relative">
                     <h5 class="fw-bold">FORESTLINE</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-dark text-decoration-none">Về chúng tôi</a></li>
@@ -228,10 +269,11 @@
                         <li><a href="#" class="text-dark text-decoration-none">Cam kết về Công bằng Chủng tộc</a></li>
                         <li><a href="#" class="text-dark text-decoration-none">Đảm bảo sự hài lòng</a></li>
                     </ul>
+                    <!-- Đường kẻ dọc -->
+                    <div class="divider"></div>
                 </div>
-
                 <!-- Thêm về FORESTLINE -->
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-4 position-relative">
                     <h5 class="fw-bold">Thêm về FORESTLINE</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-dark text-decoration-none">Cá nhân hóa trải nghiệm của bạn</a></li>
@@ -240,8 +282,9 @@
                         <li><a href="#" class="text-dark text-decoration-none">Sơ đồ trang web</a></li>
                         <li><a href="#" class="text-dark text-decoration-none">Marketing trên di động</a></li>
                     </ul>
+                    <!-- Đường kẻ dọc -->
+                    <div class="divider"></div>
                 </div>
-
                 <!-- Đăng ký bằng Email -->
                 <div class="col-md-3 mb-4">
                     <h5 class="fw-bold">Đăng ký bằng Email</h5>
@@ -257,7 +300,8 @@
                     </p>
                 </div>
             </div>
-
+            <!-- Đường kẻ ngang -->
+            <hr class="my-4">
             <!-- Social Media Links -->
             <div class="row justify-content-center mb-4">
                 <div class="col-auto">
@@ -268,11 +312,12 @@
                     <a href="#" class="text-dark"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
-
+            <!-- Đường kẻ ngang -->
+            <hr class="my-4">
             <!-- Bottom Links -->
             <div class="row text-center">
                 <div class="col">
-                    <small>
+                    <small class="d-block">
                         Thông tin về công ty | Điều khoản sử dụng | Quyền riêng tư | Quyền riêng tư của Bộ sưu tập tại
                         Việt Nam | Luật Minh bạch Việt Nam | Không tiết lộ thông tin cá nhân | Khả năng truy cập
                     </small>
@@ -281,6 +326,7 @@
             </div>
         </div>
     </footer>
+
 
 </body>
 
