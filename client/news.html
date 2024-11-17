@@ -67,16 +67,40 @@
         margin-bottom: 1rem;
     }
 
-    .image-section img {
-        width: 100%;
+    .gallery-section {
+        padding: 60px 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .gallery-wrapper {
+        margin: -20px;
+    }
+
+    .gallery-img {
+        transition: transform 0.3s ease;
+        width: 50%;
         height: 100%;
         object-fit: cover;
     }
 
-    .image-section img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .gallery-img:hover {
+        transform: scale(1.02);
+        z-index: 10;
+    }
+
+    /* Adjust responsive behavior */
+    @media (max-width: 768px) {
+        .gallery-section .row {
+            margin-top: 0 !important;
+        }
+
+        .gallery-section .col-3,
+        .gallery-section .col-4,
+        .gallery-section .col-5 {
+            margin-left: 0 !important;
+            padding: 10px;
+        }
     }
 </style>
 
@@ -126,7 +150,7 @@
                 </div>
             </nav>
     </header>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-1">
         <div class="row g-0">
             <!-- Text Content - Left Side -->
             <div class="col-md-6">
@@ -156,6 +180,61 @@
             </div>
         </div>
     </div>
+   <section class="gallery-section position-relative">
+    <div class="container-fluid px-4 gallery-container">
+        <div class="gallery-wrapper">
+            <!-- First row -->
+            <div class="row justify-content-center">
+                <div class="col-4 position-relative" style="margin-top: 20px; z-index: 1;">
+                    <img src="../public/imgs/tree.jpg" class="img-fluid rounded shadow-sm gallery-img" 
+                         alt="Sticks in water" />
+                </div>
+                <div class="col-5 position-relative" style="margin-left: -40px; z-index: 2;">
+                    <img src="../public/imgs/mainwithboat.jpg" class="img-fluid rounded shadow-sm gallery-img" 
+                         alt="Sprout in soil" />
+                </div>
+            </div>
+
+            <!-- Second row -->
+            <div class="row justify-content-center" style="margin-top: -60px;">
+                <div class="col-3 offset-2 position-relative" style="z-index: 3;">
+                    <img src="../public/imgs/river.jpg" class="img-fluid rounded shadow-sm gallery-img"
+                         alt="Worker in mangrove" />
+                </div>
+                <div class="col-4 position-relative" style="margin-left: 80px; z-index: 4;">
+                    <img src="../public/imgs/leaf.jpg" class="img-fluid rounded shadow-sm gallery-img"
+                         alt="Children at beach" />
+                </div>
+            </div>
+
+            <!-- Third row -->
+            <div class="row justify-content-center" style="margin-top: -40px;">
+                <div class="col-3 position-relative" style="z-index: 5;">
+                    <img src="../public/imgs/AboutUs_04_Collage_Image_04_Desktop_FA.avif" 
+                         class="img-fluid rounded shadow-sm gallery-img"
+                         alt="Children by wall" />
+                </div>
+                <div class="col-5 position-relative" style="margin-left: 40px; z-index: 6;">
+                    <img src="../public/imgs/monkey.jpg" class="img-fluid rounded shadow-sm gallery-img" 
+                         alt="Boat in water" />
+                </div>
+            </div>
+
+            <!-- Fourth row -->
+            <div class="row justify-content-center" style="margin-top: -80px;">
+                <div class="col-4 offset-2 position-relative" style="z-index: 7;">
+                    <img src="../public/imgs/farmer.jpg" class="img-fluid rounded shadow-sm gallery-img" 
+                         alt="Detailed leaf" />
+                </div>
+                <div class="col-4 position-relative" style="margin-left: 40px; z-index: 8;">
+                    <img src="../public/imgs/AboutUs_04_Collage_Image_07_Desktop_FA.jpg" 
+                         class="img-fluid rounded shadow-sm gallery-img" 
+                         alt="Aerial landscape" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
