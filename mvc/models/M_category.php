@@ -6,7 +6,7 @@ class M_category
     {
         $this->conn = $conn;
     }
-    public function getCategoryAll()
+    public function get_category_all()
     {
         $sql = "SELECT * FROM category";
         return $this->conn->getAll($sql);

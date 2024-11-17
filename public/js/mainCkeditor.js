@@ -270,8 +270,5 @@ const editorConfig = {
         contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
     }
 };
-function handleClick() {
-    console.log('handleClick')
-}
-console.log("main", editorConfig)
+
 export { editorConfig, ClassicEditor }

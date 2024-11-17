@@ -1,4 +1,4 @@
-<!-- <textarea name="editor1" id="editor1"></textarea> -->
+<?php var_dump($product) ?>
 <div class="container-fluid">
     <div class="card card-info card-outline mb-4"> <!--begin::Header-->
         <div class="card-header">

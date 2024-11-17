@@ -7,15 +7,34 @@
                 <li class="nav-header">MULTI LEVEL EXAMPLE</li> -->
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
+                            Sản phẩm
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/product/list-product" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách sản phẩm</p>
+                            </a> </li>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/product/add-product" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Thêm sản phẩm</p>
+                            </a> </li>
+                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Level 2</p>
+                            </a> </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>
                             Tour
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/list-tour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/add-tour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -31,10 +50,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -50,10 +69,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -69,10 +88,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -88,10 +107,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -107,10 +126,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -126,10 +145,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -145,10 +164,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -164,29 +183,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm tour</p>
                             </a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
