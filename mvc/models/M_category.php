@@ -11,14 +11,19 @@ class M_category
         $sql = "SELECT * FROM category";
         return $this->conn->getAll($sql);
     }
-    public function addCategory($nameCategory)
+    public function add_category($nameCategory)
     {
-        $sql = "INSERT INTO category(name_cat) VALUES ('$nameCategory')";
-        return $this->conn->insert($sql);
+        $sql = "INSERT INTO category(category) VALUES (?)";
+        return $this->conn->insert($sql, [$nameCategory]);
     }
-    public function deleteCategory($idCategory)
+    public function update_category($id, $category)
     {
-        $sql = "DELETE FROM category WHERE id_cat = '$idCategory'";
-        return $this->conn->delete($sql);
+        $sql = "UPDATE category SET category = ? WHERE category_id = ?";
+        return $this->conn->delete($sql, [$category, $id]);
+    }
+    public function delete_category($id)
+    {
+        $sql = "DELETE FROM category WHERE category_id = ?";
+        return $this->conn->delete($sql, [$id]);
     }
 }

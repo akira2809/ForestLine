@@ -1,9 +1,7 @@
-<h1>edit</h1>
-
 <div class="container-fluid">
     <div class="card card-info card-outline mb-4">
         <div class="card-header">
-            <div class="card-title">UPDATE SẢN PHẨM</div>
+            <div class="card-title">UPDATE SẢN PHẨM </div>
         </div>
         <form class="needs-validation" novalidate action="<?= _HOST . 'admin/product/update-product/' . $product['product_id'] . '?action=edit-product' ?>" method="post" enctype="multipart/form-data">
             <div class="row">
@@ -44,6 +42,7 @@
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Ảnh chính</label>
+                                <input class="form-control" hidden type="text" name="main_image" value="<?= $product['main_image'] ?>">
                                 <input class="form-control" type="file" name="main_image" id="formFile">
 
                             </div>
@@ -128,8 +127,10 @@
         <div class="card-body">
             <div onclick="openBox('boxAddProductVariant')" class="btn btn-primary">Thêm biến thể sản phẩm</div>
         </div>
-        <div class="box" hidden id="boxAddProductVariant">
-            <form action="<?= _HOST . "admin/product/update-product/" . $product['product_id'] . "?action=add-product-variant" ?>" method="post">
+        <div hidden style="z-index: 9999; background-color: rgba(0, 0, 0, 0.65);" class="box position-fixed top-0 start-0 w-100 h-100 " id="boxAddProductVariant">
+            <form class="w-25 card bg-white p-3" action="<?= _HOST . "admin/product/update-product/" . $product['product_id'] . "?action=add-product-variant" ?>" method="post">
+                <span onclick="closeBox('boxAddProductVariant')" class="text-danger fs-4 text-end"><i class="fa-regular fa-circle-xmark"></i></span>
+                <h3 class=" text-center">Thêm biến thể sản phẩm</h3>
                 <label for="" class="form-label">Color</label>
                 <select name="color" class="form-select" id="" required>
                     <option selected disabled value="">Choose...</option>
@@ -152,8 +153,12 @@
                     }
                     ?>
                 </select>
-                <input type="number" value="50" name="stock">
-                <button class="btn btn-primary">Thêm biến thể sản phẩm</button>
+                <div class="my-3">
+                    <label for="" class="form-label">Số lượng</label>
+
+                    <input type="number" class="form-select" value="50" name="stock">
+                </div>
+                <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
             </form>
         </div>
     </div>

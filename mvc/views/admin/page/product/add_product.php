@@ -1,105 +1,119 @@
-<?php var_dump($product) ?>
 <div class="container-fluid">
-    <div class="card card-info card-outline mb-4"> <!--begin::Header-->
+    <div class="card card-info card-outline mb-4">
         <div class="card-header">
-            <div class="card-title">THÊM TOUR MỚI</div>
-        </div> <!--end::Header--> <!--begin::Form-->
-        <form class="needs-validation" novalidate> <!--begin::Body-->
+            <div class="card-title">THÊM SẢN PHẨM </div>
+        </div>
+        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/product/add-product/?action=add-product' ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-8">
                     <div class="card-body"> <!--begin::Row-->
                         <div class="row g-3"> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustom01" class="form-label">Tiêu đề</label> <input type="text" class="form-control" id="validationCustom01" value="" placeholder="Nhập tiêu đề tour..." required>
-                                <div class="valid-feedback">Looks good!</div>
-                            </div> <!--end::Col--> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustom02" class="form-label">Last name</label> <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-                                <div class="valid-feedback">Looks good!</div>
-                            </div> <!--end::Col--> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustomUsername" class="form-label">Username</label>
-                                <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a username.
-                                    </div>
-                                </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustom03" class="form-label">City</label> <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tiêu đề</label>
+                                <input type="text" class="form-control" id="validationCustom01" name="name" placeholder="Nhập tên sản phẩm..." required>
                                 <div class="invalid-feedback">
-                                    Please provide a valid city.
+                                    Nhập tên sản phẩm
                                 </div>
                             </div> <!--end::Col--> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustom04" class="form-label">State</label> <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>...</option>
+                            <div class="col-md-6"> <label for="validationCustom02" class="form-label">Giá gốc</label>
+                                <input type="number" class="form-control" id="validationCustom02" name="base_price" required>
+                                <div class="invalid-feedback">
+                                    Nhập giá
+                                </div>
+                            </div> <!--end::Col--> <!--begin::Col-->
+
+                            <div class="col-md-6"> <label for="validationCustom03" class="form-label">Giá giảm</label>
+                                <input type="number" class="form-control" value="0" id="validationCustom03" name="sale_price" required>
+
+                            </div> <!--end::Col--> <!--begin::Col-->
+                            <div class="col-md-12"> <label for="validationCustom04" class="form-label">Danh mục</label>
+                                <select class="form-select" name="category_id" id="validationCustom04" required>
+                                    <option selected disabled value="">choose...</option>
+                                    <?php foreach ($category as $key => $val) {
+                                    ?>
+
+                                        <option value="<?= $val['category_id'] ?>"><?= $val['category'] ?></option>
+                                    <?php
+                                    }
+
+                                    ?>
                                 </select>
                                 <div class="invalid-feedback">
-                                    Please select a valid state.
+                                    Chọn danh mục
                                 </div>
                             </div> <!--end::Col--> <!--begin::Col-->
-                            <div class="col-md-6"> <label for="validationCustom05" class="form-label">Zip</label> <input type="text" class="form-control" id="validationCustom05" required>
+
+                            <div class="mb-3">
+                                <label for="validationCustom05" for="formFile" class="form-label">Ảnh chính</label>
+                                <input class="form-control" type="file" name="main_image" id="validationCustom05" required>
                                 <div class="invalid-feedback">
-                                    Please provide a valid zip.
+                                    Chọn hình ảnh
                                 </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Ảnh chi tiết</label>
+                                <input class="form-control" type="file" name="image_detail" id="formFileMultiple" multiple>
+                            </div> -->
+
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->
                 </div>
                 <div class="col-4">
-                    Danh mục
-                    <!-- <div class="col-sm-10 offset-sm-2"> -->
-                    <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                            Example checkbox
-                        </label> </div>
-                    <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                            Example checkbox
-                        </label> </div>
-                    <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                            Example checkbox
-                        </label> </div>
-                    <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                            Example checkbox
-                        </label> </div>
-                    <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                            Example checkbox
-                        </label> </div>
+                    <div class="card-body">
+                        Bộ sưu tập
+                        <!-- <div class="col-sm-10 offset-sm-2"> -->
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label> </div>
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label> </div>
+                    </div>
                     <!-- </div> -->
                 </div>
             </div>
-            <!-- <div class="cart-body p-3">
-                <label for="" class="form-label">Mô tả</label>
-                <textarea name="editor" id="editor-des"></textarea>
-            </div> -->
-            <div class="cart-body p-3" id="group-ts-day">
-                Hoạt động trong ngày
+            <div class="card-body">
+                Mô tả
+                <textarea name="description" id="editor-des"></textarea>
             </div>
-            <div id="numCk">click</div>
+            <div class="card-body">
+                <button class="btn btn-primary">Lưu chỉnh sửa</button>
+            </div>
+        </form>
 
-            <!-- <div class="card-footer"> <button class="btn btn-info" type="submit">Submit form</button> </div> end::Footer -->
-        </form> <!--end::Form--> <!--begin::JavaScript-->
-        <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-                "use strict";
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms =
-                    document.querySelectorAll(".needs-validation");
-
-                // Loop over them and prevent submission
-                Array.from(forms).forEach((form) => {
-                    form.addEventListener(
-                        "submit",
-                        (event) => {
-                            if (!form.checkValidity()) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-
-                            form.classList.add("was-validated");
-                        },
-                        false
-                    );
-                });
-            })();
-        </script> <!--end::JavaScript-->
     </div>
 </div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms =
+            document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+            form.addEventListener(
+                "submit",
+                (event) => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add("was-validated");
+                },
+                false
+            );
+        });
+    })();
+</script> <!--end::JavaScript-->

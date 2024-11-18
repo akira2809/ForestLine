@@ -4,9 +4,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins';
+
 }
 
+#boxAddProductVariant,
+#boxEditCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
 #menu {
     padding: 20px 50px;
     list-style: none;
@@ -69,4 +77,4 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
+} */

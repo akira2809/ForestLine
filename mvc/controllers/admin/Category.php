@@ -1,31 +1,39 @@
 <?php
 class Category extends Controller
 {
-    public function __construct()
+    public function render($data)
     {
-        $cat = $this->model('M_category');
-        $data['category'] = $cat->getCategoryAll();
-        $this->view('admin/block/header');
-        $this->view('admin/page/V_category', $data);
+        $this->view('layout/layout_admin', $data);
     }
-    // public function addCategory()
-    // {
-    //     $cat = $this->model('M_category');
-    //     if ($cat->addCategory($_POST['nameCategory'])) {
-    //         $data['result'] = "Bạn đã thêm danh mục thành công";
-    //     } else {
-    //         $data['result'] = "Đã có lỗi xảy ra";
-    //     }
-    //     header("Location: ../../admin/category");
-    //     $this->index();
-    // }
-    // public function deleteCategory($idCategory = null)
-    // {
-    //     $this->view('admin/block/header');
-    //     $cat = $this->model('M_category');
-    //     $cat->deleteCategory($idCategory);
-    //     $data['category'] = $cat->getCategoryAll();
-    //     header("Location: ../../../admin/category");
-    //     $this->index();
-    // }
+    public function index()
+    {
+        $this->list_category();
+    }
+
+    public function add_category()
+    {
+        $category = $this->model('M_category');
+        $category->add_category($_POST['category']);
+        header("Location: " . _HOST . "admin/category");
+    }
+    public function list_category()
+    {
+        $category = $this->model('M_category');
+        $data['category'] = $category->get_category_all();
+        $data['page'] = 'category/list_category';
+        $data['title'] = 'Danh mục';
+        $this->render($data);
+    }
+    public function update_category()
+    {
+        $category = $this->model('M_category');
+        $category->update_category($_POST['category_id'], $_POST['category']);
+        header("Location: " . _HOST . "admin/category");
+    }
+    public function delete_category($id = null)
+    {
+        $category = $this->model('M_category');
+        $category->delete_category($id);
+        header("Location: " . _HOST . "admin/category");
+    }
 }
