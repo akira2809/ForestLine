@@ -85,6 +85,11 @@
                 <button class="btn btn-primary">Lưu chỉnh sửa</button>
             </div>
         </form>
+    </div>
+    <div class="card card-info card-outline mb-4">
+        <div class="card-header">
+            <div class="card-title">BIẾN THỂ SẢN PHẨM</div>
+        </div>
         <div class="card-body">
 
             <table class="table table-hover text-center border">
@@ -124,44 +129,46 @@
                 </tbody>
             </table>
         </div>
+
         <div class="card-body">
             <div onclick="openBox('boxAddProductVariant')" class="btn btn-primary">Thêm biến thể sản phẩm</div>
         </div>
-        <div hidden style="z-index: 9999; background-color: rgba(0, 0, 0, 0.65);" class="box position-fixed top-0 start-0 w-100 h-100 " id="boxAddProductVariant">
-            <form class="w-25 card bg-white p-3" action="<?= _HOST . "admin/product/update-product/" . $product['product_id'] . "?action=add-product-variant" ?>" method="post">
-                <span onclick="closeBox('boxAddProductVariant')" class="text-danger fs-4 text-end"><i class="fa-regular fa-circle-xmark"></i></span>
-                <h3 class=" text-center">Thêm biến thể sản phẩm</h3>
-                <label for="" class="form-label">Color</label>
-                <select name="color" class="form-select" id="" required>
-                    <option selected disabled value="">Choose...</option>
-
-                    <?php foreach ($color as $key => $val) {
-                    ?>
-                        <option value="<?= $val['color_id'] ?>"><?= $val['color_name'] ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-                <label for="" class="form-label">Size</label>
-                <select class="form-select" name="size" id="" required>
-                    <option selected disabled value="">Choose...</option>
-
-                    <?php foreach ($size as $key => $val) {
-                    ?>
-                        <option value="<?= $val['size_id'] ?>"><?= $val['size_name'] ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-                <div class="my-3">
-                    <label for="" class="form-label">Số lượng</label>
-
-                    <input type="number" class="form-select" value="50" name="stock">
-                </div>
-                <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
-            </form>
-        </div>
     </div>
+    <div hidden style="z-index: 9999; background-color: rgba(0, 0, 0, 0.65);" class="box position-fixed top-0 start-0 w-100 h-100 " id="boxAddProductVariant">
+        <form class="w-25 card bg-white p-3" action="<?= _HOST . "admin/product/update-product/" . $product['product_id'] . "?action=add-product-variant" ?>" method="post">
+            <span onclick="closeBox('boxAddProductVariant')" class="text-danger fs-4 text-end"><i class="fa-regular fa-circle-xmark"></i></span>
+            <h3 class=" text-center">Thêm biến thể sản phẩm</h3>
+            <label for="" class="form-label">Color</label>
+            <select name="color" class="form-select" id="" required>
+                <option selected disabled value="">Choose...</option>
+
+                <?php foreach ($color as $key => $val) {
+                ?>
+                    <option value="<?= $val['color_id'] ?>"><?= $val['color_name'] ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <label for="" class="form-label">Size</label>
+            <select class="form-select" name="size" id="" required>
+                <option selected disabled value="">Choose...</option>
+
+                <?php foreach ($size as $key => $val) {
+                ?>
+                    <option value="<?= $val['size_id'] ?>"><?= $val['size_name'] ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            <div class="my-3">
+                <label for="" class="form-label">Số lượng</label>
+
+                <input type="number" class="form-select" value="50" name="stock">
+            </div>
+            <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
+        </form>
+    </div>
+
 </div>
 
 <script>

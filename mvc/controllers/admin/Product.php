@@ -11,15 +11,35 @@ class Product extends Controller
         $this->render($data);
     }
 
+    public function upload_image($name, $tmp_name)
+    {
+        $path = "./uploads/" . $name;
+        $imageName = strtolower(pathinfo($path,  PATHINFO_FILENAME)) . 'Copy';
+        $imageFileType = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $count = 1;
+        $imageNew = "./uploads/" . $imageName . '.' . $imageFileType;
+        while (file_exists($imageNew)) {
+            $imageNew = "./uploads/" . $imageName . $count . '.' . $imageFileType;
+            $count++;
+        }
+        move_uploaded_file($tmp_name, $imageNew);
+        return substr($imageNew, 10);
+    }
     public function add_product()
     {
         $product = $this->model('M_product');
         $category = $this->model('M_category');
         $data['category'] = $category->get_category_all();
         if (isset($_GET['action']) && $_GET['action'] == 'add-product') {
-            $proImage = "./uploads/" . basename($_FILES['main_image']['name']);
-            $product->add_product($_POST['name'], main_image: $_FILES['main_image']['name'], base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
-            move_uploaded_file($_FILES['main_image']['tmp_name'], $proImage);
+            $image = $this->model('M_image');
+            $imageNew = $this->upload_image($_FILES['main_image']['name'], $_FILES['main_image']['tmp_name']);
+            $new_product_id = $product->add_product($_POST['name'], main_image: $imageNew, base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
+            $i = 0;
+            foreach ($_FILES['image_detail']['name'] as   $value) {
+                $imageNew = $this->upload_image($value, $_FILES['image_detail']['name'][$i]);
+                $image->add_image_product($new_product_id, $imageNew);
+                $i++;
+            }
             header("Location: " . _HOST . "/admin/product/list-product/");
         }
         $data['title'] = "Thêm sản phẩm";
@@ -45,30 +65,49 @@ class Product extends Controller
         $data['product'] = $product_variant->get_product_one($id);
         $data['list_product_variant'] = $product_variant->get_product_variant_by_id($id);
         $data['page'] = 'product/update_product';
-        if (isset($_GET['action']) && $_GET['action'] == 'add-product-variant') {
-            $this->add_product_variant($id, $_POST['color'], $_POST['size'], $_POST['stock']);
-            header("Location: " . _HOST . "/admin/product/update_product/" . $id);
-        } else if (isset($_GET['action']) && $_GET['action'] == 'delete-product-variant') {
-            $this->delete_product_variant($_GET['id']);
-            header("Location: " . _HOST . "/admin/product/update_product/" . $id);
-        } else if (isset($_GET['action']) && $_GET['action'] == 'edit-product') {
-            if (!$_FILES['main_image']['name']) {
-                $path_image = $_POST['main_image'];
-            } else {
-                $path_image = $_FILES['main_image']['name'];
-                $proImage = "./uploads/" . basename($_FILES['main_image']['name']);
-                move_uploaded_file($_FILES['main_image']['tmp_name'], $proImage);
+        if (isset($_GET['action'])) {
+            switch ($_GET['action']) {
+                case 'add-product-variant':
+                    $this->add_product_variant($id, $_POST['color'], $_POST['size'], $_POST['stock']);
+                    header("Location: " . _HOST . "/admin/product/update_product/" . $id);
+                    break;
+
+                case 'delete-product-variant':
+                    $this->delete_product_variant($_GET['id']);
+                    header("Location: " . _HOST . "/admin/product/update_product/" . $id);
+                    break;
+
+                case 'edit-product':
+                    if (!$_FILES['main_image']['name']) {
+                        $path_image = $_POST['main_image'];
+                    } else {
+                        $path_image = $_FILES['main_image']['name'];
+                        $proImage = "./uploads/" . basename($_FILES['main_image']['name']);
+                        move_uploaded_file($_FILES['main_image']['tmp_name'], $proImage);
+                    }
+                    $this->edit_product(
+                        $id,
+                        $_POST['name'],
+                        main_image: $path_image,
+                        base_price: $_POST['base_price'],
+                        sale_price: $_POST['sale_price'],
+                        description: $_POST['description'],
+                        category_id: $_POST['category_id']
+                    );
+                    header("Location: " . _HOST . "/admin/product/list-product");
+                    break;
+
+                case 'set-status-product':
+                    $status = ($_GET['status'] == 1) ? 0 : 1;
+                    $this->set_status_product($id, $status);
+                    header("Location: " . _HOST . "/admin/product/list-product/");
+                    break;
+
+                default:
+
+                    echo "Hành động không hợp lệ!";
+                    break;
             }
-            $this->edit_product($id, $_POST['name'], main_image: $path_image, base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
-            header("Location: " . _HOST . "/admin/product/update_product/" . $id);
-        } else if (isset($_GET['action']) && $_GET['action'] == 'set-status-product') {
-            if ($_GET['status'] == 1) {
-                $status = 0;
-            } else {
-                $status = 1;
-            }
-            $this->set_status_product($id, $status);
-            header("Location: " . _HOST . "/admin/product/list-product/");
         }
         $this->render($data);
     }

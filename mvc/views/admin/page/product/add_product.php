@@ -6,25 +6,25 @@
         <form class="needs-validation" novalidate action="<?= _HOST . 'admin/product/add-product/?action=add-product' ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-8">
-                    <div class="card-body"> <!--begin::Row-->
-                        <div class="row g-3"> <!--begin::Col-->
+                    <div class="card-body">
+                        <div class="row g-3">
                             <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tiêu đề</label>
                                 <input type="text" class="form-control" id="validationCustom01" name="name" placeholder="Nhập tên sản phẩm..." required>
                                 <div class="invalid-feedback">
                                     Nhập tên sản phẩm
                                 </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
+                            </div>
                             <div class="col-md-6"> <label for="validationCustom02" class="form-label">Giá gốc</label>
-                                <input type="number" class="form-control" id="validationCustom02" name="base_price" required>
+                                <input type="number" class="form-control" placeholder="Nhập giá sản phẩm..." id="validationCustom02" name="base_price" required>
                                 <div class="invalid-feedback">
                                     Nhập giá
                                 </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
+                            </div>
 
                             <div class="col-md-6"> <label for="validationCustom03" class="form-label">Giá giảm</label>
                                 <input type="number" class="form-control" value="0" id="validationCustom03" name="sale_price" required>
 
-                            </div> <!--end::Col--> <!--begin::Col-->
+                            </div>
                             <div class="col-md-12"> <label for="validationCustom04" class="form-label">Danh mục</label>
                                 <select class="form-select" name="category_id" id="validationCustom04" required>
                                     <option selected disabled value="">choose...</option>
@@ -40,7 +40,7 @@
                                 <div class="invalid-feedback">
                                     Chọn danh mục
                                 </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
+                            </div>
 
                             <div class="mb-3">
                                 <label for="validationCustom05" for="formFile" class="form-label">Ảnh chính</label>
@@ -49,10 +49,10 @@
                                     Chọn hình ảnh
                                 </div>
                             </div>
-                            <!-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Ảnh chi tiết</label>
-                                <input class="form-control" type="file" name="image_detail" id="formFileMultiple" multiple>
-                            </div> -->
+                                <input class="form-control" type="file" name="image_detail[]" id="formFileMultiple" multiple>
+                            </div>
 
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->

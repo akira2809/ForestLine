@@ -3,7 +3,7 @@ class Home extends Controller
 {
     public function index()
     {
-        $this->view('client/block/header');
+        $this->view('layout/layout_client');
     }
     public function listProducts()
     {
