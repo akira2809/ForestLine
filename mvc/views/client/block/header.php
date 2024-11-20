@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
-            <a class="navbar-brand me-3" href="#">FORESTLINE</a>
+            <a class="navbar-brand me-3" href="<?= _HOST ?>">FORESTLINE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-link" href="<?= _HOST ?>/cart"><i class="fas fa-shopping-cart"></i></a>
                     </li>
                 </ul>
             </div>

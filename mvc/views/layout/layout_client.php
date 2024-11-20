@@ -55,11 +55,16 @@
 
 
     <?php
-    if (file_exists("./mvc/views/client/page/$page.php")) {
-        require_once "./mvc/views/client/page/$page.php";
+    if (isset($page)) {
+        if (file_exists("./mvc/views/client/page/$page.php")) {
+            require_once "./mvc/views/client/page/$page.php";
+        } else {
+            require_once "./mvc/views/client/page/home.php";
+        }
     } else {
         require_once "./mvc/views/client/page/home.php";
     }
+
     ?>
 
 

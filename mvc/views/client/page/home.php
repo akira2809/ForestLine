@@ -1,7 +1,7 @@
  <!-- Banner -->
  <div class="container-fluid p-0">
      <div class="position-relative bg-light" style="height: 800px;">
-         <img src="./public/imgs/bannerhome.jpg" class="img-fluid position-absolute w-100 h-100" alt="Banner Image"
+         <img src="public/imgs/bannerhome.jpg" class="img-fluid position-absolute w-100 h-100" alt="Banner Image"
              style="object-fit: cover; opacity: 0.8;">
      </div>
  </div>
@@ -9,25 +9,25 @@
  <div class="container my-5">
      <div class="row text-center">
          <div class="col-md-3">
-             <img src="../public/imgs/Green-Women_s-Recycled-Polyester-Rain-Jacket-TCW4649-2277_1.jpg"
+             <img src="./public/imgs/Green-Women_s-Recycled-Polyester-Rain-Jacket-TCW4649-2277_1.jpg"
                  class="img-fluid" alt="Đồ nữ giới - Mới nhất">
              <p class="mt-2">Đồ nữ giới</p>
              <p class="text-muted">Mới nhất</p>
          </div>
          <div class="col-md-3">
-             <img src="../public/imgs/Brown-Eco-Friendly-Mock-Neck-Knit-Sweater-TCW5956-3453_4_c4199c2a-50a8-436b-b8fa-d1941acd155b.jpg"
+             <img src="./public/imgs/Brown-Eco-Friendly-Mock-Neck-Knit-Sweater-TCW5956-3453_4_c4199c2a-50a8-436b-b8fa-d1941acd155b.jpg"
                  class="img-fluid" alt="Đồ nữ giới - Bán chạy nhất">
              <p class="mt-2">Đồ nữ giới</p>
              <p class="text-muted">Bán chạy nhất</p>
          </div>
          <div class="col-md-3">
-             <img src="../public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
+             <img src="./public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
                  class="img-fluid" alt="Đồ nam giới - Mới nhất">
              <p class="mt-2">Đồ nam giới</p>
              <p class="text-muted">Mới nhất</p>
          </div>
          <div class="col-md-3">
-             <img src="../public/imgs/Multi-Organic-Cotton-Knit-Sweater-TCM6066-3671_4_7d2c7342-3644-41b4-972d-eb71dcd228e7.jpg"
+             <img src="./public/imgs/Multi-Organic-Cotton-Knit-Sweater-TCM6066-3671_4_7d2c7342-3644-41b4-972d-eb71dcd228e7.jpg"
                  class="img-fluid" alt="Đồ nam giới - Bán chạy nhất">
              <p class="mt-2">Đồ nam giới</p>
              <p class="text-muted">Bán chạy nhất</p>
@@ -81,7 +81,7 @@
 
          <!-- Phần hình ảnh -->
          <div class="col-md-6">
-             <img src="../public/imgs/rubishsea.jpg" alt="Image of sustainability" class="img-fluid rounded"
+             <img src="./public/imgs/rubishsea.jpg" alt="Image of sustainability" class="img-fluid rounded"
                  style="width: 900px;">
          </div>
      </div>
@@ -90,7 +90,7 @@
  <section class="position-relative text-center bg-dark text-white py-5">
      <!-- Background Image Overlay -->
      <div class="position-absolute top-0 start-0 w-100 h-100"
-         style="background-image: url('../public/imgs/bannerhome.jpg'); background-size: cover; background-position: center; opacity: 0.6;">
+         style="background-image: url('./public/imgs/bannerhome.jpg'); background-size: cover; background-position: center; opacity: 0.6;">
      </div>
 
      <!-- Content Overlay -->
@@ -98,7 +98,7 @@
          <div class="row align-items-center">
              <!-- Left Image -->
              <div class="col-md-6 d-flex justify-content-center mb-5 mb-md-1">
-                 <img src="../public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
+                 <img src="./public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
                      class="img-fluid w-75" alt="Sản phẩm tiêu biểu">
              </div>
 
@@ -108,7 +108,7 @@
                  <p class="mb-3">MỘT VÀI SẢN PHẨM TIÊU BIỂU</p>
                  <div class="d-flex flex-column align-items-center">
                      <!-- Right Image -->
-                     <img src="../public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
+                     <img src="./public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
                          class="img-fluid w- mb-5" alt="Sản phẩm tiêu biểu">
                  </div>
              </div>
@@ -130,11 +130,11 @@
              <div class="col-md-8">
                  <div class="row g-4">
                      <div class="col-md-6">
-                         <img src="../public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
+                         <img src="./public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
                              alt="Hình ảnh 1">
                      </div>
                      <div class="col-md-6">
-                         <img src="../public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
+                         <img src="./public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
                              alt="Hình ảnh 2">
                      </div>
                  </div>

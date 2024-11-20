@@ -10,7 +10,7 @@ class M_product
 
     function get_product_all()
     {
-        $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id";
+        $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id ORDER BY product.product_id DESC";
         return $this->conn->getAll($sql);
     }
     function get_product_one($id)
