@@ -1,11 +1,15 @@
 <?php
 class Product extends Controller
 {
+    public $model_product;
+    public function __construct()
+    {
+        $this->model_product = $this->model('M_product');
+    }
     public function index()
     {
-        $pro = $this->model('M_product');
-        $data['product'] =  $pro->getProductAll();
-        $this->view('client/block/header');
-        $this->view('client/page/V_product', $data);
+        $data['list_product'] = $this->model_product->get_product_all();
+        $data['page'] = 'product';
+        $this->view('layout/layout_client', $data);
     }
 }

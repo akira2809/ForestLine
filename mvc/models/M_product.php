@@ -13,6 +13,11 @@ class M_product
         $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id ORDER BY product.product_id DESC";
         return $this->conn->getAll($sql);
     }
+    function get_product_by_count($number)
+    {
+        $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id ORDER BY product.product_id DESC LIMIT $number";
+        return $this->conn->getAll($sql);
+    }
     function get_product_one($id)
     {
         $sql = "SELECT * FROM product WHERE product_id = ?";
