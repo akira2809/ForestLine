@@ -16,4 +16,9 @@ class M_user
         $sql = "UPDATE user SET active = 1 WHERE user_id = ?";
         return $this->conn->update($sql, [$user_id]);
     }
+    public function login($email, $password)
+    {
+        $sql = "SELECT * FROM user WHERE email = ? AND password = ? AND active = 1";
+        return $this->conn->getOne($sql, [$email, $password]);
+    }
 }
