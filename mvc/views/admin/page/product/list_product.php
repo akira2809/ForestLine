@@ -30,7 +30,7 @@
                             </a></span>
                         <span>
                             <a href="<?= _HOST . "admin/product/update-product/" . $value['product_id'] . '?action=set-status-product&status=' . $value['status'] ?>">
-                                <?= $value['status'] == 1 ? '<i onclick="return confirm(`Bạn có chắc sẽ ẩn sản phẩm này không ?`)" class="fa-regular fa-eye-slash"></i>' : '<i class="fa-regular fa-eye"></i>' ?>
+                                <?= $value['status'] == 1 ? '<i onclick="return confirm(`Bạn có chắc sẽ ẩn sản phẩm này không ?`)" class="fa-regular fa-eye-slash test1"></i>' : '<i class="fa-regular fa-eye test2"></i>' ?>
                             </a>
                         </span>
                     </td>
@@ -41,3 +41,10 @@
         </tbody>
     </table>
 </div>
+
+<style>
+    .test1 {
+        padding-left:30px ;
+    }
+
+</style>
