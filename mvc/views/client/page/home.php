@@ -127,6 +127,14 @@
                  </p>
              </div>
              <!-- Image Section -->
+
+            <?php
+             foreach ($product as $key => $value) {
+                
+            }
+
+            ?>
+            
              <div class="col-md-8">
                  <div class="row g-4">
                      <div class="col-md-6">
