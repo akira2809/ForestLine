@@ -59,12 +59,19 @@
         color: white;
 
     }
+
+    .saleprice {
+        text-decoration: line-through;
+        font-size: 16px;
+        color: grey;
+    }
 </style>
 <?php
 foreach ($data as $item) {
     $product_variants[] = [
         'color_id' => $item['color_id'],
         'size_id' => $item['size_id'],
+        'stock' => $item['stock'],
     ];
 }
 
@@ -107,9 +114,10 @@ $product_json = json_encode($product_variants);
                     <form action="<?= _HOST . 'cart/add_cart/' . $product['product_id'] ?>" method="post">
                         <h1><?= $product['name'] ?></h1>
                         <p>Áo phông</p>
-                        <span>139.000</span>
-                        <span><del>159.000</del></span>
-                        <p>Màu sắc</p>
+                        <?= $product['sale_price'] > 0 ?
+                            ' <p style="color: #FF0000;">' . number_format($product['base_price'], 0, 0.0)  . ' VNĐ <span class="saleprice">' . number_format($product['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                            : '<p style="color: #FF0000;">' . number_format($product['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?>
+                        <!-- <p>Màu sắc</p>
                         <ul class="list-unstyled">
 
                             <li class="d-inline">
@@ -124,8 +132,8 @@ $product_json = json_encode($product_variants);
                             <li class="d-inline">
                                 <i class="fa-solid fa-leaf"></i>
                             </li>
-                        </ul>
-                        <p>Kích thước</p>
+                        </ul> -->
+                        <p>Màu sắc</p>
                         <ul class="list-unstyled d-flex" id="color-list">
                             <?php foreach ($color as $val): ?>
                                 <li>
@@ -145,14 +153,16 @@ $product_json = json_encode($product_variants);
                             <?php endforeach; ?>
                         </ul>
 
-                        <div class="col-4 btn-group btn-custom mt-auto">
+                        <div class="btn-group btn-custom mt-auto">
                             <button type="button" class="btn btn-success" onclick="decreaseQuantity()">-</button>
-                            <input type="text" class=" text-center" id="quantity" value="1" readonly />
+                            <input type="text" class=" text-center" id="quantity" name="quantity" value="1" readonly />
                             <button type="button" class="btn btn-success" onclick="increaseQuantity()">+</button>
                         </div>
 
-                        <p><u>Bảng kích thước</u></p>
-                        <button class="btn mb-2">THÊM VÀO GIỎ HÀNG</button>
+                        <!-- <p><u>Bảng kích thước</u></p> -->
+                        <div class=" mt-3">
+                            <button class="btn mb-2">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
                         <h6>SẢN PHẨM</h6>
                         <div class="text">
                             <p>

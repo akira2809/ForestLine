@@ -8,9 +8,15 @@
     }
 
     .navbar-brand {
-        font-family: "Cormorant Garamond", serif;
+        /* font-family: "Cormorant Garamond", serif; */
         font-weight: 700;
         letter-spacing: 9px;
+    }
+
+    .saleprice {
+        text-decoration: line-through;
+        font-size: 16px;
+        color: grey;
     }
 </style>
 <article>
@@ -31,8 +37,9 @@
                                     class="img-fluid" />
                             </a>
                             <p><?= $product['name'] ?> </p>
-                            <span>179.000đ</span>
-                            <span><del>200.000đ</del></span>
+                            <?= $product['sale_price'] > 0 ?
+                                ' <p style="color: #FF0000;">' . number_format($product['base_price'], 0, 0.0)  . ' VNĐ <span class="saleprice">' . number_format($product['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                                : '<p style="color: #FF0000;">' . number_format($product['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?>
                         </div>
                     </div>
                 <?php

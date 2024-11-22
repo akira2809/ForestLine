@@ -19,12 +19,38 @@ class Cart extends Controller
         $data['page'] = 'cart';
         $this->view('layout/layout_client', $data);
     }
+    public function check_cart_exist($product_variant_id, $quantity)
+    {
+        $temp = $this->model_product_variant->check_cart_exist($product_variant_id);
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $key => $val) {
+                if ($val['product_variant_id'] == $temp['product_variant_id']) {
+                    echo $key;
+                    $_SESSION['cart'][$key]['quantity'] += $quantity;
+                    return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
     public function add_cart($id)
     {
-        var_dump($_POST);
-        $product_variant = $this->model_product_variant->find_product_variant($id, $_POST['color_id'], $_POST['size_id']);
-        // $_SESSION['cart'][] = $product_variant;
-        var_dump($product_variant);
-        // header('location:' . _HOST . 'cart');
+        $quantity = $_POST['quantity'];
+        $product_find = $this->model_product_variant->find_product_variant($id, $_POST['color_id'], $_POST['size_id']);
+        if ($product_find) {
+            if (!$this->check_cart_exist($product_find['product_variant_id'], $quantity)) {
+                $product_variant = $this->model_product_variant->get_product_variant_by_id($product_find['product_variant_id']);
+                $product_variant['quantity'] = $quantity;
+                $_SESSION['cart'][] = $product_variant;
+            }
+        }
+        // var_dump($product_variant);
+        header('location:' . _HOST . 'cart');
+    }
+    public function remove_cart($index)
+    {
+        unset($_SESSION['cart'][$index]);
+        header('location:' . _HOST . 'cart');
     }
 }

@@ -86,7 +86,7 @@
             </div>
         </form>
     </div>
-    <div class="card card-info card-outline mb-4">
+    <div class="card card-info card-outline mb-4" id="product_variant">
         <div class="card-header">
             <div class="card-title">BIẾN THỂ SẢN PHẨM</div>
         </div>
@@ -163,7 +163,7 @@
             <div class="my-3">
                 <label for="" class="form-label">Số lượng</label>
 
-                <input type="number" class="form-select" value="50" name="stock">
+                <input type="number" class="form-select" value="200" name="stock">
             </div>
             <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
         </form>

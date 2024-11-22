@@ -7,13 +7,6 @@
         --price-color: #FF0000;
     }
 
-    body {
-        color: var(--main-color);
-        background-color: #E9F5DB;
-
-        margin: 0;
-        padding: 0;
-    }
 
     .bgp {
         background-color: #CFE1B9;
@@ -23,12 +16,7 @@
         background-color: var(--main-color) !important;
     }
 
-    .navbar-brand {
-        /* font-family: 'Cormorant Garamond', serif; */
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: 8px;
-    }
+
 
     .btn-block1 {
         background-color: var(--second-color);
@@ -49,7 +37,7 @@
         height: auto;
     }
 </style>
-</head>
+
 
 <body>
 
@@ -127,17 +115,36 @@
             <div class="col-lg-4" style="color: var(--main-color);">
                 <div class="row">
                     <h4>Đơn hàng của bạn</h4>
-                    <div class="col-lg-6">
-                        <img src="./public/imgs/spthanhtoan.png" alt="">
-                    </div>
-                    <div class="col-lg-6 d-flex justify-content-between flex-column">
-                        <div>
-                            <h5>Polo Outerity Collection TÉ / Black</h5>
-                            <p>Màu sắc: Đen</p>
-                            <p>Kích thước: M</p>
-                        </div>
-                        <p class="col-lg-12 text-end text-decoration-line-through d-flex flex-column m-0 p-0">179.000 VND</p>
-                        <p class="col-lg-12 text-end d-flex flex-column p-0">139.000 VND</p>
+                    <div class="row">
+                        <?php
+                        $total_money = 0;
+                        $ship = 25000;
+                        foreach ($_SESSION['cart'] as $value) {
+                        ?>
+
+                            <div class="col col-lg-12 mb-3 d-flex gap-2">
+                                <div class="col-lg-6">
+                                    <img src="<?= _HOST . 'uploads/' . $value['main_image'] ?>" alt="">
+                                </div>
+                                <div class="col-lg-6 d-flex justify-content-between flex-column py-2">
+                                    <div>
+                                        <h5><?= $value['name'] ?></h5>
+                                        <p>Màu sắc: <?= $value['color_name'] ?></p>
+                                        <p>Kích thước: <?= $value['size_name'] ?></p>
+                                    </div>
+                                    <div> <?= $value['sale_price'] > 0 ?
+                                                ' <p class="col-lg-12 text-end d-flex flex-column m-0 p-0">' . number_format($value['base_price'], 0, 0.0)  . ' VNĐ <span class="text-decoration-line-through ">' . number_format($value['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                                                : ' <p class="col-lg-12 text-end d-flex flex-column p-0">' . number_format($value['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?></div>
+                                </div>
+                            </div>
+                        <?php
+                            if ($value['sale_price'] > 0) {
+                                $total_money += $value['sale_price'] * $value['quantity'];
+                            } else {
+                                $total_money += $value['base_price'] * $value['quantity'];
+                            }
+                        }
+                        ?>
                     </div>
                     <hr>
                     <div class="row">
@@ -147,10 +154,10 @@
                         <div class="col-lg-4">
                             <button type="button" class="col-12 btn btn-custom btn-block1 m-0 p-1.5">ÁP DỤNG</button>
                         </div>
-                        <p class="d-flex justify-content-between mt-3">Tổng tiền <span>139000 VND</span></p>
-                        <p class="d-flex justify-content-between">Phí vận chuyển <span>25000 VND</span></p>
+                        <p class="d-flex justify-content-between mt-3">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
+                        <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
                         <hr>
-                        <p class="d-flex justify-content-between fw-bold">Tổng <span>164000 VND</span></p>
+                        <p class="d-flex justify-content-between fw-bold">Tổng <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
                     </div>
                 </div>
             </div>
