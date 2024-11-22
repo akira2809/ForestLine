@@ -64,7 +64,7 @@ class M_product
     }
     function update_product_variant_exist($id, $stock)
     {
-        $stock = (int)$stock;
+        $stock = (int) $stock;
         $sql = "UPDATE product_variant SET stock = stock + ? WHERE product_variant_id = ?";
         return $this->conn->update($sql, [$stock, $id]);
     }
@@ -78,4 +78,14 @@ class M_product
         $sql = "SELECT * FROM product_color";
         return $this->conn->getAll($sql);
     }
+    function search_product($keyword)
+    {
+        $sql = "SELECT * FROM product 
+            INNER JOIN category ON category.category_id = product.category_id
+            WHERE product.name LIKE ? 
+            OR category.category_name LIKE ?
+            ORDER BY product.product_id DESC";
+        return $this->conn->getAll($sql, ["%$keyword%", "%$keyword%"]);
+    }
+
 }

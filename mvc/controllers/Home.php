@@ -13,4 +13,17 @@ class Home extends Controller
         $data['page'] = 'home';
         $this->view('layout/layout_client', $data);
     }
+    public function search()
+    {
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
+            $results = $this->model_product->search_product($keyword);
+
+            // Trả kết quả dưới dạng JSON
+            echo json_encode($results);
+        } else {
+            echo json_encode([]);
+        }
+    }
+
 }
