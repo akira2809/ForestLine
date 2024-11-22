@@ -10,7 +10,6 @@ class Mailer
     public static function send($to, $subject, $content)
     {
         $mail = new PHPMailer(true);
-
         try {
             //Server settings                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP

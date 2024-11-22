@@ -75,6 +75,10 @@
         }  */
 </style>
 
+<?php
+// unset($_SESSION['cart']);
+// print_r($_SESSION['cart']); 
+?>
 <div class="container p-0">
     <h2 class="mt-3">Giỏ hàng</h2>
     <hr>
@@ -91,10 +95,11 @@
                     </div>
                     <div class="col-sm-6 d-flex flex-column">
                         <div class="col-4 btn-group btn-custom mt-auto">
-                            <button type="button" class="btn btn-success">-</button>
-                            <button type="button" class="btn btn-success">1</button>
-                            <button type="button" class="btn btn-success">+</button>
+                            <button type="button" class="btn btn-success" onclick="decreaseQuantity()">-</button>
+                            <input type="text" class="btn btn-success text-center" id="quantity" value="1" readonly />
+                            <button type="button" class="btn btn-success" onclick="increaseQuantity()">+</button>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-end d-flex justify-content-between flex-column">

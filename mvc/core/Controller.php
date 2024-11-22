@@ -15,4 +15,8 @@ class Controller
         extract($data);
         require_once "./mvc/views/" . $view . ".php";
     }
+    public function load_error($name)
+    {
+        require_once './mvc/error/' . $name . '.php';
+    }
 }

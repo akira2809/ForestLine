@@ -78,3 +78,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGcueSaoS0GGSorP1Cz9KxrBvZ6b6fIOg3Uktj0K3s43IMf3/hk6if8/I0D"
     crossorigin="anonymous"></script>
+<script src="../public/js/main.js"></script>

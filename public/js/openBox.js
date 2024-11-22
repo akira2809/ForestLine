@@ -12,3 +12,4 @@ const openBoxEditCategory = (id, category) => {
 const closeBoxEditCategory = () => {
     document.getElementById('boxEditCategory').hidden = true;
 }
+

@@ -36,7 +36,7 @@ class Product extends Controller
             $new_product_id = $product->add_product($_POST['name'], main_image: $imageNew, base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
             $i = 0;
             foreach ($_FILES['image_detail']['name'] as   $value) {
-                $imageNew = $this->upload_image($value, $_FILES['image_detail']['name'][$i]);
+                $imageNew = $this->upload_image($value, $_FILES['image_detail']['tmp_name'][$i]);
                 $image->add_image_product($new_product_id, $imageNew);
                 $i++;
             }

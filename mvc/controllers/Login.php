@@ -11,6 +11,11 @@ class Login extends Controller
         $data['page'] = 'login';
         $this->view('layout/layout_client', $data);
     }
+    public function signup()
+    {
+        $data['page'] = 'signup';
+        $this->view('layout/layout_client', $data);
+    }
     public function register()
     {
         $id = $this->model_login->register($_POST['user_name'], $_POST['email'], $_POST['password']);
@@ -43,4 +48,29 @@ class Login extends Controller
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    public function login()
+    {
+        $data['page'] = 'login';
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $user = $this->model_login->login($email, $password);
+        if ($user && $user['active'] == 1) {
+            if ($user['role'] == 0) {
+                $_SESSION['user_login'] = $user;
+                header("Location:" . _HOST);
+            } else {
+                $_SESSION['admin_login'] = $user;
+                header("Location:" . _HOST . 'admin/dashboard');
+            }
+        } else {
+            $data['result'] = [
+                'result' => 'Sai tài khoản hoặc mật khẩu',
+                'email' => $email,
+                'password' => $password,
+            ];
+            $this->view('layout/layout_client', $data);
+        }
+    }
+    public function check_active_user($email, $password) {}
+    public function logout() {}
 }

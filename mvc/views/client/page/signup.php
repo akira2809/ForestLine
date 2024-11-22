@@ -1,3 +1,4 @@
+<title>Document</title>
 <style>
     body {
         background-color: #f6ffec;
@@ -109,26 +110,34 @@
     }
 </style>
 <div class="container-fluid-lg">
-    <div class="row h-100" style="--bs-gutter-x: 0">
+    <div class="row h-100">
         <div
-            class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center p-0">
+            class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center">
             <div class="login-register pt-5">
                 <div class="signin-register d-flex justify-content-between mb-1">
-                    <a href="">Sign In</a>
+                    <a href="signin.html">Sign In</a>
                     <a href="">Create Account</a>
                 </div>
                 <hr class="mb-4" />
 
-                <form class="form mt-3" action="<?= _HOST ?>/login/login" method="post">
+                <form class="form mt-3" action="<?= _HOST ?>/login/register" method="post">
                     <div class="input-box">
-                        <input type="text" id="email" name="email" value="<?= isset($result) ? $result['email'] : '' ?>" placeholder=" " required />
+                        <input type="text" id="f-name" name="user_name" placeholder=" " required />
+                        <label for="email"><span>*</span>FIRST NAME</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="email" placeholder=" " name="email" required />
                         <label for="email"><span>*</span> EMAIL ADDRESS</label>
                     </div>
                     <div class="input-box">
-                        <input type="text" name="password" id="password" value="<?= isset($result) ? $result['password'] : '' ?>" placeholder=" " required />
-                        <label for="email"><span>*</span> PASSWORD</label>
+                        <input type="text" id="password" placeholder=" " name="password" required />
+                        <label for=" email"><span>*</span>PASSWORD</label>
                     </div>
-                    <?= isset($result) ? '<div class="alert alert-danger">' . $result['result'] . '</div>' : ''  ?>
+                    <!-- <div class="input-box">
+                        <input type="text" id="re-password" placeholder=" " required />
+                        <label for="email"><span>*</span>RE-ENTER PASSWORD</label>
+                    </div> -->
+
                     <div
                         class="links d-flex align-items-center justify-content-between mb-3">
                         <a href="">Forgot your password?</a>
@@ -170,7 +179,7 @@
             </div>
         </div>
         <div
-            class="col-lg-4 col-md-12 d-flex flex-column align-items-center justify-content-center pt-5">
+            class="col-lg-4 col-md-12 d-flex flex-column align-items-center justify-content-center">
             <h2 class="text-black text-center mb-3">FL Account Benefits</h2>
             <span class="text-black text-center mb-3">
                 Enjoy these complimentary benefits exclusive to our account holders
