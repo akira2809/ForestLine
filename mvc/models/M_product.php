@@ -80,12 +80,20 @@ class M_product
     }
     function search_product($keyword)
     {
-        $sql = "SELECT * FROM product 
-            INNER JOIN category ON category.category_id = product.category_id
-            WHERE product.name LIKE ? 
-            OR category.category_name LIKE ?
-            ORDER BY product.product_id DESC";
-        return $this->conn->getAll($sql, ["%$keyword%", "%$keyword%"]);
+        $sql = "SELECT p.*, c.category_name 
+                FROM product p
+                INNER JOIN category c ON c.category_id = p.category_id
+                WHERE p.name LIKE ? 
+                OR c.category_name LIKE ?
+                OR p.description LIKE ?
+                ORDER BY p.product_id DESC
+                LIMIT 10";
+
+        return $this->conn->getAll($sql, [
+            "%$keyword%",
+            "%$keyword%",
+            "%$keyword%"
+        ]);
     }
 
 }
