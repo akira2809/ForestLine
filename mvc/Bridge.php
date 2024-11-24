@@ -14,7 +14,7 @@ require_once './mvc/services/jwt/BeforeValidException.php';
 require_once './mvc/services/jwt/JWT.php';
 require_once './mvc/services/jwt/Token.php';
 //app
-require_once './mvc/core/App.php';
 require_once './mvc/core/Controller.php';
+require_once './mvc/core/App.php';
 require_once './mvc/core/Database.php';
 require_once './mvc/core/Model.php';

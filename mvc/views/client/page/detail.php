@@ -37,160 +37,176 @@
     .sptt img {
         width: 100%;
     }
-</style>
 
+    input[type="radio"] {
+        display: none;
+    }
+
+    /* Kiểu dáng của label như nút */
+    label.btn {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Khi radio được chọn */
+    input[type="radio"]:checked+label.btn {
+        background-color: #718c55 !important;
+        color: white;
+
+    }
+
+    .saleprice {
+        text-decoration: line-through;
+        font-size: 16px;
+        color: grey;
+    }
+</style>
+<?php
+foreach ($data as $item) {
+    $product_variants[] = [
+        'color_id' => $item['color_id'],
+        'size_id' => $item['size_id'],
+        'stock' => $item['stock'],
+    ];
+}
+
+// Chuyển đổi sang JSON
+$product_json = json_encode($product_variants);
+// var_dump($product_json);
+
+?>
 <article>
     <div class="container">
         <div class="product mt-5">
             <div class="row">
-                <!-- Các ảnh chi tiết, ẩn trên màn hình nhỏ (d-none d-md-block) -->
+
                 <div class="col-1 d-none d-md-block">
-                    <div class="row">
-                        <div class="box gx-1">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
+                    <?php
+                    foreach ($image as $value) {
+                    ?>
+                        <div class="row">
+                            <div class="box gx-1 gy-3">
+                                <img
+                                    src="<?= _HOST . 'uploads/' . $value['image'] ?>"
+                                    alt=""
+                                    class="img-fluid" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="box gx-1 gy-3">
-                            <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt=""
-                                class="img-fluid" />
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
 
                 <!-- Ảnh chính sẽ phóng to khi thu nhỏ màn hình -->
                 <div class="col-12 col-md-6">
                     <img
-                        src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                        src="<?= _HOST . 'uploads/' . $product['main_image'] ?>"
                         alt=""
                         class="img-fluid" />
                 </div>
 
                 <div class="col-12 col-md-5">
-                    <h1>Outerity</h1>
-                    <p>Áo phông</p>
-                    <span>139.000</span>
-                    <span><del>159.000</del></span>
-                    <p>Màu sắc</p>
-                    <ul class="list-unstyled">
-                        <li class="d-inline">
-                            <i class="fa-solid fa-leaf"></i>
-                        </li>
-                        <li class="d-inline">
-                            <i class="fa-solid fa-leaf"></i>
-                        </li>
-                        <li class="d-inline">
-                            <i class="fa-solid fa-leaf"></i>
-                        </li>
-                        <li class="d-inline">
-                            <i class="fa-solid fa-leaf"></i>
-                        </li>
-                    </ul>
-                    <p>Kích thước</p>
-                    <ul class="list-unstyled">
-                        <li class="d-inline"><button class="btn">S</button></li>
-                        <li class="d-inline"><button class="btn">M</button></li>
-                        <li class="d-inline"><button class="btn">L</button></li>
-                        <li class="d-inline"><button class="btn">XL</button></li>
-                    </ul>
-                    <p><u>Bảng kích thước</u></p>
-                    <button class="btn mb-2">THÊM VÀO GIỎ HÀNG</button>
-                    <h6>SẢN PHẨM</h6>
-                    <div class="text">
-                        <p>
-                            Tên sản phẩm: Phông Mệt <br />
-                            Câu chuyện: Một ngày dài tựa câu chuyện lớn, với tâm trạng mỏi
-                            mệt vì những câu chuyện nhỏ mà vui
-                        </p>
+                    <form action="<?= _HOST . 'cart/add_cart/' . $product['product_id'] ?>" method="post">
+                        <h1><?= $product['name'] ?></h1>
+                        <p>Áo phông</p>
+                        <?= $product['sale_price'] > 0 ?
+                            ' <p style="color: #FF0000;">' . number_format($product['base_price'], 0, 0.0)  . ' VNĐ <span class="saleprice">' . number_format($product['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                            : '<p style="color: #FF0000;">' . number_format($product['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?>
+                        <!-- <p>Màu sắc</p>
+                        <ul class="list-unstyled">
 
-                        <p>
-                            Kích thước <br />
-                            S 1m60 - 1m65 55 - 60kg <br />
-                            M 1m64 - 1m69 60 - 65kg <br />
-                            L 1m70 - 1m74 66 - 70kg <br />
-                            XL 1m74 - 1m7670 - 76kg
-                        </p>
+                            <li class="d-inline">
+                                <i class="fa-solid fa-leaf"></i>
+                            </li>
+                            <li class="d-inline">
+                                <i class="fa-solid fa-leaf"></i>
+                            </li>
+                            <li class="d-inline">
+                                <i class="fa-solid fa-leaf"></i>
+                            </li>
+                            <li class="d-inline">
+                                <i class="fa-solid fa-leaf"></i>
+                            </li>
+                        </ul> -->
+                        <p>Màu sắc</p>
+                        <ul class="list-unstyled d-flex" id="color-list">
+                            <?php foreach ($color as $val): ?>
+                                <li>
+                                    <input type="radio" id="color-<?= $val['color_name'] ?>" name="color_id" value="<?= $val['color_id'] ?>" required>
+                                    <label for="color-<?= $val['color_name'] ?>" class="btn"><?= $val['color_name'] ?></label>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
 
-                        <p>
-                            Chất liệu <br />
-                            Cotton mềm
-                        </p>
+                        <p>Kích thước</p>
+                        <ul class="list-unstyled d-flex" id="size-list">
+                            <?php foreach ($size as $val): ?>
+                                <li>
+                                    <input type="radio" id="size-<?= $val['size_name'] ?>" name="size_id" value="<?= $val['size_id'] ?>" required>
+                                    <label for="size-<?= $val['size_name'] ?>" class="btn"><?= $val['size_name'] ?></label>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
 
-                        <p>
-                            Phong cách liên quan <br />
-                            Streetwear, beachwear,...
-                        </p>
-                        <h6>PHONG CÁCH</h6>
-                        <p>
-                            Dáng người phù hợp: Quả lê <br />
-                            Gợi ý kết hợp: Jeans beggie, Chân váy
-                        </p>
-                        <h6>CHÍNH SÁCH</h6>
-                        <p>
-                            - Miễn phí đổi hàng cho khách mua ở Outerity trong trường hợp
-                            bị lỗi từ nhà sản xuất, giao nhầm hàng, nhầm size. - Quay
-                            video mở sản phẩm khi nhận hàng, nếu không có video unbox, khi
-                            phát hiện lỗi phải báo ngay cho Outerity trong 1 ngày tính từ
-                            ngày giao hàng thành công. Qua 1 ngày chúng mình không giải
-                            quyết khi không có video unbox. - Sản phẩm đổi trong thời gian
-                            3 ngày kể từ ngày nhận hàng - Sản phẩm còn mới nguyên tem,
-                            tags, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những
-                            tác nhân bên ngoài cửa hàng sau khi mua hàng.
-                        </p>
-                    </div>
+                        <div class="btn-group btn-custom mt-auto">
+                            <button type="button" class="btn btn-success" onclick="decreaseQuantity()">-</button>
+                            <input type="text" class=" text-center" id="quantity" name="quantity" value="1" readonly />
+                            <button type="button" class="btn btn-success" onclick="increaseQuantity()">+</button>
+                        </div>
+
+                        <!-- <p><u>Bảng kích thước</u></p> -->
+                        <div class=" mt-3">
+                            <button class="btn mb-2">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
+                        <h6>SẢN PHẨM</h6>
+                        <div class="text">
+                            <p>
+                                Tên sản phẩm: Phông Mệt <br />
+                                Câu chuyện: Một ngày dài tựa câu chuyện lớn, với tâm trạng mỏi
+                                mệt vì những câu chuyện nhỏ mà vui
+                            </p>
+
+                            <p>
+                                Kích thước <br />
+                                S 1m60 - 1m65 55 - 60kg <br />
+                                M 1m64 - 1m69 60 - 65kg <br />
+                                L 1m70 - 1m74 66 - 70kg <br />
+                                XL 1m74 - 1m7670 - 76kg
+                            </p>
+
+                            <p>
+                                Chất liệu <br />
+                                Cotton mềm
+                            </p>
+
+                            <p>
+                                Phong cách liên quan <br />
+                                Streetwear, beachwear,...
+                            </p>
+                            <h6>PHONG CÁCH</h6>
+                            <p>
+                                Dáng người phù hợp: Quả lê <br />
+                                Gợi ý kết hợp: Jeans beggie, Chân váy
+                            </p>
+                            <h6>CHÍNH SÁCH</h6>
+                            <p>
+                                - Miễn phí đổi hàng cho khách mua ở Outerity trong trường hợp
+                                bị lỗi từ nhà sản xuất, giao nhầm hàng, nhầm size. - Quay
+                                video mở sản phẩm khi nhận hàng, nếu không có video unbox, khi
+                                phát hiện lỗi phải báo ngay cho Outerity trong 1 ngày tính từ
+                                ngày giao hàng thành công. Qua 1 ngày chúng mình không giải
+                                quyết khi không có video unbox. - Sản phẩm đổi trong thời gian
+                                3 ngày kể từ ngày nhận hàng - Sản phẩm còn mới nguyên tem,
+                                tags, sản phẩm chưa giặt và không dơ bẩn, hư hỏng bởi những
+                                tác nhân bên ngoài cửa hàng sau khi mua hàng.
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -204,7 +220,7 @@
                     <div class="col-3 d-inline-block">
                         <div class="box">
                             <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                                 alt="" />
                         </div>
                     </div>
@@ -223,7 +239,7 @@
                     <div class="col-3 d-inline-block">
                         <div class="box">
                             <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                                 alt="" />
                         </div>
                     </div>
@@ -244,7 +260,7 @@
                     <div class="col-3 d-inline-block">
                         <div class="box">
                             <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                                 alt="" />
                         </div>
                     </div>
@@ -263,7 +279,7 @@
                     <div class="col-3 d-inline-block">
                         <div class="box">
                             <img
-                                src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                                 alt="" />
                         </div>
                     </div>
@@ -284,7 +300,7 @@
             <div class="col">
                 <div class="box">
                     <img
-                        src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                         alt=""
                         class="img-fluid" />
                     <p>
@@ -298,7 +314,7 @@
             <div class="col">
                 <div class="box">
                     <img
-                        src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                         alt=""
                         class="img-fluid" />
                     <p>
@@ -312,7 +328,7 @@
             <div class="col">
                 <div class="box">
                     <img
-                        src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                         alt=""
                         class="img-fluid" />
                     <p>
@@ -326,7 +342,7 @@
             <div class="col">
                 <div class="box">
                     <img
-                        src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
                         alt=""
                         class="img-fluid" />
                     <p>
@@ -343,3 +359,55 @@
         </div>
     </div>
 </article>
+<script>
+    const productVariants = <?= $product_json ?>;
+    const colorInputs = document.querySelectorAll('input[name="color_id"]');
+    const sizeInputs = document.querySelectorAll('input[name="size_id"]');
+
+    function updateSizes(selectedColorId) {
+        const sizeId = selectedColorId;
+        const listSize = productVariants.filter((item) => {
+            return item.color_id == sizeId
+        })
+        sizeInputs.forEach(sizeInput => {
+            const isAvailable = listSize.some(variant =>
+                variant.size_id == sizeInput.value
+            );
+            sizeInput.disabled = isAvailable ? false : true;
+            sizeInput.nextElementSibling.style.backgroundColor = !isAvailable ? "#ddd" : '#f9f9f9';
+            if (!isAvailable) {
+                sizeInput.checked = false;
+            }
+        });
+    }
+
+    function updateColor(selectedSizeId) {
+        const colorId = selectedSizeId;
+        const listColor = productVariants.filter((item) => {
+            return item.size_id == colorId
+        })
+        colorInputs.forEach(colorInput => {
+            const isAvailable = listColor.some(variant =>
+                variant.color_id == colorInput.value
+            );
+
+            colorInput.disabled = isAvailable ? false : true;
+            colorInput.nextElementSibling.style.backgroundColor = !isAvailable ? "#ddd" : '#f9f9f9';
+            if (!isAvailable) {
+                colorInput.checked = false;
+            }
+        });
+    }
+    colorInputs.forEach(input => {
+        input.addEventListener('change', event => {
+            const selectedColorId = event.target.value;
+            updateSizes(selectedColorId);
+        });
+    });
+    sizeInputs.forEach(input => {
+        input.addEventListener('change', event => {
+            const selectedSizeId = event.target.value;
+            updateColor(selectedSizeId);
+        });
+    });
+</script>
