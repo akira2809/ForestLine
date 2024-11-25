@@ -42,10 +42,23 @@ class Cart extends Controller
             if (!$this->check_cart_exist($product_find['product_variant_id'], $quantity)) {
                 $product_variant = $this->model_product_variant->get_product_variant_by_id($product_find['product_variant_id']);
                 $product_variant['quantity'] = $quantity;
-                $_SESSION['cart'][] = $product_variant;
+                array_unshift($_SESSION['cart'], $product_variant);
             }
         }
         // var_dump($product_variant);
+        header('location:' . _HOST . 'cart');
+    }
+    public function update_cart($index)
+    {
+        if (isset($_POST['desc'])) {
+            if ($_SESSION['cart'][$index]['quantity'] == 1) {
+                $_SESSION['cart'][$index]['quantity'] = 1;
+            } else {
+                $_SESSION['cart'][$index]['quantity'] -= 1;
+            }
+        } else if (isset($_POST['asc'])) {
+            $_SESSION['cart'][$index]['quantity'] += 1;
+        }
         header('location:' . _HOST . 'cart');
     }
     public function remove_cart($index)

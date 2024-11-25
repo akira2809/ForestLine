@@ -22,7 +22,7 @@ class Login extends Controller
         if (!isset($_SESSION['token'])) {
             $_SESSION['token'] = Token::create_token($id, 'huy@gmail.com');
         }
-        $content = '<p>Thanks for signing up! Please click the button below to verify your email address:</p> <a href="' . _HOST . 'login/verify-email?token=' . $_SESSION['token'] . '">Verify Email</a>';
+        $content = '<p>Cảm ơn bạn đã đăng ký! Vui lòng nhấp vào nút bên dưới để xác minh địa chỉ email của bạn:</p> <a href="' . _HOST . 'login/verify-email?token=' . $_SESSION['token'] . '">Verify Email</a>';
         // echo $content;
         Mailer::send($_POST['email'], 'test mail', $content);
         header("Location:" . _HOST);
@@ -37,7 +37,11 @@ class Login extends Controller
             $currentTime = time();
             if ($currentTime > $expiresAt) {
                 unset($_SESSION['token']);
-                echo "Token đã hết hạn!";
+                $data['page'] = 'login/signup';
+                $data['type'] = 'info';
+                $data['result'] = 'Thời gian xác nhận đã hết vui lòng bạn đăng ký lại !';
+                $this->view('layout/layout_client', $data);
+                // header("Location:" . _HOST . 'login/signup');
             } else {
                 echo "Token hợp lệ!";
                 $this->model_login->active_account($result->user_id);
