@@ -26,7 +26,7 @@
                         <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= _HOST ?>login"><i class="fas fa-user"></i></a>
+                        <a class="nav-link" href="<?= isset($_SESSION['user_login']) ? _HOST . 'profile' : _HOST . 'login' ?>"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>

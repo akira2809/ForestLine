@@ -13,4 +13,9 @@ class Order extends Controller
         $data['order'] = $this->model_order->get_order_all();
         $this->view('layout/layout_admin', $data);
     }
+    public function set_status($order_id, $status)
+    {
+        $this->model_order->set_status($order_id, $status);
+        header("location: " . _HOST . 'admin/order');
+    }
 }

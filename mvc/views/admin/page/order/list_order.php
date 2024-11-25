@@ -70,7 +70,21 @@ $groupedOrders = array_values($groupedOrders);
                         <p><strong>Ngày mua: </strong><?= $order['date'] ?></p>
                         <p><strong>Phương thức thanh toán: </strong><?= $order['payment_method'] ?></p>
                     </td>
-                    <td><?= $order['status'] ?></td>
+                    <td><?php echo $order['status'];
+                        switch ($order['status']) {
+                            case 'Pending':
+                                $text = '<div><a class="btn btn-primary" href="' . _HOST . 'admin/order/set-status/' . $order['order_id'] . '/Confirmed">Xác nhận đơn hàng</a></div>';
+                                break;
+                            case 'Confirmed':
+                                $text = '<div><a class="btn btn-primary" href="' . _HOST . 'admin/order/set-status/' . $order['order_id'] . '/Shipped">Tiến hành vận chuyển</a></div>';
+                                break;
+                            default:
+                                $text = '';
+                                break;
+                        }
+                        echo isset($text) ? $text : '';
+                        ?>
+                    </td>
                 </tr>
             <?php
             }

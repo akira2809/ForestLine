@@ -53,7 +53,7 @@
                 </div>
                 <form action="<?= _HOST ?>checkout/checkout" method="post">
                     <h4 class="fw-bold mt-3">Thông tin liên lạc</h4>
-                    <input type="text" class="form-control" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['user_name'] : '' ?>" style="font-weight: bold;" placeholder="Họ và tên" required>
+                    <input type="text" name="user_name" class="form-control" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['user_name'] : '' ?>" style="font-weight: bold;" placeholder="Họ và tên" required>
                     <div class="row">
                         <div class="col-lg-8 my-3">
                             <input type="text" name="email" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['email'] : '' ?>" class="form-control" style="font-weight: bold;" placeholder="Email" required>
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                         <?php
-                            if ($value['sale_price'] > 0) {
+                            if (!$value['sale_price'] > 0) {
                                 $total_money += $value['sale_price'] * $value['quantity'];
                             } else {
                                 $total_money += $value['base_price'] * $value['quantity'];

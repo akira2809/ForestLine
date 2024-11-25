@@ -25,7 +25,12 @@ class Login extends Controller
         $content = '<p>Cảm ơn bạn đã đăng ký! Vui lòng nhấp vào nút bên dưới để xác minh địa chỉ email của bạn:</p> <a href="' . _HOST . 'login/verify-email?token=' . $_SESSION['token'] . '">Verify Email</a>';
         // echo $content;
         Mailer::send($_POST['email'], 'test mail', $content);
-        header("Location:" . _HOST);
+        $data['result'] = [
+            'type' => 'info',
+            'result' => 'Tài khoản của bạn đã được tạo, vui lòng vào gmail xác nhận tài khoản !'
+        ];
+        $data['page'] = 'signup';
+        $this->view('layout/layout_client', $data);
     }
     public function verify_email()
     {
@@ -61,7 +66,13 @@ class Login extends Controller
         if ($user && $user['active'] == 1) {
             if ($user['role'] == 0) {
                 $_SESSION['user_login'] = $user;
-                header("Location:" . _HOST);
+                if (isset($_SESSION['URL'])) {
+
+                    header("Location:" .  $_SESSION['URL']);
+                } else {
+
+                    header("Location:" . _HOST);
+                }
             } else {
                 $_SESSION['admin_login'] = $user;
                 header("Location:" . _HOST . 'admin/dashboard');
@@ -76,5 +87,9 @@ class Login extends Controller
         }
     }
     public function check_active_user($email, $password) {}
-    public function logout() {}
+    public function logout()
+    {
+        unset($_SESSION['user_login']);
+        header('Location:' . _HOST);
+    }
 }

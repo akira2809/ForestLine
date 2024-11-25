@@ -8,7 +8,7 @@ class Product extends Controller
     }
     public function index()
     {
-        $data['list_product'] = $this->model_product->get_product_all();
+        $data['list_product'] = $this->model_product->get_product_all_client();
         $data['page'] = 'product';
         $this->view('layout/layout_client', $data);
     }
