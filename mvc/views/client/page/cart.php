@@ -67,7 +67,7 @@
     <div class="row m-0 p-0">
         <div class="col-lg-8 col-sm-12">
             <?php
-            if (isset($_SESSION['cart'])) {
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
                 foreach ($_SESSION['cart'] as $key => $value) {
             ?>
                     <div class="row">
@@ -83,11 +83,13 @@
                                 <p>Kích thước: <span><?= $value['size_name'] ?></span></p>
                             </div>
                             <div class="col-sm-6 d-flex flex-column">
-                                <div class="col-4 btn-group btn-custom mt-auto">
-                                    <button type="button" class="btn btn-success" onclick="decreaseQuantity()">-</button>
-                                    <input type="text" class="border border-light text-center" id="quantity" name="quantity" value="<?= $value['quantity'] ?>" readonly />
-                                    <button type="button" class="btn btn-success" onclick="increaseQuantity()">+</button>
-                                </div>
+                                <form action="<?= _HOST . 'cart/update-cart/' . $key ?>" method="post">
+                                    <div class="col-4 btn-group btn-custom mt-auto">
+                                        <input type="submit" name="desc" class="btn btn-success" value="-" />
+                                        <input type="text" class="border border-light text-center" id="quantity" name="quantity" value="<?= $value['quantity'] ?>" readonly />
+                                        <input type="submit" name="asc" class="btn btn-success" value="+" />
+                                    </div>
+                                </form>
 
                             </div>
                         </div>
@@ -101,7 +103,7 @@
 
                             </div>
                             <h5 class="col-sm-12 d-flex flex-column"><?php
-                                                                        if ($value['sale_price'] > 0) {
+                                                                        if (!$value['sale_price'] > 0) {
                                                                             echo number_format($value['sale_price'] * $value['quantity'], 0, 0.0);
                                                                         } else {
                                                                             echo number_format($value['base_price'] * $value['quantity'], 0, 0.0);

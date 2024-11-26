@@ -133,14 +133,15 @@
                     <?php
                     foreach ($product_new as $val) {
                         ?>
-                        <div class="col-md-6">
-                            <img src="./uploads/<?= $val['main_image'] ?>" class="img-fluid rounded" alt="Hình ảnh 1">
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                         <div class="col-md-6">
+                             <img src="./uploads/<?= $val['main_image'] ?>" class="img-fluid rounded"
+                                 alt="Hình ảnh 1">
+                         </div>
+                     <?php
+                        }
+                        ?>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
