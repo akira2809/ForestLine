@@ -8,7 +8,7 @@ class Detail_New extends Controller
     }
     public function index($id)
     {
-        $data['one_post'] = $this->model_post->get_post_one($id);
+        $data['posts'] = $this->model_post->get_post_one($id);
         $data['page'] = 'detail_new';
         $this->view('layout/layout_client', $data);
     }
