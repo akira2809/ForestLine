@@ -11,6 +11,11 @@ class M_post
         $sql = "SELECT * FROM post";
         return  $this->conn->getAll($sql);
     }
+    function get_post_one($id)
+    {
+        $sql = "SELECT * FROM post WHERE post_id = ?";
+        return $this->conn->getOne($sql, [$id]);
+    }
     function add_post($name_post, $content, $image_post, $name_2, $name_3, $about_2, $about_3)
     {
         $sql = "INSERT INTO post (name_post, content, image_post, name_2, name_3, about_2, about_3) values (?,?,?,?,?,?,?)";
