@@ -34,7 +34,7 @@ class M_blog
     function get_blog_variant_by_id($id)
     {
         $sql = "SELECT * FROM blog         
-        WHERE id = ? ";
+        WHERE blog_id = ? ";
         return $this->conn->getAll($sql, [$id]);
     }
     
