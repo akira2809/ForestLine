@@ -34,25 +34,7 @@
 
                     </ul>
                 </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
+
                 <!-- TIN TỨC VÀ KHUYẾN MÃI - NEWS -->
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
@@ -64,126 +46,13 @@
                         <li class="nav-item"> <a href="<?= _HOST ?>admin/post/list_post" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả bài viết</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/post/addPost" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/post/add_post" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm bài viết</p>
                             </a> </li>                        
                     </ul>
                 </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>
-                            Tour
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
-                    </ul>
-                </li>
-                <!--  -->
+            
+
             </ul> <!--end::Sidebar Menu-->
         </nav>
     </div> <!--end::Sidebar Wrapper-->
