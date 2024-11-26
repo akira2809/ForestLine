@@ -1,24 +1,16 @@
 <?php
 class Home extends Controller
 {
+    public $model_product;
+    public $model_category;
+    public function __construct()
+    {
+        $this->model_product = $this->model('M_product');
+    }
     public function index()
     {
-        $this->view('client/block/header');
-    }
-    public function listProducts()
-    {
-        $res = $this->model('Product');
-        $data['listProduct'] = $res->getProduct();
-        var_dump($data['listProduct']);
-        $this->view('main', $data);
-    }
-    public function updateProduct($id = null, $slug = [])
-    {
-        $id = $_GET['id'];
-        $slug['name'] = $_GET['name'];
-        $res = $this->model('Product');
-        $res->updateProduct($id, $slug);
-        $data['listProducts'] = $res->getProduct();
-        $this->view('listProducts', $data);
+        $data['product_new'] = $this->model_product->get_product_by_count(4);
+        $data['page'] = 'home';
+        $this->view('layout/layout_client', $data);
     }
 }

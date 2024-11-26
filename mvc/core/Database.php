@@ -1,9 +1,9 @@
 <?php
 class DB
 {
-    private $dsn = 'mysql:host=localhost;dbname=myShop';
-    private $username = 'root';
-    private $password = '';
+    private $dsn = _DNS;
+    private $username = _USER_NAME;
+    private $password =  _PASSWORD;
     private $conn;
 
     function __construct()
@@ -24,31 +24,31 @@ class DB
         return $stmt;
     }
 
-    function getAll($sql)
+    function getAll($sql, $params = [])
     {
-        $stmt = $this->query($sql);
+        $stmt = $this->query($sql, $params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getOne($sql)
+    function getOne($sql, $params = [])
     {
-        $stmt = $this->query($sql);
+        $stmt = $this->query($sql, $params);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function insert($sql)
+    function insert($sql, $params = [])
     {
-        $this->query($sql);
+        $this->query($sql, $params);
         return $this->conn->lastInsertId();
     }
 
-    function update($sql)
+    function update($sql, $params = [])
     {
-        $this->query($sql);
+        $this->query($sql, $params);
     }
 
-    function delete($sql)
+    function delete($sql, $params = [])
     {
-        $this->query($sql);
+        $this->query($sql, params: $params);
     }
 }

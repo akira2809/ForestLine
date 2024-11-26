@@ -71,6 +71,47 @@ import {
     Underline,
     Undo
 } from 'ckeditor5';
+class UploadAdapter {
+    constructor(loader) {
+        this.loader = loader;
+    }
+
+    upload() {
+        let root = "<?= _HOST . '/upload.php' ?> "
+        return this.loader.file
+            .then(file => new Promise((resolve, reject) => {
+                const data = new FormData();
+                data.append('upload', file);
+
+                fetch(root, {
+                    method: 'POST',
+                    body: data
+                })
+                    .then(response => response.json())
+                    .then(response => console.log(response))
+                    .then(result => {
+                        if (result.url) {
+                            resolve({ default: result.url });
+                        } else {
+                            reject(result.error?.message || 'Upload failed');
+                        }
+                    })
+                    .catch(err => {
+                        reject(err.message || 'Network error');
+                    });
+            }));
+    }
+
+    abort() {
+        console.log('Upload aborted');
+    }
+}
+function CustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        return new UploadAdapter(loader);
+    };
+}
+
 
 const editorConfig = {
     toolbar: {
@@ -268,10 +309,7 @@ const editorConfig = {
     },
     table: {
         contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
-    }
+    }, extraPlugins: [CustomUploadAdapterPlugin]
 };
-function handleClick() {
-    console.log('handleClick')
-}
-console.log("main", editorConfig)
+
 export { editorConfig, ClassicEditor }
