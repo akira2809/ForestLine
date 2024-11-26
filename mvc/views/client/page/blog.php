@@ -1,5 +1,4 @@
- 
- <style>
+  <style>
     body {
         color: #F6FFEC;
         font-family: 'Lora' 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -41,27 +40,26 @@
     }
     
 </style>
-<div class="container ">
-    
+<div class="container ">    
  <div class="row">
-                <?php foreach ($list_post as $post) {
+                <?php foreach ($list_blog as $blog) {
                 ?>
                 <div class="category-card">
-                    <div class="row">
-                
+                    <div class="row">                
                         <div class="col-md-6  py-5 category-image">
-                            <a href="<?= _HOST . 'detail_new/' . $post['post_id'] ?>">
-                            <img src="./uploads/<?= $post['image_post'] ?>" alt="<?= $post['name_post'] ?>">
+                            <a href="<?= _HOST . 'detail_blog/' . $blog['blog_id'] ?>">
+                            <img src="./uploads/<?= $blog['image_blog'] ?>" alt="<?= $blog['title'] ?>">
                             </a>
                         </div>
                         <div class="col-md-6  py-5">
-                            <p class="category-title"> <?= $post['name_post'] ?></p>
-                            <p class="category-subtitle"><?= $post['content'] ?> </p>
+                            <p class="category-title"> <?= $blog['title'] ?></p>
+                            <p class="category-subtitle"><?= $blog['content'] ?> </p>
                         </div>
                  
                 </div>           
 
-                </div>   <?php
+                </div>  
+                <?php
                 } ?>
             </div>       
         </div>       

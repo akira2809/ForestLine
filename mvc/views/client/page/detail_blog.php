@@ -37,16 +37,12 @@
    
     <div style="color: #718355; " class="custom-container">       
         <blockquote class="blockquote text-center">
-            <p><?= $posts['name_post'] ?></p>
-            <footer class="blockquote-footer"><?= $posts['author'] ?></footer>
+            <p><?= $blog['title'] ?></p>
+            <footer class="blockquote-footer"><?= $blog['author'] ?></footer>
           </blockquote>
-          <p class="text-end" ><?= $posts['date'] ?></p>
-        <p><?= $posts['content'] ?></p>
-        <img src="../uploads/<?= $posts['image_post'] ?>" alt="<?= $posts['name_post'] ?>" alt="">
-        <h4><?= $posts['name_2'] ?></h4>
-        <p><?= $posts['about_2'] ?> </p>
-        <h4><?= $posts['name_3'] ?> </h4>
-        <p><?= $posts['about_3'] ?> </p>
+          <img src="../uploads/<?= $blog['image_blog'] ?>" alt="<?= $blog['title'] ?>" alt="">
+          <p class="text-end" ><?= $blog['date'] ?></p>
+        <p><?= $blog['content'] ?></p>        
         
           
     </div>

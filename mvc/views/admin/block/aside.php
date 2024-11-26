@@ -43,10 +43,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/post/list_post" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/list_blog" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả bài viết</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/post/add_post" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/add_blog" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm bài viết</p>
                             </a> </li>                        
                     </ul>

@@ -3,13 +3,13 @@
         <div class="card-header">
             <div class="card-title">THÊM BÀI VIẾT</div>
         </div>
-        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/post/add_post/?action=add_post' ?>" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/blog/add_blog/?action=add_blog' ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-8">
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tiêu đề</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="name_post" placeholder="Nhập tên bài viết..." required>
+                                <input type="text" class="form-control" id="validationCustom01" name="title" placeholder="Nhập tên bài viết..." required>
                                 <div class="invalid-feedback">
                                     Nhập tiêu đề bài viết
                                 </div>
@@ -22,34 +22,22 @@
                             </div> 
                              <div class="mb-3">  
                                 <label for="validationCustom05" for="formFile" class="form-label">Ảnh chính</label>
-                                <input class="form-control" type="file" name="image_post" id="validationCustom05" required>
+                                <input class="form-control" type="file" name="image_blog" id="validationCustom05" required>
                                 <div class="invalid-feedback">
                                     Chọn hình ảnh
                                 </div>
                             </div>
-                            <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tiêu đề 2</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="name_2" placeholder="Nhập tiêu đề 2 ..." required>
+                            <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tác giả</label>
+                                <input type="text" class="form-control" id="validationCustom01" name="author" placeholder="Nhập tên tác giả ..." required>
                                 <div class="invalid-feedback">
-                                    Nhập tiêu đề 2
+                                    Nhập tên tác giả
                                 </div>
-                                <div class="col-md-12"> <label for="validationCustom01" class="form-label">Thêm 2</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="about_2" placeholder="Nhập Thêm 2 ..." required>
+                                <div class="col-md-12"> <label for="validationCustom01" class="form-label">Ngày tạo</label>
+                                <input type="date" class="form-control" id="validationCustom01" name="date" placeholder="Nhập ngày tạo ..." required>
                                 <div class="invalid-feedback">
-                                    Nhập thêm 2
+                                    Nhập ngày tạo
                                 </div>
-                            </div>
-                             <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tiêu đề 3</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="name_3" placeholder="Nhập tiêu đề 3..." required>
-                                <div class="invalid-feedback">
-                                    Nhập tiêu đề 3
-                                </div>
-                            </div>  
-                            <div class="col-md-12"> <label for="validationCustom01" class="form-label">Thêm 2</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="about_3" placeholder="Nhập Thêm 2 ..." required>
-                                <div class="invalid-feedback">
-                                    Nhập thêm 2
-                                </div>
-                            </div>                    
+                            </div>                                                
                                                         
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->

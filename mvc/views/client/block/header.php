@@ -18,7 +18,7 @@
                         <a class="nav-link" href="<?= _HOST ?>collection">Bộ sưu tập</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= _HOST ?>news">Tin tức và khuyến mãi</a>
+                        <a class="nav-link" href="<?= _HOST ?>blog">Tin tức và khuyến mãi</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

@@ -6,36 +6,35 @@
                 <th>Tên bài viết</th>
                 <th>Nội dung</th>
                 <th>Hình ảnh chính</th>
-                <th>Tiêu đề 2</th>
-                <th>Nội dung 2</th>
-                <th>Tiêu đề 3</th>
-                <th>Nội dung 3</th>
-                <th>Hành động</th>
+                <th>Tác giả</th>
+                <th>Ngày tạo</th>     
+                <th>Trạng thái</th>
+                <th>Hành động</th>           
             </tr>
         </thead>
         <tbody>
             <?php
-            foreach ($post as $key => $value):  
+            foreach ($blog as $key => $value):  
             ?>
                 <tr>
                     <td><?= $key + 1 ?></td>
-                    <td class="text-start"><?= $value['name_post'] ?></td>
+                    <td class="text-start"><?= $value['title'] ?></td>
                     <td><?= $value['content'] ?></td>
                     <td>
-                        <img style="width:50px" src="<?= _HOST . 'uploads/' . $value['image_post'] ?>" alt=">" />
+                        <img style="width:50px" src="<?= _HOST . 'uploads/' . $value['image_blog'] ?>" alt=">" />
                     </td>
-                    <td><?= $value['name_2'] ?></td>
-                    <td><?= $value['about_2'] ?></td>
-                    <td><?= $value['name_3'] ?></td>
-                    <td><?= $value['about_3'] ?></td>
+                    <td><?= $value['author'] ?></td>
+                    <td><?= $value['date'] ?></td>
+                    <td><?= $value['status'] == 1 ? 'Hiện' : 'Ẩn' ?></td>
+                    
                     <td>
                          <span>
-                            <a href="<?= _HOST . "admin/post/update_post/" ?>">
+                            <a href="<?= _HOST . "admin/blog/update_blog/"  . $value['blog_id'] ?>">
                             <i class="fa-solid fa-wrench"></i>
                             </a>
                         </span>
                         <span>
-                        <a href="<?= _HOST . "admin/post/update_post/" . $value['id'] . '?action=set-status-product&status=' . $value['status'] ?>">
+                        <a href="<?= _HOST . "admin/blog/update_blog/" . $value['blog_id'] . '?action=set-status-blog&status=' . $value['status'] ?>">
                                 <?= $value['status'] == 1 ? '<i onclick="return confirm(`Bạn có chắc sẽ ẩn baì viết này không ?`)" class="fa-regular fa-eye-slash test1"></i>' : '<i class="fa-regular fa-eye test2"></i>' ?>
                             </a>
                         </span>
