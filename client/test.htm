@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu">
+        <!-- Phần ảnh -->
+        <div class="menu-image">
+            <img src="../public/imgs/1_e966614c5242492992f8f67f302aef3f_grande.webp" alt="Fashion Image">
+        </div>
+
+        <!-- Phần menu danh mục -->
+        <div class="menu-categories">
+            <div class="category">
+                <h2>NAM</h2>
+                <div class="subcategory">
+                    <h3>Áo</h3>
+                    <ul>
+                        <li>Áo sơ mi</li>
+                        <li>Áo thun</li>
+                        <li>Áo blazer</li>
+                    </ul>
+                </div>
+                <div class="subcategory">
+                    <h3>Quần</h3>
+                    <ul>
+                        <li>Quần jean</li>
+                        <li>Quần tây</li>
+                        <li>Quần shorts</li>
+                    </ul>
+                </div>
+                <div class="subcategory">
+                    <h3>Phụ kiện</h3>
+                    <ul>
+                        <li>Nón</li>
+                        <li>Túi</li>
+                        <li>Thắt lưng</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="category">
+                <h2>NỮ</h2>
+                <div class="subcategory">
+                    <h3>Áo</h3>
+                    <ul>
+                        <li>Áo sơ mi</li>
+                        <li>Áo thun</li>
+                        <li>Áo blazer</li>
+                    </ul>
+                </div>
+                <div class="subcategory">
+                    <h3>Chân váy</h3>
+                    <ul>
+                        <li>Đầm</li>
+                        <li>Chân váy ngắn</li>
+                        <li>Chân váy dài</li>
+                    </ul>
+                </div>
+                <div class="subcategory">
+                    <h3>Phụ kiện</h3>
+                    <ul>
+                        <li>Nón</li>
+                        <li>Túi</li>
+                        <li>Thắt lưng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    /* Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.menu {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f0fff0;
+    border: 1px solid #ddd;
+}
+
+/* Phần ảnh */
+.menu-image img {
+    max-width: 250px; /* Chiều rộng tối đa của ảnh */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+/* Phần danh mục */
+.menu-categories {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.category {
+    margin: 0 20px;
+}
+
+.category h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subcategory h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.subcategory ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.subcategory ul li {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #777;
+}
+
+.subcategory ul li:hover {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+</style>
