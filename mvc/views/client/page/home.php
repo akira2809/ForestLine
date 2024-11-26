@@ -133,8 +133,10 @@
                         foreach ($product_new as $val) {
                         ?>
                          <div class="col-md-6">
-                             <img src="./uploads/<?= $val['main_image'] ?>" class="img-fluid rounded"
-                                 alt="Hình ảnh 1">
+                             <a href="<?= _HOST . 'detail/' . $val['product_id'] ?>">
+                                 <img src="./uploads/<?= $val['main_image'] ?>" class="img-fluid rounded"
+                                     alt="Hình ảnh 1">
+                             </a>
                          </div>
                      <?php
                         }

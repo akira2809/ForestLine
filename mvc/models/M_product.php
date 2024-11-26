@@ -83,4 +83,9 @@ class M_product
         $sql = "SELECT * FROM product_color";
         return $this->conn->getAll($sql);
     }
+    function searchByName($name)
+    {
+        $sql = "SELECT product.product_id, name, base_price, main_image, product.category_id FROM product INNER JOIN category ON product.category_id = category.category_id WHERE name LIKE '$name%' OR category LIKE '%$name%' ";
+        return $this->conn->getAll($sql);
+    }
 }

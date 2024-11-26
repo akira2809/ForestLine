@@ -113,7 +113,9 @@ foreach ($order as $item) {
                         <li class="list-group-item" aria-current="true">Thông tin cá nhân</li>
                         <li class="list-group-item list-group-item-action">Đơn hàng</li>
                         <li class="list-group-item list-group-item-action">Đã thích</li>
-                        <li class="list-group-item list-group-item-action">Đăng xuất</li>
+                        <li class="list-group-item list-group-item-action">
+                            <a href="<?= _HOST ?>login/logout">Đăng xuất</a>
+                        </li>
                     </ul>
                 </div>
             </div>
