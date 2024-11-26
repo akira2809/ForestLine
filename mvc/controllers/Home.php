@@ -15,15 +15,24 @@ class Home extends Controller
     }
     public function search()
     {
-        if (isset($_POST['keyword'])) {
-            $keyword = $_POST['keyword'];
-            $results = $this->model_product->search_product($keyword);
+        try {
+            if (isset($_POST['keyword']) && !empty(trim($_POST['keyword']))) {
+                $keyword = htmlspecialchars($_POST['keyword']);
+                $results = $this->model_product->search_product($keyword);
 
-            // Trả kết quả dưới dạng JSON
-            echo json_encode($results);
-        } else {
-            echo json_encode([]);
+                // Đảm bảo kết quả luôn là một mảng
+                header('Content-Type: application/json');
+                echo json_encode($results ?: []); // Trả về mảng rỗng nếu không có kết quả
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode([]);
+            }
+        } catch (Exception $e) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Đã xảy ra lỗi trong quá trình xử lý.']);
         }
     }
+
+
 
 }

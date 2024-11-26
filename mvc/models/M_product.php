@@ -78,22 +78,62 @@ class M_product
         $sql = "SELECT * FROM product_color";
         return $this->conn->getAll($sql);
     }
-    function search_product($keyword)
+    function search_product($keyword, $category = '', $minPrice = null, $maxPrice = null)
     {
-        $sql = "SELECT p.*, c.category_name 
-                FROM product p
-                INNER JOIN category c ON c.category_id = p.category_id
-                WHERE p.name LIKE ? 
-                OR c.category_name LIKE ?
-                OR p.description LIKE ?
-                ORDER BY p.product_id DESC
-                LIMIT 10";
+        try {
+            $params = [];
+            $conditions = [];
 
-        return $this->conn->getAll($sql, [
-            "%$keyword%",
-            "%$keyword%",
-            "%$keyword%"
-        ]);
+            // Base query với các trường cần thiết
+            $sql = "SELECT DISTINCT
+                        p.product_id,
+                        p.name,
+                        p.main_image,
+                        p.sale_price,
+                        c.category_name,
+                        c.category_id 
+                    FROM {$this->table} p
+                    INNER JOIN category c ON c.category_id = p.category_id
+                    LEFT JOIN product_variant pv ON pv.product_id = p.product_id
+                    WHERE p.status = 1 ";
+
+            // Thêm điều kiện tìm kiếm theo keyword
+            $conditions[] = "(p.name LIKE ? OR c.category_name LIKE ? OR p.description LIKE ?)";
+            $params = array_merge($params, ["%$keyword%", "%$keyword%", "%$keyword%"]);
+
+            // Thêm điều kiện lọc theo danh mục
+            if (!empty($category)) {
+                $conditions[] = "c.category_id = ?";
+                $params[] = $category;
+            }
+
+            // Thêm điều kiện lọc theo giá
+            if ($minPrice !== null) {
+                $conditions[] = "p.sale_price >= ?";
+                $params[] = $minPrice;
+            }
+            if ($maxPrice !== null) {
+                $conditions[] = "p.sale_price <= ?";
+                $params[] = $maxPrice;
+            }
+
+            // Thêm điều kiện kiểm tra tồn kho
+            $conditions[] = "(pv.stock > 0 OR pv.stock IS NULL)";
+
+            // Ghép các điều kiện
+            if (!empty($conditions)) {
+                $sql .= " AND " . implode(" AND ", $conditions);
+            }
+
+            // Thêm sắp xếp và giới hạn
+            $sql .= " ORDER BY p.product_id DESC LIMIT 10";
+
+            return $this->conn->getAll($sql, $params);
+
+        } catch (Exception $e) {
+            error_log("Search product error: " . $e->getMessage());
+            throw $e;
+        }
     }
 
 }

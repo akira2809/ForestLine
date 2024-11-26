@@ -156,7 +156,13 @@
         function displaySearchResults(data) {
             searchResults.innerHTML = '';
 
-            if (!data || data.length === 0) {
+            if (!Array.isArray(data)) {
+                console.error('Data is not an array:', data); // Ghi lỗi nếu `data` không phải là mảng
+                searchResults.innerHTML = '<div class="no-results">Dữ liệu tìm kiếm không hợp lệ.</div>';
+                return;
+            }
+
+            if (data.length === 0) {
                 searchResults.innerHTML = '<div class="no-results">Không tìm thấy sản phẩm</div>';
                 return;
             }
@@ -185,7 +191,7 @@
 
         // Debounced search function
         const debouncedSearch = debounce((keyword) => {
-            fetch('<?= _HOST ?>header/search', {
+            fetch('<?= _HOST ?>home/search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -193,11 +199,15 @@
                 body: `keyword=${encodeURIComponent(keyword)}`
             })
                 .then(response => response.json())
-                .then(data => displaySearchResults(data))
+                .then(data => {
+                    console.log(data); // Kiểm tra cấu trúc của `data`
+                    displaySearchResults(data);
+                })
                 .catch(error => {
-                    console.error('Error:', error);
+                    console.error('Error:', error); // Hiển thị lỗi
                     searchResults.innerHTML = '<div class="no-results">Đã xảy ra lỗi khi tìm kiếm</div>';
                 });
+
         }, 300);
 
         // Search input event
