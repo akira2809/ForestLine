@@ -9,7 +9,7 @@ class Controller
     }
 
 
-    //
+
     function view($view, $data = [])
     {
         extract($data);

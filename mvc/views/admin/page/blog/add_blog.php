@@ -32,12 +32,12 @@
                                 <div class="invalid-feedback">
                                     Nhập tên tác giả
                                 </div>
-                                <div class="col-md-12"> <label for="validationCustom01" class="form-label">Ngày tạo</label>
+                               <!--  <div class="col-md-12"> <label for="validationCustom01" class="form-label">Ngày tạo</label>
                                 <input type="date" class="form-control" id="validationCustom01" name="date" placeholder="Nhập ngày tạo ..." required>
                                 <div class="invalid-feedback">
                                     Nhập ngày tạo
                                 </div>
-                            </div>                                                
+                            </div>   -->                                              
                                                         
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->

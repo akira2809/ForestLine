@@ -8,7 +8,12 @@ class M_blog
     }
     public function get_blog_all()
     {
-        $sql = "SELECT * FROM blog";
+        $sql = "SELECT * FROM blog WHERE status = 1";
+        return  $this->conn->getAll($sql);
+    }
+    public function get_blog_all_admin()
+    {
+        $sql = "SELECT * FROM blog ORDER BY blog_id DESC";
         return  $this->conn->getAll($sql);
     }
     function get_blog_one($id)
@@ -16,15 +21,15 @@ class M_blog
         $sql = "SELECT * FROM blog WHERE blog_id = ?";
         return $this->conn->getOne($sql, [$id]);
     }
-    function add_blog($title, $content, $image_blog, $author, $date)
+    function add_blog($title, $content, $image_blog, $author)
     {
-        $sql = "INSERT INTO blog (title, content, image_blog, author,date) values (?,?,?,?,?)";
-        return $this->conn->insert($sql, [$title, $content, $image_blog, $author, $date]);
+        $sql = "INSERT INTO blog (title, content, image_blog, author) values (?,?,?,?)";
+        return $this->conn->insert($sql, [$title, $content, $image_blog, $author]);
     }
-    function edit_blog($id, $title, $content, $image_blog, $author, $date)
+    function edit_blog($id, $title, $content, $image_blog, $author)
     {
-        $sql = "UPDATE blog SET title = ?,content = ?, image_blog = ?, author = ?, date = ? WHERE blog_id = ?";
-        return $this->conn->update($sql, [$title, $content, $image_blog, $author, $date, $id]);
+        $sql = "UPDATE blog SET title = ?,content = ?, image_blog = ?, author = ? WHERE blog_id = ?";
+        return $this->conn->update($sql, [$title, $content, $image_blog, $author, $id]);
     }
     function set_status_blog($blog_id, $status)
     {
