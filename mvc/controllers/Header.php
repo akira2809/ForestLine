@@ -18,8 +18,11 @@ class Header
         if (!empty($result)) {
             foreach ($result as $item) {
                 echo '
-                <div>
-                    Teen: ' . $item['name'] . '
+                <div class="d-flex">
+                    <div style="50px">
+                        <img class="w-50" src="' . _HOST . 'uploads/' . $item['main_image'] . '" alt="">
+                    </div>
+                    Name: ' . $item['name'] . '
                 </div>
                 ';
             }
@@ -33,7 +36,7 @@ class Header
     }
 }
 $obj = new Header();
-if (isset($_GET['search'])) {
-    // echo "<p> Oke con de </p>";
-    $obj->search($_GET['search']);
+if (isset($_POST)) {
+
+    $obj->search($_POST['search']);
 }
