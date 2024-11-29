@@ -53,30 +53,6 @@
                 </div>
             </div>
 
-            <!-- Chọn sản phẩm -->
-            <div class="card-body">
-                <label>Chọn sản phẩm</label>
-                <div class="form-group">
-                    <?php if (!empty($products) && is_array($products)): ?>
-                        <?php foreach ($products as $product): ?>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="products[]"
-                                    value="<?= $product['product_id'] ?>" id="product_<?= $product['product_id'] ?>">
-                                <label class="form-check-label d-flex align-items-center"
-                                    for="product_<?= $product['product_id'] ?>">
-                                    <img src="<?= _HOST . 'uploads/' . $product['main_image'] ?>" alt="Product Image"
-                                        class="img-thumbnail me-2" style="width: 50px; height: 50px; object-fit: cover;">
-                                    <?= htmlspecialchars($product['name']) ?>
-                                </label>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Không có sản phẩm nào để hiển thị.</p>
-                    <?php endif; ?>
-                </div>
-
-
-            </div>
 
 
             <!-- Nút lưu -->

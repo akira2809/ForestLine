@@ -29,11 +29,14 @@ class Product extends Controller
     {
         $product = $this->model('M_product');
         $category = $this->model('M_category');
+        $collection = $this->model('M_collection');
+        $data['collection'] = $collection->get_all_collections();
         $data['category'] = $category->get_category_all();
         if (isset($_GET['action']) && $_GET['action'] == 'add-product') {
+            $collection_id = $_POST['collection_id'] ?? null;
             $image = $this->model('M_image');
             $imageNew = $this->upload_image($_FILES['main_image']['name'], $_FILES['main_image']['tmp_name']);
-            $new_product_id = $product->add_product($_POST['name'], main_image: $imageNew, base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
+            $new_product_id = $product->add_product($_POST['name'], $imageNew, $_POST['base_price'],  $_POST['sale_price'],  $_POST['description'],  $_POST['category_id'], $collection_id);
             $i = 0;
             foreach ($_FILES['image_detail']['name'] as   $value) {
                 $imageNew = $this->upload_image($value, $_FILES['image_detail']['tmp_name'][$i]);
@@ -58,8 +61,10 @@ class Product extends Controller
     {
         $product_variant = $this->model('M_product');
         $category = $this->model('M_category');
+        $collection = $this->model('M_collection');
         $data['title'] = "Update sản phẩm";
         $data['category'] = $category->get_category_all();
+        $data['collection'] = $collection->get_all_collections();
         $data['size'] = $product_variant->get_size_all();
         $data['color'] = $product_variant->get_color_all();
         $data['product'] = $product_variant->get_product_one($id);
@@ -85,6 +90,7 @@ class Product extends Controller
                         $proImage = "./uploads/" . basename($_FILES['main_image']['name']);
                         move_uploaded_file($_FILES['main_image']['tmp_name'], $proImage);
                     }
+                    $collection_id = $_POST['collection_id'] ?? null;
                     $this->edit_product(
                         $id,
                         $_POST['name'],
@@ -92,7 +98,8 @@ class Product extends Controller
                         base_price: $_POST['base_price'],
                         sale_price: $_POST['sale_price'],
                         description: $_POST['description'],
-                        category_id: $_POST['category_id']
+                        category_id: $_POST['category_id'],
+                        collection_id: $collection_id,
                     );
                     header("Location: " . _HOST . "/admin/product/list-product");
                     break;
@@ -132,9 +139,9 @@ class Product extends Controller
         $product_variant = $this->model('M_product');
         return $product_variant->delete_product_variant($id);
     }
-    public function edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id)
+    public function edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id)
     {
         $product = $this->model('M_product');
-        return $product->edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id);
+        return $product->edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id);
     }
 }

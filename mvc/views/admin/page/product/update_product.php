@@ -38,41 +38,45 @@
                                 <div class="invalid-feedback">
                                     Please select a valid state.
                                 </div>
-                            </div> <!--end::Col--> <!--begin::Col-->
+                                <div class="col-md-12"> <label class="form-label">Bộ sưu tập</label> <select class="form-select" name="collection_id">
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="null">Không chọn bộ sưu tập</option>
+                                        <?php foreach ($collection as $key => $val) {
+                                            if ($val['collection_id'] == $product['collection_id']) {
 
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Ảnh chính</label>
-                                <input class="form-control" hidden type="text" name="main_image" value="<?= $product['main_image'] ?>">
-                                <input class="form-control" type="file" name="main_image" id="formFile">
+                                        ?>
+                                                <option selected value="<?= $val['collection_id'] ?>"><?= $val['title'] ?></option>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <option value="<?= $val['collection_id'] ?>"><?= $val['title'] ?></option>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
 
-                            </div>
-                            <!-- <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">Ảnh chi tiết</label>
-                                <input class="form-control" type="file" name="image_detail" id="formFileMultiple" multiple>
-                            </div> -->
+                                </div> <!--end::Col--> <!--begin::Col-->
 
-                        </div> <!--end::Row-->
-                    </div> <!--end::Body--> <!--begin::Footer-->
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Ảnh chính</label>
+                                    <input class="form-control" hidden type="text" name="main_image" value="<?= $product['main_image'] ?>">
+                                    <input class="form-control" type="file" name="main_image" id="formFile">
+
+                                </div>
+
+                            </div> <!--end::Row-->
+                        </div> <!--end::Body--> <!--begin::Footer-->
+                    </div>
                 </div>
                 <div class="col-4">
                     <div class="card-body">
-                        Bộ sưu tập
+                        Ảnh minh họa
+                        <div>
+                            <img class="w-100" src="<?= _HOST . 'uploads/' . $product['main_image'] ?>" alt="">
+                        </div>
                         <!-- <div class="col-sm-10 offset-sm-2"> -->
-                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label> </div>
-                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label> </div>
-                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label> </div>
-                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label> </div>
-                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label> </div>
+
                     </div>
                     <!-- </div> -->
                 </div>

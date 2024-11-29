@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="card-title">Sửa Collection</div>
         </div>
-        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/collection/update_collection' ?>"
+        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/collection/update_collection/' . $collection['collection_id'] ?>"
             method="post" enctype="multipart/form-data">
             <!-- Hidden để lưu ID của Collection -->
             <input type="hidden" name="collection_id" value="<?= htmlspecialchars($collection['collection_id']) ?>">
@@ -60,32 +60,6 @@
                 </div>
             </div>
 
-            <!-- Chọn sản phẩm -->
-            <div class="card-body">
-                <label>Chọn sản phẩm</label>
-                <div class="form-group">
-                    <?php if (!empty($all_products)): ?>
-                        <?php foreach ($all_products as $product): ?>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="products[]"
-                                    value="<?= htmlspecialchars($product['product_id']) ?>"
-                                    id="product_<?= htmlspecialchars($product['product_id']) ?>"
-                                    <?= in_array($product['product_id'], $connected_products) ? 'checked' : '' ?>>
-
-                                <label class="form-check-label d-flex align-items-center"
-                                    for="product_<?= htmlspecialchars($product['product_id']) ?>">
-                                    <img src="<?= _HOST . 'uploads/' . htmlspecialchars($product['main_image']) ?>"
-                                        alt="Product Image" class="img-thumbnail me-2"
-                                        style="width: 50px; height: 50px; object-fit: cover;">
-                                    <?= htmlspecialchars($product['name']) ?>
-                                </label>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Không có sản phẩm nào để hiển thị.</p>
-                    <?php endif; ?>
-                </div>
-            </div>
 
 
             <!-- Nút lưu -->
