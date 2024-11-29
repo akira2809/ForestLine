@@ -6,10 +6,10 @@ class M_order
     {
         $this->conn = $conn;
     }
-    public function add_order($user_id, $user_name, $payment_method, $phone_number, $address, $voucher_id = null)
+    public function add_order($user_id, $user_name, $payment_method, $phone_number, $address, $total_money, $voucher_id = null)
     {
-        $sql = "INSERT INTO orders (user_id,user_name,payment_method,phone_number,address,voucher_id) values(?,?,?,?,?,?)";
-        return $this->conn->insert($sql, [$user_id, $user_name, $payment_method, $phone_number, $address, $voucher_id]);
+        $sql = "INSERT INTO orders (user_id,user_name,payment_method,phone_number,address,total_money,voucher_id) values(?,?,?,?,?,?,?)";
+        return $this->conn->insert($sql, [$user_id, $user_name, $payment_method, $phone_number, $address, $total_money, $voucher_id]);
     }
     public function add_order_detail($order_id, $product_variant_id, $quantity, $price)
     {

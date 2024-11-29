@@ -2,9 +2,11 @@
 class Checkout extends Controller
 {
     public $model_order;
+    public $model_voucher;
     public function __construct()
     {
         $this->model_order = $this->model('M_order');
+        $this->model_voucher = $this->model('M_voucher');
     }
     public function index()
     {
@@ -12,17 +14,32 @@ class Checkout extends Controller
             $_SESSION['URL'] = $_SERVER['PATH_INFO'];
             header('Location:' . _HOST . 'login');
         }
-        $data['page'] = 'checkout';
-        $this->view('layout/layout_client', $data);
+        if (count($_SESSION['cart']) ==  0) {
+            $data['page'] = 'cart';
+            $data['result'] = 'Giỏ hàng trống vui lòng thêm sản phẩm để được thanh toán';
+            $this->view('layout/layout_client', $data);
+        } else {
+
+            $data['page'] = 'checkout';
+            $this->view('layout/layout_client', $data);
+        }
     }
     public function checkout()
     {
+        $voucher_id = null;
+        if (isset($_POST['voucher_id']) && $_POST['voucher_id'] != null) {
+            $voucher_id = $_POST['voucher_id'];
+            $this->model_voucher->update_usage_limit_by_voucher_id($voucher_id);
+        }
+        echo $voucher_id;
         $order_id = $this->model_order->add_order(
             $_SESSION['user_login']['user_id'],
             $_POST['user_name'],
             $_POST['payment_method'],
             $_POST['phone_number'],
             $_POST['address'],
+            $_POST['total_money'],
+            $voucher_id
         );
         foreach ($_SESSION['cart'] as $key => $value) {
             if (!$value['sale_price'] > 0) {

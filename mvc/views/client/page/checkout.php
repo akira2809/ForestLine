@@ -111,6 +111,18 @@
                         <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio3" value="Chuyển khoản ngân hàng">
                         <label class="form-check-label" for="inlineRadio3">Chuyển khoản ngân hàng</label>
                     </div> <br>
+                    <?php
+                    $t_m = 0;
+                    foreach ($_SESSION['cart'] as $value) {
+                        if (!$value['sale_price'] > 0) {
+                            $t_m += $value['sale_price'] * $value['quantity'];
+                        } else {
+                            $t_m += $value['base_price'] * $value['quantity'];
+                        }
+                    }
+                    ?>
+                    <input type="text" name="total_money" value="<?= isset($total_price_add_voucher) ? $total_price_add_voucher : $t_m + 25000 ?>">
+                    <input type="text" name="voucher_id" value="<?= isset($voucher_id) ? $voucher_id : null ?>">
                     <button type="submit" class="col-12 btn btn-custom btn-block1 mt-3">Hoàn tất đơn hàng</button>
                 </form>
             </div>
@@ -149,18 +161,27 @@
                         ?>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <input type="text" class="form-control" style="font-weight: bold;" placeholder="Mã giảm giá">
+                    <?=
+                    isset($result) ? '
+                    <div class="mt-3 alert alert-info">
+                        ' . $result . '
+                    </div> ' : '';
+                    ?>
+                    <form action="<?= _HOST ?>voucher/check_voucher" method="post">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <input name="voucher" type="text" class="form-control" style="font-weight: bold;" placeholder="Mã giảm giá">
+                                <input name="total_price" type="text" value="<?= $total_money + $ship ?>" class="form-control" style="font-weight: bold;" placeholder="Mã giảm giá">
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="submit" class="col-12 btn btn-custom btn-block1 m-0 p-1.5">ÁP DỤNG</button>
+                            </div>
+                            <p class="d-flex justify-content-between mt-3">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
+                            <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
+                            <hr>
+                            <p class="d-flex justify-content-between fw-bold">Tổng <span><?= isset($total_price_add_voucher) ? $total_price_add_voucher : number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
                         </div>
-                        <div class="col-lg-4">
-                            <button type="button" class="col-12 btn btn-custom btn-block1 m-0 p-1.5">ÁP DỤNG</button>
-                        </div>
-                        <p class="d-flex justify-content-between mt-3">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
-                        <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
-                        <hr>
-                        <p class="d-flex justify-content-between fw-bold">Tổng <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

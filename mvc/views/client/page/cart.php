@@ -112,15 +112,16 @@
                         </div>
                     </div>
                     <hr>
-                <?php
+            <?php
                 }
             } else {
-                ?>
+                echo isset($result) ? '
                 <div class="mt-3 alert alert-info">
-                    Giỏ hàng trống
+                    ' . $result . '
                 </div>
-
-            <?php
+                ' : '<div class="mt-3 alert alert-info">
+                    Giỏ hàng trống 
+                </div>';
             }
             ?>
 

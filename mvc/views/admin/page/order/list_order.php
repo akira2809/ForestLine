@@ -55,12 +55,9 @@ $groupedOrders = array_values($groupedOrders);
                         <?php
                         foreach ($order['products'] as $product) {
                         ?>
-                            <div class="border-bottom text-start px-2">
-                                <p><strong>Tên: </strong><?= $product['name'] ?></p>
-                                <p><strong>Màu: </strong><?= $product['color_name'] ?></p>
-                                <p><strong>Size: </strong><?= $product['size_name'] ?></p>
-                                <p><strong>Giá: </strong><?= $product['price'] ?></p>
-                                <p><strong>Số lượng: </strong><?= $product['quantity'] ?></p>
+                            <div class="border-top text-start px-2">
+                                <p><strong>Tên: </strong><?= $product['name'] . ' x' . $product['quantity']  ?> </p>
+                                <p><strong>Phân loại: </strong><?= $product['color_name'] . '/' . $product['size_name'] ?></p>
                             </div>
                         <?php
                         }
