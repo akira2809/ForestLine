@@ -13,7 +13,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
     <style>
       body {
         background-color: #f6ffec;
@@ -44,6 +43,50 @@
       }
       .sptt img {
         width: 100%;
+      }
+      .avatar img {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+      }
+      .img-details img {
+        width: 10%;
+        height: 10%;
+      }
+      div.stars {
+        width: 270px;
+        display: inline-block;
+      }
+
+      input.star {
+        display: none;
+      }
+
+      label.star {
+        float: right;
+        padding: 0.1rem;
+        font-size: 12px;
+        color: #444;
+        transition: all 0.2s;
+      }
+
+      input.star:checked ~ label.star:before {
+        content: "\f005";
+        color: #fd4;
+        transition: all 0.25s;
+      }
+
+      input.star-5:checked ~ label.star:before {
+        color: #fe7;
+      }
+
+      input.star-1:checked ~ label.star:before {
+        color: #f62;
+      }
+
+      label.star:before {
+        content: "\f006";
+        font-family: FontAwesome;
       }
     </style>
   </head>
@@ -204,7 +247,7 @@
                   <i class="fa-solid fa-leaf"></i>
                 </li>
                 <li class="d-inline">
-                  <i class="fa-solid fa-leaf"></i>
+                  <i class="fa-solid fa-leaf color-#718355"></i>
                 </li>
               </ul>
               <p>Kích thước</p>
@@ -351,7 +394,87 @@
             </div>
           </div>
         </div>
-        <div class="col mt-3">
+
+        <div class="col mt-4 mb-3">
+          <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-1">
+            <div class="avatar">
+              <img src="Spidey.webp" alt="" />
+            </div>
+          </div>
+          <div class="col-11">
+            <span class="name">Thanh Tuan</span>
+            <span class="day">21/11/2005</span>
+            <span class="time">11:03</span>
+            <div class="stars">
+              <form action="">
+                <input
+                  class="star star-5"
+                  id="star-5"
+                  type="radio"
+                  name="star"
+                />
+                <label class="star star-5" for="star-5"></label>
+                <input
+                  class="star star-4"
+                  id="star-4"
+                  type="radio"
+                  name="star"
+                />
+                <label class="star star-4" for="star-4"></label>
+                <input
+                  class="star star-3"
+                  id="star-3"
+                  type="radio"
+                  name="star"
+                />
+                <label class="star star-3" for="star-3"></label>
+                <input
+                  class="star star-2"
+                  id="star-2"
+                  type="radio"
+                  name="star"
+                />
+                <label class="star star-2" for="star-2"></label>
+                <input
+                  class="star star-1"
+                  id="star-1"
+                  type="radio"
+                  name="star"
+                />
+                <label class="star star-1" for="star-1"></label>
+              </form>
+            </div>
+            <div class="comment">Niceeeeeeee</div>
+            <div class="img-details">
+              <img
+                class="img-fluid"
+                src="apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                alt=""
+              />
+              <img
+                class="img-fluid"
+                src="apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                alt=""
+              />
+              <img
+                class="img-fluid"
+                src="apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                alt=""
+              />
+              <img
+                class="img-fluid"
+                src="apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col mt-4 mb-3">
           <h6>SẢN PHẨM TƯƠNG TỰ:</h6>
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 sptt">
@@ -415,9 +538,6 @@
               </p>
             </div>
           </div>
-        </div>
-        <div class="col mt-2">
-          <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
         </div>
       </div>
     </article>
