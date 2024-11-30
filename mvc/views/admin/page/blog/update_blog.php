@@ -26,8 +26,6 @@
                             </div>  
                             <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tên tác giả</label> <input type="text" class="form-control" id="validationCustom01" value="<?= $blog['author'] ?>" name="author" placeholder="Nhập tiêu đề 2 bài viết..." required>
                                 <div class="valid-feedback">Looks good!</div>
-                            </div><div class="col-md-12"> <label for="validationCustom01" class="form-label">Ngày tạo</label> <input type="date" class="form-control" id="validationCustom01" value="<?= $blog['date'] ?>" name="date" placeholder="Nhập thêm 2 bài viết..." required>
-                                <div class="valid-feedback">Looks good!</div>
                             </div>
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->

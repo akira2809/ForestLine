@@ -79,8 +79,8 @@ class Blog extends Controller
                         image_blog: $path_image,
                         content: $_POST['content'],                       
                         author: $_POST['author'],
-                        date: $_POST['date']
-                    );                   
+/*                         date: $_POST['date']
+ */                    );                   
                     header("Location: " . _HOST . "/admin/blog/list_blog");
                     break;              
                     case 'set-status-blog':
