@@ -67,11 +67,13 @@
     }
 </style>
 <?php
-foreach ($data as $item) {
+// var_dump(value: $data);
+foreach ($data as $key => $item) {
     $product_variants[] = [
         'color_id' => $item['color_id'],
         'size_id' => $item['size_id'],
         'stock' => $item['stock'],
+        'image' => $item['image']
     ];
 }
 
@@ -105,6 +107,7 @@ $product_json = json_encode($product_variants);
                 <!-- Ảnh chính sẽ phóng to khi thu nhỏ màn hình -->
                 <div class="col-12 col-md-6">
                     <img
+                        id="main_image"
                         src="<?= _HOST . 'uploads/' . $product['main_image'] ?>"
                         alt=""
                         class="img-fluid" />
@@ -363,12 +366,15 @@ $product_json = json_encode($product_variants);
     const productVariants = <?= $product_json ?>;
     const colorInputs = document.querySelectorAll('input[name="color_id"]');
     const sizeInputs = document.querySelectorAll('input[name="size_id"]');
+    console.log(productVariants)
 
     function updateSizes(selectedColorId) {
         const sizeId = selectedColorId;
         const listSize = productVariants.filter((item) => {
             return item.color_id == sizeId
         })
+        console.log(listSize[0]);
+        document.getElementById('main_image').src = '<?= _HOST ?>' + 'uploads/' + listSize[0].image
         sizeInputs.forEach(sizeInput => {
             const isAvailable = listSize.some(variant =>
                 variant.size_id == sizeInput.value
@@ -386,6 +392,7 @@ $product_json = json_encode($product_variants);
         const listColor = productVariants.filter((item) => {
             return item.size_id == colorId
         })
+
         colorInputs.forEach(colorInput => {
             const isAvailable = listColor.some(variant =>
                 variant.color_id == colorInput.value

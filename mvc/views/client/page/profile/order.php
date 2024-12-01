@@ -88,6 +88,7 @@ foreach ($order as $item) {
             'user_id' => $item['user_id'],
             'date' => $item['date'],
             'status' => $item['status'],
+            'total_money' => $item['total_money'],
             'voucher_id' => $item['voucher_id'],
             'products' => [],
         ];
@@ -149,7 +150,7 @@ foreach ($order as $item) {
                                             echo 'Đang vận chuyển đến bạn';
                                             break;
                                         case 'Canceled':
-                                            echo 'Ban đã hủy';
+                                            echo 'Đơn hàng đã hủy';
                                             break;
                                         case 'Delivered':
                                             echo 'Đã hoàn thành';
@@ -179,9 +180,15 @@ foreach ($order as $item) {
                             ?>
                             <div class="row-fluid">
 
-                                <div class="col-lg-12 col-sm-12 text-end py-2">
-                                    <h5><span style="color: var(--text-color);">Tổng tiền:</span> 139.000 VND</h5>
-                                    <button class="btn-cancel p-2">Hủy đơn hàng</button>
+                                <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
+                                    <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
+                                    <?php
+                                    if ($order['status'] == 'Pending') {
+                                    ?>
+                                        <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

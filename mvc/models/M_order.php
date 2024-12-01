@@ -23,7 +23,7 @@ class M_order
     }
     public function get_order_all()
     {
-        $sql = "SELECT orders.order_id,orders.user_id,orders.date,orders.payment_method,orders.status,
+        $sql = "SELECT orders.order_id,orders.user_id,orders.date,orders.total_money,orders.payment_method,orders.status,voucher.description as voucher_description,
         orders.user_name,orders.phone_number, orders.address, orders.voucher_id,product.name,
         product_color.color_name, product_size.size_name,order_detail.quantity,order_detail.price FROM orders 
         INNER JOIN order_detail ON orders.order_id = order_detail.order_id 
@@ -31,6 +31,7 @@ class M_order
         INNER JOIN product ON product_variant.product_id = product.product_id
         INNER JOIN product_color ON product_variant.color_id = product_color.color_id
         INNER JOIN product_size ON product_variant.size_id = product_size.size_id
+        LEFT JOIN voucher ON voucher.voucher_id = orders.voucher_id
         ORDER BY orders.order_id DESC";
         return $this->conn->getAll($sql);
     }
@@ -38,7 +39,7 @@ class M_order
     {
         $sql = "SELECT orders.order_id,orders.user_id,orders.date,orders.payment_method,orders.status,
         orders.user_name,orders.phone_number, orders.address, orders.voucher_id,product.name,
-        product_color.color_name, product_size.size_name,order_detail.quantity,order_detail.price, product.main_image FROM orders 
+        product_color.color_name, product_size.size_name,order_detail.quantity,order_detail.price, product.main_image,orders.total_money FROM orders 
         INNER JOIN order_detail ON orders.order_id = order_detail.order_id 
         INNER JOIN product_variant ON product_variant.product_variant_id = order_detail.product_variant_id
         INNER JOIN product ON product_variant.product_id = product.product_id
@@ -52,5 +53,10 @@ class M_order
     {
         $sql = "UPDATE orders SET status = ? WHERE order_id = ?";
         return $this->conn->query($sql, [$status, $order_id]);
+    }
+    function cancel_order($order_id)
+    {
+        $sql = "UPDATE orders SET status = 'Canceled' WHERE order_id = ?";
+        return $this->conn->query($sql, [$order_id]);
     }
 }

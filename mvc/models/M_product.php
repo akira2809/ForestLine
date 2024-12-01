@@ -52,10 +52,11 @@ class M_product
         WHERE product_variant.product_id = ? ";
         return $this->conn->getAll($sql, [$id]);
     }
-    function add_product_variant($product_id, $color, $size, $stock)
+
+    function add_product_variant($product_id, $color, $size, $stock, $image_id)
     {
-        $sql = "INSERT INTO product_variant (product_id, color_id, size_id, stock) VALUE (?,?,?,?)";
-        return $this->conn->getAll($sql, [$product_id, $color, $size, $stock]);
+        $sql = "INSERT INTO product_variant (product_id, color_id, size_id, stock, image_id) VALUE (?,?,?,?,?)";
+        return $this->conn->getAll($sql, [$product_id, $color, $size, $stock, $image_id]);
     }
     function delete_product_variant($id)
     {

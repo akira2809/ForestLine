@@ -75,4 +75,9 @@ class Checkout extends Controller
             $quantity,
         );
     }
+    public function cancel_order($id)
+    {
+        $this->model_order->cancel_order($id);
+        header('location:' . _HOST . 'profile');
+    }
 }

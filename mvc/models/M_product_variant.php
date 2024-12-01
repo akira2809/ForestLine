@@ -8,7 +8,7 @@ class M_product_variant
     }
     public function get_product_variant_by_product_id($id)
     {
-        $sql = "SELECT * FROM product_variant WHERE product_id = ?";
+        $sql = "SELECT * FROM product_variant  INNER JOIN image ON image.image_id = product_variant.image_id  WHERE product_variant.product_id = ?";
         return  $this->conn->getAll($sql, [$id]);
     }
     public function find_product_variant($product_id, $color_id, $size_id)
@@ -22,6 +22,7 @@ class M_product_variant
         INNER JOIN product_color ON product_color.color_id = product_variant.color_id 
         INNER JOIN product ON product.product_id = product_variant.product_id 
         INNER JOIN product_size ON product_size.size_id = product_variant.size_id 
+        INNER JOIN image ON image.image_id = product_variant.image_id 
         WHERE product_variant.product_variant_id = ? ";
         return $this->conn->getOne($sql, [$id]);
     }

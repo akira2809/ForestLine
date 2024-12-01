@@ -68,6 +68,8 @@
         <div class="col-lg-8 col-sm-12">
             <?php
             if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                $total_money = 0;
+                $ship = 25000;
                 foreach ($_SESSION['cart'] as $key => $value) {
             ?>
                     <div class="row">
@@ -123,14 +125,19 @@
                     Giỏ hàng trống 
                 </div>';
             }
+            if (!$value['sale_price'] > 0) {
+                $total_money += $value['sale_price'] * $value['quantity'];
+            } else {
+                $total_money += $value['base_price'] * $value['quantity'];
+            }
             ?>
 
         </div>
         <div class="col-lg-4 col-sm-12  mt-3">
             <p class="text-left bgp p-3">THÔNG TIN ĐƠN HÀNG</p>
-            <p class="d-flex justify-content-between">Tổng tiền <span>139000 VND</span></p>
-            <p class="d-flex justify-content-between">Phí vận chuyển <span>0 VND</span></p>
-            <p class="d-flex justify-content-between">Tổng <span>139000 VND</span></p>
+            <p class="d-flex justify-content-between">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
+            <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
+            <p class="d-flex justify-content-between">Tổng <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
             <a href="<?= _HOST ?>/checkout">
                 <button type="button" class="col-12 btn btn-custom btn-block1">Tiến hành thanh toán</button>
             </a>
