@@ -1,10 +1,26 @@
-<!-- Banner -->
-<div class="container-fluid p-0">
-    <div class="position-relative bg-light" style="height: 800px;">
-        <img src="public/imgs/bannerhome.jpg" class="img-fluid position-absolute w-100 h-100" alt="Banner Image"
-            style="object-fit: cover; opacity: 0.8;">
+<!-- Banner Carousel -->
+<div id="carouselExample" class="carousel slide container-fluid p-0" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active position-relative bg-light" style="height: 800px;">
+            <img src="public/imgs/bannerhome.jpg" class="img-fluid position-absolute w-100 h-100" alt="Banner 1"
+                style="object-fit: cover; opacity: 0.8;">
+        </div>
+        <div class="carousel-item position-relative bg-light" style="height: 800px;">
+            <img src="public/imgs/banner2.jpg" class="img-fluid position-absolute w-100 h-100" alt="Banner 2"
+                style="object-fit: cover; opacity: 0.8;">
+        </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
+
 <!-- Danh sách sản phẩm -->
 <div class="container my-5">
     <div class="row text-center">
@@ -172,6 +188,35 @@
 </section>
 
 <style>
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        /* Đặt chiều rộng nút tùy ý */
+        height: 50px;
+        /* Đặt chiều cao nút tùy ý */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Thêm nền nếu muốn */
+        border-radius: 50%;
+        /* Tùy chọn bo tròn */
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        /* Kích thước icon tùy ý */
+        height: 20px;
+    }
+
+    .carousel-item img {
+        transition: transform 1s ease-in-out;
+    }
+
+    .carousel-item:hover img {
+        transform: scale(1.05);
+    }
+
     /* Tổng quan slider */
     .carousel-inner {
         display: flex;

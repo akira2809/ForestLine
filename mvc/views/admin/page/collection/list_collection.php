@@ -27,7 +27,6 @@
                                 class="text-primary">
                                 <i class="fa-solid fa-wrench" title="Chỉnh sửa"></i>
                             </a>
-
                             <a href="<?= _HOST . "admin/collection/update_collection/" . $collection['collection_id'] . '?action=set-status-collection&status=' . $collection['status'] ?>"
                                 onclick="return confirm('Bạn có chắc sẽ <?= $collection['status'] == 1 ? 'ẩn' : 'hiện' ?> bộ sưu tập này không?')"
                                 class="text-<?= $collection['status'] == 1 ? 'warning' : 'success' ?>">
