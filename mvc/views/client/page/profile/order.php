@@ -79,7 +79,6 @@
 </style>
 <?php
 $groupedOrders = [];
-
 foreach ($order as $item) {
     $orderId = $item['order_id'];
     if (!isset($groupedOrders[$orderId])) {
@@ -98,7 +97,7 @@ foreach ($order as $item) {
         'name' => $item['name'],
         'color_name' => $item['color_name'],
         'size_name' => $item['size_name'],
-        'image' => $item['main_image'],
+        'image' => $item['image'],
         'quantity' => $item['quantity'],
         'price' => $item['price'],
     ];

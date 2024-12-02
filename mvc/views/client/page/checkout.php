@@ -100,15 +100,11 @@
                     </div> -->
                     <h4 class="fw-bold mt-3">Phương thức thanh toán</h4>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio1" value="Thanh toán khi giao hàng" required>
+                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio1" value="0" required>
                         <label class="form-check-label" for="inlineRadio1">Thanh toán khi giao hàng (COD)</label>
                     </div> <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio2" value="Chuyển khoản ví điện tử">
-                        <label class="form-check-label" for="inlineRadio2">Chuyển khoản ví điện tử (Momo)</label>
-                    </div> <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio3" value="Chuyển khoản ngân hàng">
+                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio3" value="1">
                         <label class="form-check-label" for="inlineRadio3">Chuyển khoản ngân hàng</label>
                     </div> <br>
                     <?php
@@ -138,7 +134,7 @@
 
                             <div class="col col-lg-12 mb-3 d-flex gap-2">
                                 <div class="col-lg-6">
-                                    <img src="<?= _HOST . 'uploads/' . $value['main_image'] ?>" alt="">
+                                    <img src="<?= _HOST . 'uploads/' . $value['image'] ?>" alt="">
                                 </div>
                                 <div class="col-lg-6 d-flex justify-content-between flex-column py-2">
                                     <div>
@@ -179,7 +175,7 @@
                             <p class="d-flex justify-content-between mt-3">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
                             <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
                             <?php
-                            echo isset($voucher_value) ? '<p class="d-flex justify-content-between">Phí vận chuyển <span>- ' . number_format($voucher_value, 0, 0.0) . ' VND</span></p>' : '';
+                            echo isset($voucher_value) ? '<p class="d-flex justify-content-between">Voucher <span>- ' . number_format($voucher_value, 0, 0.0) . ' VND</span></p>' : '';
                             ?>
 
                             <hr>

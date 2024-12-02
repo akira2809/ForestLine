@@ -21,7 +21,7 @@ class Token
             $decoded = JWT::decode($token, new Key(self::$secretKey, 'HS256'));
             return $decoded;
         } catch (Exception $e) {
-            echo 'Invalid token: ' . $e->getMessage();
+            return null;
         }
     }
 }

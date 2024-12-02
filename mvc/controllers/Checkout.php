@@ -1,4 +1,7 @@
 <?php
+
+use PayOS\PayOS;
+
 class Checkout extends Controller
 {
     public $model_order;
@@ -31,11 +34,9 @@ class Checkout extends Controller
             $voucher_id = $_POST['voucher_id'];
             $this->model_voucher->update_usage_limit_by_voucher_id($voucher_id);
         }
-        echo $voucher_id;
-        $order_id = $this->model_order->add_order(
+        $order_id = (int) $this->model_order->add_order(
             $_SESSION['user_login']['user_id'],
             $_POST['user_name'],
-            $_POST['payment_method'],
             $_POST['phone_number'],
             $_POST['address'],
             $_POST['total_money'],
@@ -57,7 +58,33 @@ class Checkout extends Controller
             $this->reduce_stock_by_product_variant_id($value['product_variant_id'], $value['quantity']);
             unset($_SESSION['cart'][$key]);
         }
-        header('location:' . _HOST . 'profile');
+        $payment = $_POST['payment_method'] == 0 ? 'Thanh toán khi giao hàng' : 'Chuyển khoản ngân hàng';
+        $this->model_order->add_payment_method($order_id, $payment);
+        if ($_POST['payment_method'] == 1) {
+            $payOS = new PayOS(_CLIENT_ID, _API_KEY, _CHECKSUM_KEY);
+            $paymentData = [
+                'orderCode' => (int) $order_id,
+                'amount' => 2000,
+                'description' => 'Thanh toán: ' . $order_id,
+                'returnUrl' => _HOST . 'profile',
+                'cancelUrl' => _HOST . 'profile'
+            ];
+            try {
+                $paymentLinkData = $payOS->createPaymentLink($paymentData);
+                $paymentUrl = $paymentLinkData['checkoutUrl'];  // URL thanh toán từ PayOS
+
+                // $qrCode = new QrCode($paymentUrl);
+                // $qrCode->setSize(300);
+
+                // $writer = new PngWriter();
+                // $writer->writeFile($qrCode, 'payment_qr.png');
+                // echo $paymentUrl;
+                header('Location:' . $paymentUrl);
+            } catch (Exception $e) {
+                echo 'Lỗi: ' . $e->getMessage();
+            }
+        }
+        // header('location:' . _HOST . 'profile');
     }
     public function add_order_detail($order_id, $product_variant_id, $quantity, $price)
     {

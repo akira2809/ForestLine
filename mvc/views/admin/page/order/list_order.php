@@ -11,6 +11,7 @@ foreach ($order as $item) {
             'date' => $item['date'],
             'status' => $item['status'],
             'payment_method' => $item['payment_method'],
+            'payment_method_status' => $item['payment_method_status'],
             'user_name' => $item['user_name'],
             'phone_number' => $item['phone_number'],
             'address' => $item['address'],
@@ -71,6 +72,7 @@ $groupedOrders = array_values($groupedOrders);
                     <td class="text-start">
                         <p><strong>Ngày mua: </strong><?= $order['date'] ?></p>
                         <p><strong>Phương thức thanh toán: </strong><?= $order['payment_method'] ?></p>
+                        <p><strong>Thanh toán: </strong><?= $order['payment_method_status'] ?></p>
                         <?php
                         if (isset($order['voucher_description'])) {
                             echo '<p><strong>Voucher: </strong>' . $order['voucher_description'] . '</p>';

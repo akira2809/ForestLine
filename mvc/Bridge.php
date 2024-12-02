@@ -5,6 +5,9 @@ require_once './mvc/services/mailer/Exception.php';
 require_once './mvc/services/mailer/PHPMailer.php';
 require_once './mvc/services/mailer/SMTP.php';
 require_once './mvc/services/mailer/Mailer.php';
+//payos
+require_once './mvc/services/payos/Utils/PayOSSignatureUtils.php';
+require_once './mvc/services/payos/payOS.php';
 //jwt
 require_once './mvc/services/jwt/Key.php';
 require_once './mvc/services/jwt/JWTExceptionWithPayloadInterface.php';

@@ -29,11 +29,11 @@ class Login extends Controller
             $payload = [
                 'code' => str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT),
                 'email' => $email,
-                'exp' => time() + (10 * 60) // 10 minutes
+                'exp' => time() + (1 * 60) // 10 minutes
             ];
             $_SESSION['token_forgot_password'] = Token::create_token($payload);
             $content = "Mã xác nhận của bạn là: " . $payload['code'] . '<p>Sau 1 phút thì mã sẽ hết hiệu lực</p>';
-            Mailer::send($email, "Lấy lại mật khẩu", $content);
+            Mailer::send($email, 'Lấy lại mật khẩu', $content);
         }
         $data['type'] = 'info';
         $data['action'] = 'check_code';
@@ -43,37 +43,31 @@ class Login extends Controller
     }
     function check_code()
     {
-        if (isset($_SESSION['token_forgot_password'])) {
-            $token = $_SESSION['token_forgot_password'];
-            echo $token;
-            $result = Token::verify_token($token);
-            $expiresAt = $result->exp;
-            $currentTime = time();
-            if ($currentTime > $expiresAt) {
-                unset($_SESSION['token_forgot_password']);
-                $data['type'] = 'danger';
-                $data['result'] = 'Thời gian xác nhận đã hết vui lòng gửi lại !';
-                $this->view('layout/layout_client', $data);
-                // header("Location:" . _HOST . 'login/signup');
-            } else {
-                if ($_POST['code'] == $result->code) {
-                    $password = $this->generateRandomPassword();
-                    $this->model_login->set_password($password, $result->email);
-                    unset($_SESSION['token_forgot_password']);
-                    $content = "Mật khẩu mới của bạn là: " . $password . '<p>Nhớ thay đổi mật khẩu sau khi đăng nhâp</p>';
-                    Mailer::send($result->email, "Mật khẩu mới", $content);
-                    $data['type'] = 'success';
-                    $data['result'] = 'Chúng tôi đã gửi mật khẩu mới về gmail của bạn';
-                } else {
-                    $data['type'] = 'danger';
-                    $data['result'] = 'Mã không đúng';
-                }
-                // header("Location:" . _HOST);
-            }
-        } else {
+        $token = $_SESSION['token_forgot_password'];
+        // echo $token;
+        $result = Token::verify_token($token);
+        if (!$result) {
+            unset($_SESSION['token_forgot_password']);
             $data['type'] = 'danger';
             $data['result'] = 'Thời gian xác nhận đã hết vui lòng gửi lại !';
+            $this->view('layout/layout_client', $data);
+            // header("Location:" . _HOST . 'login/signup');
+        } else {
+            if ($_POST['code'] == $result->code) {
+                $password = $this->generateRandomPassword();
+                $this->model_login->set_password($password, $result->email);
+                unset($_SESSION['token_forgot_password']);
+                $content = 'Mật khẩu mới của bạn là: ' . $password . '<p>Nhớ thay đổi mật khẩu sau khi đăng nhâp</p>';
+                Mailer::send($result->email, "Mật khẩu mới", $content);
+                $data['type'] = 'success';
+                $data['result'] = 'Chúng tôi đã gửi mật khẩu mới về gmail của bạn';
+            } else {
+                $data['type'] = 'danger';
+                $data['result'] = 'Mã không đúng';
+            }
+            // header("Location:" . _HOST);
         }
+
         $data['page'] = 'forgot_password';
         $data['action'] = 'check_code';
         $this->view('layout/layout_client', $data);

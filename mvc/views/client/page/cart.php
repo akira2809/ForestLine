@@ -73,7 +73,7 @@
                 foreach ($_SESSION['cart'] as $key => $value) {
             ?>
                     <div class="row">
-                        <img class="col-lg-5" src="<?= _HOST . 'uploads/' . $value['main_image'] ?>" alt="">
+                        <img class="col-lg-5" src="<?= _HOST . 'uploads/' . $value['image'] ?>" alt="">
                         <div class="col-lg-5 col-sm-6 m-0 d-flex justify-content-between flex-column">
                             <div>
                                 <h4><?= $value['name'] ?></h4>
@@ -125,19 +125,21 @@
                     Giỏ hàng trống 
                 </div>';
             }
-            if (!$value['sale_price'] > 0) {
-                $total_money += $value['sale_price'] * $value['quantity'];
-            } else {
-                $total_money += $value['base_price'] * $value['quantity'];
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                if (!$value['sale_price'] > 0) {
+                    $total_money += $value['sale_price'] * $value['quantity'];
+                } else {
+                    $total_money += $value['base_price'] * $value['quantity'];
+                }
             }
             ?>
 
         </div>
         <div class="col-lg-4 col-sm-12  mt-3">
             <p class="text-left bgp p-3">THÔNG TIN ĐƠN HÀNG</p>
-            <p class="d-flex justify-content-between">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
-            <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
-            <p class="d-flex justify-content-between">Tổng <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
+            <p class="d-flex justify-content-between">Tổng tiền <span><?= isset($total_money) ? number_format($total_money, 0, 0.0) : 0 ?> VND</span></p>
+            <p class="d-flex justify-content-between">Phí vận chuyển <span><?= isset($ship) ? number_format($ship, 0, 0.0) : 0 ?> VND</span></p>
+            <p class="d-flex justify-content-between">Tổng <span><?= isset($total_money) ? number_format($total_money + $ship, 0, 0.0) : 0  ?> VND</span></p>
             <a href="<?= _HOST ?>/checkout">
                 <button type="button" class="col-12 btn btn-custom btn-block1">Tiến hành thanh toán</button>
             </a>

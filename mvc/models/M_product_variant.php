@@ -13,7 +13,8 @@ class M_product_variant
     }
     public function find_product_variant($product_id, $color_id, $size_id)
     {
-        $sql = "SELECT * FROM product_variant WHERE product_id = ? AND color_id = ? AND size_id = ?";
+        $sql = "SELECT * FROM product_variant 
+        WHERE product_id = ? AND color_id = ? AND size_id = ?";
         return  $this->conn->getOne($sql, [$product_id, $color_id, $size_id]);
     }
     function get_product_variant_by_id($id)

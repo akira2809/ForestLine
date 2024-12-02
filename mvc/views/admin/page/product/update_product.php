@@ -196,18 +196,20 @@
             </div>
             <div class="my-3">
                 <label for="" class="form-label">Ảnh minh họa</label>
-                <?php
-                foreach ($image_detail as $key => $val) {
-                ?>
-                    <div class="image-container">
-                        <label>
-                            <input type="radio" value="<?= $val['image_id'] ?>" name="image_selected">
-                            <img style="width:50px" src="<?= _HOST . 'uploads/' . $val['image'] ?>" />
-                        </label>
-                    </div>
-                <?php
-                }
-                ?>
+                <div class="d-flex gap-2">
+                    <?php
+                    foreach ($image_detail as $key => $val) {
+                    ?>
+                        <div class="image-container">
+                            <label>
+                                <input type="radio" value="<?= $val['image_id'] ?>" required name="image_selected">
+                                <img style="width:50px" src="<?= _HOST . 'uploads/' . $val['image'] ?>" />
+                            </label>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
             <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
         </form>
