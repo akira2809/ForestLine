@@ -41,6 +41,14 @@ class M_blog
         $sql = "SELECT * FROM blog         
         WHERE blog_id = ? ";
         return $this->conn->getAll($sql, [$id]);
+    } 
+    // blog_review
+    public function get_blog_review_all()
+    {
+        $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content
+        FROM blog_review br JOIN user u
+        ON br.user_id = u.user_id ";
+        return  $this->conn->getAll($sql);
     }
     
 }
