@@ -48,7 +48,24 @@
                             </a> </li>
                         <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/add_blog" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Thêm bài viết</p>
-                            </a> </li>                        
+                            </a> </li>    
+                                               
+                    </ul>
+                </li>
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>
+                            Bình luận
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/list_blog_review" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Tất cả bình luận</p>
+                            </a> </li>
+                           
+                            <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/add_blog_review" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Thêm bình luận</p>
+                            </a> </li>                     
                     </ul>
                 </li>
             

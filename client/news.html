@@ -79,29 +79,18 @@
         <h4>3. Tái chế sau sử dụng</h4>
         <p>Sau khi sản phẩm đã hoàn thành vòng đời của mình, tái chế là chìa khóa để giảm thiểu lượng rác thải dệt may, vốn đang gây áp lực lớn lên môi trường. Các thương hiệu có thể triển khai chương trình thu hồi quần áo cũ từ khách hàng, sau đó tái chế thành sợi vải mới hoặc chuyển đổi thành các sản phẩm khác như túi xách, thảm trải sàn. Đồng thời, việc hợp tác với các tổ chức môi trường hoặc nghệ nhân tái chế để tạo ra những thiết kế độc đáo từ quần áo cũ cũng mang lại giá trị mới cho sản phẩm đã qua sử dụng. Hành động này không chỉ giảm thiểu lãng phí mà còn xây dựng lòng tin và sự yêu mến từ phía người tiêu dùng.</p>
         <p>Trong bối cảnh môi trường ngày càng bị đe dọa, bảo vệ hành tinh không còn là lựa chọn mà là trách nhiệm của mỗi doanh nghiệp, đặc biệt trong lĩnh vực kinh doanh quần áo. Từ việc chọn chất liệu thân thiện, hướng dẫn sử dụng sản phẩm đúng cách đến tái chế sau sử dụng, mỗi bước đi đều góp phần vào sứ mệnh "thời trang bền vững". Hãy để mỗi sản phẩm không chỉ là sự lựa chọn thời trang mà còn là biểu tượng của ý thức và trách nhiệm với tương lai.</p>
-    <div class="row">
+        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/blog/add_blog_review/?action=add_blog_review' ?>" method="post" enctype="multipart/form-data">
+        <div class="row">
         <div class="col-lg-1">
             <img width="65" src="img/spthanhtoan.png" alt="">
         </div>
         <div class="col-lg-11">
-            <p class="p-0 m-0">Tuongvan <span>27-08-1997</span> </p>
-            <!-- <div class="star-rating">
-                <input type="radio" id="star5" name="rating" value="5">
-                <label for="star5">&#9733;</label>
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4">&#9733;</label>
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3">&#9733;</label>
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2">&#9733;</label>
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1">&#9733;</label>
-            </div> -->
-            <input class="p-2" type="text" name="" id="" placeholder="Thêm bình luận">
-            <input class="p-0" type="button" value="Đăng">
-
-        </div>
+            <p class="p-0 m-0">Tuongvan <span>27-08-1997</span> </p>          
+            <input class="p-2" type="text" id="validationCustom01" name="content" placeholder="Thêm bình luận" required>
+            <input class="p-0" type="button" value="Đăng"> </div>
     </div>    
+        </form>
+       
     
     </div>
 </body>

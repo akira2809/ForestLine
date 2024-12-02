@@ -104,4 +104,29 @@ class Blog extends Controller
         $blog = $this->model('M_blog');
         return $blog->edit_blog($id, $title, $content, $image_blog, $author, $date);
     }
+
+
+    /* thêm bình luận */
+    public function add_blog_review()
+    {
+        $blog = $this->model('M_blog');
+        if (isset($_GET['action']) && $_GET['action'] == 'add_blog_review') {
+            
+            $new_blog_id = $blog->add_blog_review(
+             $_POST['content']);
+            
+            header("Location: " . _HOST . "/admin/blog/list_blog_review/");
+        }
+        $data['title'] = "Thêm bài viết";
+        $data['page'] = 'blog/add_blog_review';
+        $this->render($data);
+    }
+    public function list_blog_review()
+    {
+/*         $data['title'] = "Danh sách bình luận";
+ */        $blog_review = $this->model('M_blog');
+        $data['blog_review'] = $blog_review->get_blog_review_all_admin();
+        $data['page'] = 'blog/list_blog_review';
+        $this->render($data);
+    }
 }

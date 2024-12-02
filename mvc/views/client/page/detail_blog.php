@@ -31,7 +31,20 @@
         margin: 0 auto;
         display: flex;
         justify-content: center;
-    }
+        }
+    .btn-cancel:hover {
+            border: #718355 solid 1px;
+            background: linear-gradient(to left, #fff 50%, #718355 50%);
+            background-size: 200% 100%; 
+            background-position: left;
+            color: white; 
+            transition: all 0.6s ease;
+        }
+        .btn-cancel {
+            background-position: right bottom;          
+            color:#718355;
+            border: #718355 solid 1px;
+        }
     </style>
     <div class="container">
    
@@ -44,21 +57,24 @@
           <p class="text-end" ><?= $blog['date'] ?></p>
         <p><?= $blog['content'] ?></p>        
         
-          
-    
-        <!-- <div class="row">
+    <!-- them binh luan -->      
+    <form class="needs-validation" novalidate action="<?= _HOST . 'admin/blog/add_blog_review/?action=add_blog_review' ?>" method="post" enctype="multipart/form-data">
+        <div class="row">
         <div class="col-lg-1">
             <img width="65" src="img/spthanhtoan.png" alt="">
         </div>
         <div class="col-lg-11">
-            <p class="p-0 m-0">Tuongvan <span>27-08-1997</span> </p>           
-            <input class="p-2" type="text" name="" id="" placeholder="Thêm bình luận">
+            <p class="p-0 m-0">Tuongvan <span>27-08-1997</span> </p>          
+            <input class="p-2" type="text" id="validationCustom01" name="content" placeholder="Thêm bình luận" required>
             <input class="p-0" type="button" value="Đăng">
         </div>
-    </div> -->
-    <!-- binhluan -->
-    <?php foreach ($list_review_blog as $blog_review) {
-                ?>
+        </div>    
+        </form>
+       
+
+    <hr>
+    <!-- load binh luan -->        
+      <?php foreach ($list_review_blog as $blog_review) { ?>       
                  <div class="row">
                       <div class="col-lg-1">
                         <img width="65" src="../uploads/<?= $blog['image_blog'] ?>" alt="">
@@ -75,5 +91,31 @@
     </div> 
     </div>
     </div>
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms =
+            document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+            form.addEventListener(
+                "submit",
+                (event) => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add("was-validated");
+                },
+                false
+            );
+        });
+    })();
+</script>
     
                        
