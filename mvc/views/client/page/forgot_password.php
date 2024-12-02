@@ -114,28 +114,33 @@
             class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center p-0">
             <div class="login-register pt-5">
                 <div class="signin-register d-flex justify-content-between mb-1">
-                    <a href="">Sign In</a>
+                    <a href="<?= _HOST . 'login' ?>">Sign In</a>
                     <a href="<?= _HOST . 'login/signup' ?>">Create Account</a>
                 </div>
                 <hr class="mb-4" />
 
-                <form class="form mt-3" action="<?= _HOST ?>/login/login" method="post">
-                    <?= isset($result) ? '<div class="alert alert-danger">' . $result['result'] . '</div>' : ''  ?>
-                    <div class="input-box">
-                        <input type="text" id="email" name="email" value="<?= isset($result) ? $result['email'] : '' ?>" placeholder=" " required />
-                        <label for="email"><span>*</span> EMAIL ADDRESS</label>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" name="password" id="password" value="<?= isset($result) ? $result['password'] : '' ?>" placeholder=" " required />
-                        <label for="password"><span>*</span> PASSWORD</label>
-                    </div>
-                    <div
-                        class="links d-flex align-items-center justify-content-between mb-3">
-                        <a href="<?= _HOST . 'login/forgot-password' ?>">Quên mật khẩu</a>
+                <form class="form mt-3" action="<?= _HOST . 'login/' . $action ?>" method="post">
+                    <?= isset($result) ? '<div class="alert alert-' . $type . '">' . $result . '</div>' : ''  ?>
 
-                    </div>
+                    <?php
+                    if (isset($result)) {
+                    ?>
+                        <div class="input-box">
+                            <input type="text" id="code" name="code" placeholder=" " required />
+                            <label for=" code"><span>*</span>CODE</label>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="input-box">
+                            <input type="text" id="email" name="email" value="<?= isset($result) ? $result['email'] : '' ?>" placeholder=" " required />
+                            <label for="email"><span>*</span> EMAIL ADDRESS</label>
+                        </div>
+                    <?php
+                    }
+                    ?>
 
-                    <input type="submit" value="Signin" />
+                    <input type="submit" value="Xác nhận" />
                 </form>
                 <div class="images d-flex w-100 pt-5">
                     <ul class="list-unstyled d-flex justify-content-between w-100">

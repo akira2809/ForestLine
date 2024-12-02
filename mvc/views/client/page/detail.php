@@ -77,9 +77,7 @@ foreach ($data as $key => $item) {
     ];
 }
 
-// Chuyển đổi sang JSON
 $product_json = json_encode($product_variants);
-// var_dump($product_json);
 
 ?>
 <article>

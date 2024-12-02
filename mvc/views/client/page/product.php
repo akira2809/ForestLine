@@ -21,9 +21,6 @@
 </style>
 <article>
     <div class="container">
-        <div class="image">
-            <img class="image-fluid w-100" src="z4463558122016_bfef450d91a5399ebc2fade884caab82_97d2f0e768cb4543a22b4593107e3d3c.webp" alt="">
-        </div>
         <div class="product mt-5">
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 sptt">
                 <?php foreach ($list_product as $product) {
