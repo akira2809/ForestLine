@@ -49,27 +49,38 @@
                 <hr>
                 <div class="fw-bold p-3 bgp">
                     <h4>Vận chuyển và trả lại ngày lễ</h4>
-                    <p>Tận hưởng dịch vụ giao hàng miễn phí cho tất cả các đơn hàng đến hết ngày 20 tháng 12 năm 2024 và gia hạn thời gian trả hàng miễn phí đến hết ngày 31 tháng 1 năm 2025 (Chi tiết)</p>
+                    <p>Tận hưởng dịch vụ giao hàng miễn phí cho tất cả các đơn hàng đến hết ngày 20 tháng 12 năm 2024 và
+                        gia hạn thời gian trả hàng miễn phí đến hết ngày 31 tháng 1 năm 2025 (Chi tiết)</p>
                 </div>
                 <form action="<?= _HOST ?>checkout/checkout" method="post">
                     <h4 class="fw-bold mt-3">Thông tin liên lạc</h4>
-                    <input type="text" name="user_name" class="form-control" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['user_name'] : '' ?>" style="font-weight: bold;" placeholder="Họ và tên" required>
+                    <input type="text" name="user_name" class="form-control"
+                        value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['user_name'] : '' ?>"
+                        style="font-weight: bold;" placeholder="Họ và tên" required>
                     <div class="row">
                         <div class="col-lg-8 my-3">
-                            <input type="text" name="email" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['email'] : '' ?>" class="form-control" style="font-weight: bold;" placeholder="Email" required>
+                            <input type="text" name="email"
+                                value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['email'] : '' ?>"
+                                class="form-control" style="font-weight: bold;" placeholder="Email" required>
                         </div>
                         <div class="col-lg-4 my-3">
-                            <input type="text" name="phone_number" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['phone_number'] : '' ?>" class="form-control" style="font-weight: bold;" placeholder="Số điện thoại" required>
+                            <input type="text" name="phone_number"
+                                value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['phone_number'] : '' ?>"
+                                class="form-control" style="font-weight: bold;" placeholder="Số điện thoại" required>
                         </div>
                     </div>
 
                     <h4 class="fw-bold mt-3">Thông tin vận chuyển</h4>
-                    <input type="text" class="form-control" name="address" value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['address'] : '' ?>" style="font-weight: bold;" required placeholder="Địa chỉ">
-                    <input type="text" class="form-control mt-3" style="font-weight: bold;" placeholder="Căn hộ / Đơn vị (Tùy chọn)">
+                    <input type="text" class="form-control" name="address"
+                        value="<?= isset($_SESSION['user_login']) ? $_SESSION['user_login']['address'] : '' ?>"
+                        style="font-weight: bold;" required placeholder="Địa chỉ">
+                    <input type="text" class="form-control mt-3" style="font-weight: bold;"
+                        placeholder="Căn hộ / Đơn vị (Tùy chọn)">
                     <div class="row">
                         <div class="col-lg-4 my-3">
                             <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;" aria-label="Chọn tỉnh / thành phố">
+                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;"
+                                    aria-label="Chọn tỉnh / thành phố">
                                     <option selected>Chọn tỉnh / thành phố</option>
                                     <option value="1">TP Hồ Chí Minh</option>
                                     <option value="2">Hà Nội</option>
@@ -79,7 +90,8 @@
                         </div>
                         <div class="col-lg-4 my-3">
                             <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;" aria-label="Chọn quận / huyện">
+                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;"
+                                    aria-label="Chọn quận / huyện">
                                     <option selected>Chọn quận / huyện</option>
                                     <option value="1">Quận 1</option>
                                     <option value="2">Quận 2</option>
@@ -89,7 +101,8 @@
                         </div>
                         <div class="col-lg-4 my-3">
                             <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;" aria-label="Chọn phường / xã">
+                                <select class="form-select" id="inputGroupSelect04" style="font-weight: bold;"
+                                    aria-label="Chọn phường / xã">
                                     <option selected>Chọn phường / xã</option>
                                     <option value="1">Phường 1</option>
                                     <option value="2">Phường 2</option>
@@ -100,15 +113,42 @@
                     </div>
                     <h4 class="fw-bold mt-3">Phương thức thanh toán</h4>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio1" value="Thanh toán khi giao hàng" required>
+                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio1"
+                            value="Thanh toán khi giao hàng" required>
                         <label class="form-check-label" for="inlineRadio1">Thanh toán khi giao hàng (COD)</label>
                     </div> <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio2" value="Chuyển khoản ví điện tử">
-                        <label class="form-check-label" for="inlineRadio2">Chuyển khoản ví điện tử (Momo)</label>
-                    </div> <br>
+                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio2"
+                            value="Chuyển khoản ví điện tử" onclick="generateQRCode()">
+                        <label class="form-check-label" for="inlineRadio2">Chuyển khoản ví điện tử</label>
+                    </div>
+                    <div id="qrCode" style="display: none;">
+                        <img id="qrImage" src="" alt="QR Code" />
+                    </div>
+
+                    <script>
+                        function generateQRCode() {
+                            fetch('http://localhost:8050/ForestLine/controllers/PaymentController.php', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    amount: 500000, // Thay bằng số tiền thực tế
+                                    description: 'Thanh toán đơn hàng #12345'
+                                })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    document.getElementById('qrCode').style.display = 'block';
+                                    document.getElementById('qrImage').src = data.qr_url;
+                                })
+                                .catch(err => console.error(err));
+                        }
+                    </script>
+
+                    <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio3" value="Chuyển khoản ngân hàng">
+                        <input class="form-check-input" type="radio" name="payment_method" id="inlineRadio3"
+                            value="Chuyển khoản ngân hàng">
                         <label class="form-check-label" for="inlineRadio3">Chuyển khoản ngân hàng</label>
                     </div> <br>
                     <button type="submit" class="col-12 btn btn-custom btn-block1 mt-3">Hoàn tất đơn hàng</button>
@@ -122,7 +162,7 @@
                         $total_money = 0;
                         $ship = 25000;
                         foreach ($_SESSION['cart'] as $value) {
-                        ?>
+                            ?>
 
                             <div class="col col-lg-12 mb-3 d-flex gap-2">
                                 <div class="col-lg-6">
@@ -134,12 +174,14 @@
                                         <p>Màu sắc: <?= $value['color_name'] ?></p>
                                         <p>Kích thước: <?= $value['size_name'] ?></p>
                                     </div>
-                                    <div> <?= $value['sale_price'] > 0 ?
-                                                ' <p class="col-lg-12 text-end d-flex flex-column m-0 p-0">' . number_format($value['base_price'], 0, 0.0)  . ' VNĐ <span class="text-decoration-line-through ">' . number_format($value['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
-                                                : ' <p class="col-lg-12 text-end d-flex flex-column p-0">' . number_format($value['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?></div>
+                                    <div>
+                                        <?= $value['sale_price'] > 0 ?
+                                            ' <p class="col-lg-12 text-end d-flex flex-column m-0 p-0">' . number_format($value['base_price'], 0, 0.0) . ' VNĐ <span class="text-decoration-line-through ">' . number_format($value['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                                            : ' <p class="col-lg-12 text-end d-flex flex-column p-0">' . number_format($value['sale_price'], 0, 0.0) . ' VNĐ </p>' ?>
+                                    </div>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                             if (!$value['sale_price'] > 0) {
                                 $total_money += $value['sale_price'] * $value['quantity'];
                             } else {
@@ -151,15 +193,22 @@
                     <hr>
                     <div class="row">
                         <div class="col-lg-8">
-                            <input type="text" class="form-control" style="font-weight: bold;" placeholder="Mã giảm giá">
+                            <input type="text" class="form-control" style="font-weight: bold;"
+                                placeholder="Mã giảm giá">
                         </div>
                         <div class="col-lg-4">
                             <button type="button" class="col-12 btn btn-custom btn-block1 m-0 p-1.5">ÁP DỤNG</button>
                         </div>
-                        <p class="d-flex justify-content-between mt-3">Tổng tiền <span><?= number_format($total_money, 0, 0.0) ?> VND</span></p>
-                        <p class="d-flex justify-content-between">Phí vận chuyển <span><?= number_format($ship, 0, 0.0) ?> VND</span></p>
+                        <p class="d-flex justify-content-between mt-3">Tổng tiền
+                            <span><?= number_format($total_money, 0, 0.0) ?> VND</span>
+                        </p>
+                        <p class="d-flex justify-content-between">Phí vận chuyển
+                            <span><?= number_format($ship, 0, 0.0) ?> VND</span>
+                        </p>
                         <hr>
-                        <p class="d-flex justify-content-between fw-bold">Tổng <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span></p>
+                        <p class="d-flex justify-content-between fw-bold">Tổng
+                            <span><?= number_format($total_money + $ship, 0, 0.0) ?> VND</span>
+                        </p>
                     </div>
                 </div>
             </div>

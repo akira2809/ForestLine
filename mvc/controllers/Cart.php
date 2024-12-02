@@ -42,10 +42,10 @@ class Cart extends Controller
             if (!$this->check_cart_exist($product_find['product_variant_id'], $quantity)) {
                 $product_variant = $this->model_product_variant->get_product_variant_by_id($product_find['product_variant_id']);
                 $product_variant['quantity'] = $quantity;
-                // if ($_SESSION['cart'] = []) {
-                //     $_SESSION['cart'][] = $product_variant;
-                // } else {
-                // }
+                if ($_SESSION['cart'] = []) {
+                    $_SESSION['cart'][] = $product_variant;
+                } else {
+                }
                 array_unshift($_SESSION['cart'], $product_variant);
             }
         }
