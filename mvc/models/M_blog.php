@@ -50,16 +50,21 @@ class M_blog
         ON br.user_id = u.user_id ";
         return  $this->conn->getAll($sql);
     }
-    function add_blog_review($content)
+    function add_blog_review($blog_review,$user_id,$content)
     {
-        $sql = "INSERT INTO blog_review (content) values (?) WHERE blog_id = ?";
-        return $this->conn->insert($sql, [$content]);
+        $sql = "INSERT INTO blog_review (blog_id,user_id,content) values (?,?,?)/*  WHERE blog_id = ? */";
+        return $this->conn->insert($sql, [$blog_review,$user_id,$content]);
     }
     public function get_blog_review_all_admin()
     {
         $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content
-        FROM blog_review br JOIN user u
-        ON br.user_id = u.user_id  ORDER BY blog_review_id DESC";
+        FROM blog_review br 
+        INNER JOIN blog b ON br.blog_id = b.blog_id  
+        INNER JOIN user u
+        ON br.user_id = u.user_id 
+        ORDER BY blog_review_id DESC";
         return  $this->conn->getAll($sql);
     }
+    
+    
 }

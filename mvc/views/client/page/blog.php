@@ -47,7 +47,7 @@
                 <div class="category-card">
                     <div class="row">                
                         <div class="col-md-6  py-5 category-image">
-                            <a href="<?= _HOST . 'detail_blog/' . $blog['blog_id'] ?>">
+                            <a href="<?= _HOST . 'blog/detail_blog/' . $blog['blog_id'] ?>">
                             <img src="./uploads/<?= $blog['image_blog'] ?>" alt="<?= $blog['title'] ?>">
                             </a>
                         </div>

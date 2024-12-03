@@ -1,6 +1,12 @@
+<style>
+    .st {
+        padding-left:30px ;
+    }
+
+</style>
 <div class="container-fluid">
 
-            <!-- dtb cmt user -->
+<!-- dtb cmt user -->
     <table id="sortableTable" class="table table-striped table-bordered text-center">
         <thead>
             <tr class=" bg-primary text-white ">
@@ -28,9 +34,3 @@
     </table>
 </div>
 
-<style>
-    .st {
-        padding-left:30px ;
-    }
-
-</style>
