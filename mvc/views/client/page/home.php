@@ -1,3 +1,4 @@
+
 <!-- Banner -->
 <div class="container-fluid p-0">
     <div class="position-relative bg-light" style="height: 800px;">
@@ -110,6 +111,7 @@
                     <!-- Right Image -->
                     <img src="./public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
                         class="img-fluid w- mb-5" alt="Sản phẩm tiêu biểu">
+
                 </div>
             </div>
         </div>
@@ -120,12 +122,15 @@
         <div class="row align-items-center">
             <!-- Text Section -->
             <div class="col-md-4">
+
                 <h2 class="fw-bold">NHỮNG MẪU MỚI NHẤT</h2>
+
                 <p class="text-muted">
                     Khám phá những bộ sưu tập mới nhất với những phụ kiện gắn liền với brand của chúng tôi, và nhiều
                     hơn.
                 </p>
             </div>
+
             <!-- Image Section -->
 
             <?php
@@ -148,8 +153,10 @@
                         <?php
                     }
                     ?>
+
                 </div>
             </div>
         </div>
     </div>
+
 </section>

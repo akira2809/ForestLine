@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adjusted Menu Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #333;
+      /* Màu nền tối */
+      color: #000;
+    }
+
+    .menu-container {
+      background-color: #f5f5e8;
+      padding: 20px;
+      /* Tăng padding */
+      font-size: 16px;
+      /* Tăng kích thước font chữ */
+    }
+
+    .menu-title {
+      font-weight: bold;
+      font-size: 38px;
+      margin-bottom: 86px;
+      text-align: center;
+
+    }
+    strong{
+      font-size: 40px;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+      margin: 0;
+      /* Xóa khoảng cách mặc định */
+    }
+
+    li {
+      margin-bottom: 10px;
+      /* Khoảng cách 
+      giữa các mục */
+      font-size: 25px;
+    }
+
+    .divider {
+      border-left: 1px solid #000;
+      /* Đường ngăn */
+      height: 100%;
+    }
+
+    .image-section img {
+      height: auto;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* Tăng khoảng cách giữa các cột */
+    .col-4 {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .col-6 {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fuild">
+    <div class="row g-0">
+      <!-- Image Section -->
+      <div class="col-md-4 image-section">
+        <img src="../public/imgs/1_e966614c5242492992f8f67f302aef3f_grande.webp" alt="Fashion" class="img-fluid">
+      </div>
+
+      <!-- Menu Section -->
+      <div class="col-md-8 menu-container">
+        <div class="row">
+          <!-- NAM Section -->
+          <div class="col-md-6">
+            <div class="menu-title">NAM</div>
+            <!-- Row 1: Áo, Quần, Phụ kiện -->
+            <div class="row">
+              <div class="col-4">
+                <ul>
+                  <li><strong>Áo</strong></li>
+                  <li>Áo sơ mi</li>
+                  <li>Áo thun</li>
+                  <li>Áo blazer</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li><strong>Quần</strong></li>
+                  <li>Quần jean</li>
+                  <li>Quần tây</li>
+                  <li>Quần shorts</li>
+                  <li>Quần thun</li>
+                  <li>Quần ống suông</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li><strong>Phụ kiện</strong></li>
+                  <li>Nón</li>
+                  <li>Túi</li>
+                  <li>Thắt lưng</li>
+                  <li>Cà vạt</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Row 2: Áo khoác, ABC -->
+            <div class="row mt-3">
+              <div class="col-6">
+                <ul>
+                  <li><strong>Áo khoác</strong></li>
+                  <li>Hoodie</li>
+                  <li>Jacket</li>
+                  <li>Áo khoác dù</li>
+                  <li>Tất cả sản phẩm</li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul>
+                  <li><strong>ABC</strong></li>
+                  <li>Đầm</li>
+                  <li>Chân váy ngắn</li>
+                  <li>Chân váy dài</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="col-1 d-flex justify-content-center">
+            <div class="divider"></div>
+          </div>
+
+          <!-- NỮ Section -->
+          <div class="col-5">
+            <div class="menu-title">NỮ</div>
+            <!-- Row 1: Áo, Quần, Phụ kiện -->
+            <div class="row">
+              <div class="col-4">
+                <ul>
+                  <li><strong>Áo</strong></li>
+                  <li>Áo sơ mi</li>
+                  <li>Áo thun</li>
+                  <li>Áo blazer</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li><strong>Quần</strong></li>
+                  <li>Quần jean</li>
+                  <li>Quần tây</li>
+                  <li>Quần shorts</li>
+                  <li>Quần thun</li>
+                  <li>Quần ống suông</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li><strong>Phụ kiện</strong></li>
+                  <li>Nón</li>
+                  <li>Túi</li>
+                  <li>Thắt lưng</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Row 2: Áo khoác, Chân váy -->
+            <div class="row mt-3">
+              <div class="col-6">
+                <ul>
+                  <li><strong>Áo khoác</strong></li>
+                  <li>Hoodie</li>
+                  <li>Jacket</li>
+                  <li>Áo khoác dù</li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul>
+                  <li><strong>Chân váy</strong></li>
+                  <li>Đầm</li>
+                  <li>Chân váy ngắn</li>
+                  <li>Chân váy dài</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

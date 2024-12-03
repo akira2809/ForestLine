@@ -8,7 +8,7 @@ class M_user
     }
     public function register($user_name, $email, $password)
     {
-        $sql = "INSERT INTO user (user_name,email,password) VALUES (?,?,?)";
+        $sql = "INSERT INTO user (name,email,password) VALUES (?,?,?)";
         return $this->conn->insert($sql, [$user_name, $email, $password]);
     }
     public function active_account($user_id)

@@ -41,6 +41,18 @@
                                     Chọn danh mục
                                 </div>
                             </div>
+                            <div class="col-md-12"> <label class="form-label">Bộ sưu tập</label> <select class="form-select" name="collection_id">
+                                    <option selected disabled value="null">Choose...</option>
+                                    <?php foreach ($collection as $key => $val) {
+
+                                    ?>
+                                        <option value="<?= $val['collection_id'] ?>"><?= $val['title'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
+                            </div>
 
                             <div class="mb-3">
                                 <label for="validationCustom05" for="formFile" class="form-label">Ảnh chính</label>
@@ -59,7 +71,8 @@
                 </div>
                 <div class="col-4">
                     <div class="card-body">
-                        Bộ sưu tập
+                        Ảnh minh họa
+
                         <!-- <div class="col-sm-10 offset-sm-2"> -->
                         <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1">
                                 Example checkbox

@@ -51,6 +51,22 @@
                 <!--  -->
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
+                            Collection
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/collection/list_collection" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Danh Sách bộ sưu tầm</p>
+                            </a> </li>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/collection/add_collection" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Thêm bộ sưu tầm</p>
+                            </a> </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>
                             Voucher
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
@@ -109,6 +125,7 @@
                             </a> </li>
                     </ul>
                 </li>
+                
 
                 <!--  -->
 

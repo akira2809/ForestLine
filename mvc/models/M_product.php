@@ -29,15 +29,16 @@ class M_product
         $sql = "SELECT * FROM product WHERE product_id = ?";
         return $this->conn->getOne($sql, [$id]);
     }
-    function add_product($name, $main_image, $base_price, $sale_price, $description, $category_id)
+    function add_product($name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id)
     {
-        $sql = "INSERT INTO product (name, main_image, base_price,sale_price, description, category_id, status , collection_id) values (?,?,?,?,?,?,1,null)";
-        return $this->conn->insert($sql, [$name, $main_image, $base_price, $sale_price, $description, $category_id]);
+        $sql = "INSERT INTO product (name, main_image, base_price,sale_price, description, category_id, status , collection_id) values (?,?,?,?,?,?,1,?)";
+        return $this->conn->insert($sql, [$name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id]);
     }
-    function edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id)
+    function edit_product($id, $name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id)
     {
-        $sql = "UPDATE product SET name = ?,main_image = ?, base_price = ?, sale_price = ?, description = ? ,status = 1, category_id = ?, collection_id = null WHERE product_id = ?";
-        return $this->conn->update($sql, [$name, $main_image, $base_price, $sale_price, $description, $category_id, $id]);
+        $sql = "ALTER TABLE product MODIFY collection_id INT NULL;
+        UPDATE product SET name = ?,main_image = ?, base_price = ?, sale_price = ?, description = ? ,status = 1, category_id = ?, collection_id = ? WHERE product_id = ?";
+        return $this->conn->update($sql, [$name, $main_image, $base_price, $sale_price, $description, $category_id, $collection_id, $id]);
     }
     function set_status_product($id, $status)
     {

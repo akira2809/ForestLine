@@ -44,3 +44,4 @@ $obj = new Header();
 if (isset($_POST['search'])) {
     $obj->search($_POST['search']);
 }
+

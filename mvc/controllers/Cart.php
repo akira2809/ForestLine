@@ -43,12 +43,14 @@ class Cart extends Controller
                 $product_variant = $this->model_product_variant->get_product_variant_by_id($product_find['product_variant_id']);
                 $product_variant['quantity'] = $quantity;
 
+
                 var_dump($_SESSION['cart']);
                 if (isset($_SESSION['cart']) && count($_SESSION['cart']) == 0) {
                     array_unshift($_SESSION['cart'], $product_variant);
                 } else {
                     $_SESSION['cart'][] = $product_variant;
                 }
+
 
             }
         }

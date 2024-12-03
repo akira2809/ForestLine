@@ -1,4 +1,6 @@
 
+
+
 <style>
     /* Hide search results container by default */
     #search-results {
@@ -159,6 +161,8 @@
     }
 </style>
 
+
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
@@ -169,6 +173,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+
+
 
                     <li class="nav-item position-relative mega-menu-parent">
                         <a class="nav-link" href="<?= _HOST ?>product">Sản phẩm</a>
@@ -307,7 +313,7 @@
                         <a class="nav-link" href="<?= _HOST ?>about">Về chúng tôi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bộ sưu tập</a>
+                        <a class="nav-link" href="<?= _HOST ?>collection">Bộ sưu tập</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tin tức và khuyến mãi</a>
@@ -329,6 +335,8 @@
                             href="<?= isset($_SESSION['user_login']) ? _HOST . 'profile' : _HOST . 'login' ?>"><i
                                 class="fas fa-user"></i></a>
 
+
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
@@ -343,6 +351,8 @@
 </header>
 
 <script>
+
+
     function searchInput() {
         const inputField = document.getElementById('search-input').value.trim();
         let formData = new FormData();
@@ -350,6 +360,7 @@
 
         if (inputField !== "") {
             var xmlhttp = new XMLHttpRequest();
+
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                     const response = xmlhttp.responseText;
@@ -357,6 +368,7 @@
                         document.getElementById("search-results").innerHTML = response;
                         document.getElementById("productSearch").hidden = false;
                     } else {
+
                         document.getElementById("search-results").innerHTML = response;
                         document.getElementById("productSearch").hidden = true;
                     }
