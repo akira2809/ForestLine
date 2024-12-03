@@ -64,7 +64,7 @@ class Checkout extends Controller
             $payOS = new PayOS(_CLIENT_ID, _API_KEY, _CHECKSUM_KEY);
             $paymentData = [
                 'orderCode' => (int) $order_id,
-                'amount' => 2000,
+                'amount' => (int) $_POST['total_money'],
                 'description' => 'Thanh toán: ' . $order_id,
                 'returnUrl' => _HOST . 'profile',
                 'cancelUrl' => _HOST . 'profile'
