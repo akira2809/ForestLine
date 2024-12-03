@@ -1,5 +1,6 @@
 <?php
 
+
 use PayOS\PayOS;
 
 class Checkout extends Controller
@@ -106,5 +107,6 @@ class Checkout extends Controller
     {
         $this->model_order->cancel_order($id);
         header('location:' . _HOST . 'profile');
+
     }
 }

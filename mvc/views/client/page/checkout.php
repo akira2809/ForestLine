@@ -121,6 +121,7 @@
                     <input hidden type="text" name="voucher_id" value="<?= isset($voucher_id) ? $voucher_id : null ?>">
                     <button type="submit" class="col-12 btn btn-custom btn-block1 mt-3">Hoàn tất đơn hàng</button>
                 </form>
+
             </div>
             <div class="col-lg-4" style="color: var(--main-color);">
                 <div class="row">
@@ -134,7 +135,9 @@
 
                             <div class="col col-lg-12 mb-3 d-flex gap-2">
                                 <div class="col-lg-6">
+
                                     <img src="<?= _HOST . 'uploads/' . $value['image'] ?>" alt="">
+
                                 </div>
                                 <div class="col-lg-6 d-flex justify-content-between flex-column py-2">
                                     <div>
@@ -148,7 +151,9 @@
                                 </div>
                             </div>
                         <?php
+
                             if (!$value['sale_price'] > 0) {
+
                                 $total_money += $value['sale_price'] * $value['quantity'];
                             } else {
                                 $total_money += $value['base_price'] * $value['quantity'];
@@ -157,6 +162,7 @@
                         ?>
                     </div>
                     <hr>
+
                     <?=
                     isset($result) ? '
                     <div class="mt-3 alert alert-info">

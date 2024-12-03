@@ -1,3 +1,4 @@
+
 <style>
     /* Hide search results container by default */
     #search-results {
@@ -157,6 +158,7 @@
         width: 100%;
     }
 </style>
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
@@ -167,6 +169,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+
                     <li class="nav-item position-relative mega-menu-parent">
                         <a class="nav-link" href="<?= _HOST ?>product">Sản phẩm</a>
                         <!-- Mega Menu -->
@@ -325,6 +328,7 @@
                         <a class="nav-link"
                             href="<?= isset($_SESSION['user_login']) ? _HOST . 'profile' : _HOST . 'login' ?>"><i
                                 class="fas fa-user"></i></a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
@@ -337,6 +341,7 @@
         </div>
     </nav>
 </header>
+
 <script>
     function searchInput() {
         const inputField = document.getElementById('search-input').value.trim();
@@ -361,4 +366,5 @@
             xmlhttp.send(formData); // Sửa từ FormData thành formData
         }
     }
+
 </script>

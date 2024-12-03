@@ -16,4 +16,5 @@ class M_image
         $sql = "SELECT * FROM image WHERE product_id = ?";
         return $this->conn->getAll($sql, [$product_id]);
     }
+    
 }

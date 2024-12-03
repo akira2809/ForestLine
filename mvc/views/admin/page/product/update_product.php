@@ -1,3 +1,4 @@
+
 <style>
     /* Ẩn nút radio */
     .image-container input[type="radio"] {
@@ -28,6 +29,7 @@
         /* Màu xanh khi hover */
     }
 </style>
+
 <div class="container-fluid">
     <div class="card card-info card-outline mb-4">
         <div class="card-header">
@@ -76,10 +78,12 @@
                                 <input class="form-control" type="file" name="main_image" id="formFile">
 
                             </div>
+
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Ảnh chi tiết</label>
                                 <input class="form-control" type="file" name="image_detail[]" id="formFileMultiple" multiple>
                             </div>
+
 
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->

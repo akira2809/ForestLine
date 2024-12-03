@@ -67,6 +67,7 @@
     <div class="row m-0 p-0">
         <div class="col-lg-8 col-sm-12">
             <?php
+
             if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
                 $total_money = 0;
                 $ship = 25000;
@@ -74,6 +75,7 @@
             ?>
                     <div class="row">
                         <img class="col-lg-5" src="<?= _HOST . 'uploads/' . $value['image'] ?>" alt="">
+
                         <div class="col-lg-5 col-sm-6 m-0 d-flex justify-content-between flex-column">
                             <div>
                                 <h4><?= $value['name'] ?></h4>
@@ -85,6 +87,7 @@
                                 <p>Kích thước: <span><?= $value['size_name'] ?></span></p>
                             </div>
                             <div class="col-sm-6 d-flex flex-column">
+
                                 <form action="<?= _HOST . 'cart/update-cart/' . $key ?>" method="post">
                                     <div class="col-4 btn-group btn-custom mt-auto">
                                         <input type="submit" name="desc" class="btn btn-success" value="-" />
@@ -92,6 +95,7 @@
                                         <input type="submit" name="asc" class="btn btn-success" value="+" />
                                     </div>
                                 </form>
+
 
                             </div>
                         </div>
@@ -105,6 +109,7 @@
 
                             </div>
                             <h5 class="col-sm-12 d-flex flex-column"><?php
+
                                                                         if (!$value['sale_price'] > 0) {
                                                                             echo number_format($value['sale_price'] * $value['quantity'], 0, 0.0);
                                                                         } else {
@@ -114,6 +119,7 @@
                         </div>
                     </div>
                     <hr>
+
             <?php
                 }
             } else {
@@ -131,12 +137,14 @@
                 } else {
                     $total_money += $value['base_price'] * $value['quantity'];
                 }
+
             }
             ?>
 
         </div>
         <div class="col-lg-4 col-sm-12  mt-3">
             <p class="text-left bgp p-3">THÔNG TIN ĐƠN HÀNG</p>
+
             <p class="d-flex justify-content-between">Tổng tiền <span><?= isset($total_money) ? number_format($total_money, 0, 0.0) : 0 ?> VND</span></p>
             <p class="d-flex justify-content-between">Phí vận chuyển <span><?= isset($ship) ? number_format($ship, 0, 0.0) : 0 ?> VND</span></p>
             <p class="d-flex justify-content-between">Tổng <span><?= isset($total_money) ? number_format($total_money + $ship, 0, 0.0) : 0  ?> VND</span></p>

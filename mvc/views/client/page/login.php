@@ -115,18 +115,23 @@
             <div class="login-register pt-5">
                 <div class="signin-register d-flex justify-content-between mb-1">
                     <a href="">Sign In</a>
+
                     <a href="<?= _HOST . 'login/signup' ?>">Create Account</a>
+
                 </div>
                 <hr class="mb-4" />
 
                 <form class="form mt-3" action="<?= _HOST ?>/login/login" method="post">
+
                     <?= isset($result) ? '<div class="alert alert-danger">' . $result['result'] . '</div>' : ''  ?>
+
                     <div class="input-box">
                         <input type="text" id="email" name="email" value="<?= isset($result) ? $result['email'] : '' ?>" placeholder=" " required />
                         <label for="email"><span>*</span> EMAIL ADDRESS</label>
                     </div>
                     <div class="input-box">
                         <input type="text" name="password" id="password" value="<?= isset($result) ? $result['password'] : '' ?>" placeholder=" " required />
+
                         <label for="password"><span>*</span> PASSWORD</label>
                     </div>
                     <div
@@ -135,11 +140,13 @@
 
                     </div>
 
+
                     <input type="submit" value="Signin" />
                 </form>
                 <div class="images d-flex w-100 pt-5">
                     <ul class="list-unstyled d-flex justify-content-between w-100">
                         <li
+
                             class=" me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Facebook_Logo_(2019).png" alt="" /></a>
                             <span class="mt-3">FACEBOOK</span>
@@ -152,6 +159,7 @@
                         <li
                             class=" me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Apple_logo_black.svg.png" alt="" /></a>
+
                             <span class="mt-3">APPLE</span>
                         </li>
                     </ul>

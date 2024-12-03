@@ -18,6 +18,7 @@ class M_product
         $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id  WHERE status = 1 ORDER BY product.product_id DESC";
         return $this->conn->getAll($sql);
     }
+
     function get_product_by_count($number)
     {
         $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id ORDER BY product.product_id DESC LIMIT $number";
@@ -53,10 +54,12 @@ class M_product
         return $this->conn->getAll($sql, [$id]);
     }
 
+
     function add_product_variant($product_id, $color, $size, $stock, $image_id)
     {
         $sql = "INSERT INTO product_variant (product_id, color_id, size_id, stock, image_id) VALUE (?,?,?,?,?)";
         return $this->conn->getAll($sql, [$product_id, $color, $size, $stock, $image_id]);
+
     }
     function delete_product_variant($id)
     {
@@ -70,7 +73,9 @@ class M_product
     }
     function update_product_variant_exist($id, $stock)
     {
+
         $stock = (int)$stock;
+
         $sql = "UPDATE product_variant SET stock = stock + ? WHERE product_variant_id = ?";
         return $this->conn->update($sql, [$stock, $id]);
     }
@@ -84,9 +89,11 @@ class M_product
         $sql = "SELECT * FROM product_color";
         return $this->conn->getAll($sql);
     }
+
     function searchByName($name)
     {
         $sql = "SELECT product.product_id, name, base_price, main_image, product.category_id FROM product INNER JOIN category ON product.category_id = category.category_id WHERE name LIKE '$name%' OR category LIKE '%$name%' ";
         return $this->conn->getAll($sql);
     }
+
 }

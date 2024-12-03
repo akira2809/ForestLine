@@ -16,6 +16,7 @@ class Login extends Controller
         $data['page'] = 'signup';
         $this->view('layout/layout_client', $data);
     }
+
     public function forgot_password()
     {
         $data['action'] = 'handle_forgot_password';
@@ -82,10 +83,12 @@ class Login extends Controller
         }
         return $password;
     }
+
     public function register()
     {
         $id = $this->model_login->register($_POST['user_name'], $_POST['email'], $_POST['password']);
         if (!isset($_SESSION['token'])) {
+
             $payload = [
                 'user_id' => $id,
                 'email' => $_POST['email'],
@@ -102,6 +105,7 @@ class Login extends Controller
         ];
         $data['page'] = 'signup';
         $this->view('layout/layout_client', $data);
+
     }
     public function verify_email()
     {
@@ -113,11 +117,13 @@ class Login extends Controller
             $currentTime = time();
             if ($currentTime > $expiresAt) {
                 unset($_SESSION['token']);
+
                 $data['page'] = 'login/signup';
                 $data['type'] = 'info';
                 $data['result'] = 'Thời gian xác nhận đã hết vui lòng bạn đăng ký lại !';
                 $this->view('layout/layout_client', $data);
                 // header("Location:" . _HOST . 'login/signup');
+
             } else {
                 echo "Token hợp lệ!";
                 $this->model_login->active_account($result->user_id);
@@ -137,11 +143,13 @@ class Login extends Controller
         if ($user && $user['active'] == 1) {
             if ($user['role'] == 0) {
                 $_SESSION['user_login'] = $user;
+
                 if (isset($_SESSION['URL'])) {
                     header("Location:" .  $_SESSION['URL']);
                 } else {
                     header("Location:" . _HOST);
                 }
+
             } else {
                 $_SESSION['admin_login'] = $user;
                 header("Location:" . _HOST . 'admin/dashboard');
@@ -156,9 +164,11 @@ class Login extends Controller
         }
     }
     public function check_active_user($email, $password) {}
+
     public function logout()
     {
         unset($_SESSION['user_login']);
         header('Location:' . _HOST);
     }
+
 }

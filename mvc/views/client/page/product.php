@@ -21,6 +21,8 @@
 </style>
 <article>
     <div class="container">
+
+
         <div class="product mt-5">
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 sptt">
                 <?php foreach ($list_product as $product) {

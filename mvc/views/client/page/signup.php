@@ -115,16 +115,20 @@
             class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center">
             <div class="login-register pt-5">
                 <div class="signin-register d-flex justify-content-between mb-1">
+
                     <a href="<?= _HOST . 'login' ?>">Sign In</a>
+
                     <a href="">Create Account</a>
                 </div>
                 <hr class="mb-4" />
 
                 <form class="form mt-3" action="<?= _HOST ?>/login/register" method="post">
+
                     <?= isset($result) ? '<div class="alert alert-' . $result['type'] . ' ">' . $result['result'] . '</div>' : ''  ?>
                     <div class="input-box">
                         <input type="text" id="user_name" name="user_name" placeholder=" " required />
                         <label for="user_name"><span>*</span>FIRST NAME</label>
+
                     </div>
                     <div class="input-box">
                         <input type="text" id="email" placeholder=" " name="email" required />
@@ -132,13 +136,16 @@
                     </div>
                     <div class="input-box">
                         <input type="text" id="password" placeholder=" " name="password" required />
+
                         <label for=" password"><span>*</span>PASSWORD</label>
+
                     </div>
                     <input type="submit" value="Signin" />
                 </form>
                 <div class="images d-flex w-100 pt-5">
                     <ul class="list-unstyled d-flex justify-content-between w-100">
                         <li
+
                             class=" me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Facebook_Logo_(2019).png" alt="" /></a>
                             <span class="mt-3">FACEBOOK</span>
@@ -151,6 +158,7 @@
                         <li
                             class=" me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Apple_logo_black.svg.png" alt="" /></a>
+
                             <span class="mt-3">APPLE</span>
                         </li>
                     </ul>

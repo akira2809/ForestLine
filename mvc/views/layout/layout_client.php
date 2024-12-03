@@ -52,12 +52,15 @@
 </head>
 <?php require_once './mvc/views/client/block/header.php' ?>
 
+
 <body class="bg-light text-dark">
 
 
     <?php
     if (isset($page)) {
+
         if (file_exists("./mvc/views/client/page/$page.php")) {
+
             require_once "./mvc/views/client/page/$page.php";
         } else {
             require_once "./mvc/views/client/page/home.php";

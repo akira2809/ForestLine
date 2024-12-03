@@ -71,6 +71,7 @@ import {
     Underline,
     Undo
 } from 'ckeditor5';
+
 class UploadAdapter {
     constructor(loader) {
         this.loader = loader;
@@ -111,6 +112,7 @@ function CustomUploadAdapterPlugin(editor) {
         return new UploadAdapter(loader);
     };
 }
+
 
 
 const editorConfig = {
@@ -309,7 +311,9 @@ const editorConfig = {
     },
     table: {
         contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+
     }, extraPlugins: [CustomUploadAdapterPlugin]
+
 };
 
 export { editorConfig, ClassicEditor }

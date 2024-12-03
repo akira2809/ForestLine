@@ -34,6 +34,7 @@
 
                     </ul>
                 </li>
+
                 <!--  -->
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
@@ -67,6 +68,7 @@
                     </ul>
                 </li>
                 <!--  -->
+
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
                             Bài viết
@@ -74,6 +76,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
                         <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
@@ -89,10 +92,12 @@
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>
                             Đăng xuất
+
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
                         <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Tất cả tour</p>
                             </a> </li>
@@ -106,6 +111,7 @@
                 </li>
 
                 <!--  -->
+
             </ul> <!--end::Sidebar Menu-->
         </nav>
     </div> <!--end::Sidebar Wrapper-->
