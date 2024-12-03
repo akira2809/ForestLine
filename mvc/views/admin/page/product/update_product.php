@@ -1,3 +1,33 @@
+<style>
+    /* Ẩn nút radio */
+    .image-container input[type="radio"] {
+        display: none;
+    }
+
+    /* Hiệu ứng khi ảnh được chọn */
+    .image-container input[type="radio"]:checked+img {
+        border: 2px solid #f39c12;
+        /* Màu cam viền */
+        background-color: rgba(243, 156, 18, 0.1);
+        /* Hiệu ứng nền */
+        transform: scale(1.1);
+        /* Phóng to ảnh */
+    }
+
+    /* Ảnh ban đầu */
+    .image-container img {
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    /* Hiệu ứng hover (tùy chọn) */
+    .image-container img:hover {
+        border: 2px solid #3498db;
+        /* Màu xanh khi hover */
+    }
+</style>
 <div class="container-fluid">
     <div class="card card-info card-outline mb-4">
         <div class="card-header">
@@ -46,10 +76,10 @@
                                 <input class="form-control" type="file" name="main_image" id="formFile">
 
                             </div>
-                            <!-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Ảnh chi tiết</label>
-                                <input class="form-control" type="file" name="image_detail" id="formFileMultiple" multiple>
-                            </div> -->
+                                <input class="form-control" type="file" name="image_detail[]" id="formFileMultiple" multiple>
+                            </div>
 
                         </div> <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->
@@ -86,7 +116,7 @@
             </div>
         </form>
     </div>
-    <div class="card card-info card-outline mb-4">
+    <div class="card card-info card-outline mb-4" id="product_variant">
         <div class="card-header">
             <div class="card-title">BIẾN THỂ SẢN PHẨM</div>
         </div>
@@ -162,8 +192,24 @@
             </select>
             <div class="my-3">
                 <label for="" class="form-label">Số lượng</label>
-
-                <input type="number" class="form-select" value="50" name="stock">
+                <input type="number" class="form-select" value="200" name="stock">
+            </div>
+            <div class="my-3">
+                <label for="" class="form-label">Ảnh minh họa</label>
+                <div class="d-flex gap-2">
+                    <?php
+                    foreach ($image_detail as $key => $val) {
+                    ?>
+                        <div class="image-container">
+                            <label>
+                                <input type="radio" value="<?= $val['image_id'] ?>" required name="image_selected">
+                                <img style="width:50px" src="<?= _HOST . 'uploads/' . $val['image'] ?>" />
+                            </label>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
             <button class="btn btn-primary w-100">Thêm biến thể sản phẩm</button>
         </form>

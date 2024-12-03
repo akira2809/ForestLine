@@ -137,14 +137,18 @@
             
              <div class="col-md-8">
                  <div class="row g-4">
-                     <div class="col-md-6">
-                         <img src="./public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
-                             alt="Hình ảnh 1">
-                     </div>
-                     <div class="col-md-6">
-                         <img src="./public/imgs/ao-thun-den-streetwear-nen-mua.webp" class="img-fluid rounded"
-                             alt="Hình ảnh 2">
-                     </div>
+                     <?php
+                        foreach ($product_new as $val) {
+                        ?>
+                         <div class="col-md-6">
+                             <a href="<?= _HOST . 'detail/' . $val['product_id'] ?>">
+                                 <img src="./uploads/<?= $val['main_image'] ?>" class="img-fluid rounded"
+                                     alt="Hình ảnh 1">
+                             </a>
+                         </div>
+                     <?php
+                        }
+                        ?>
                  </div>
              </div>
          </div>

@@ -36,7 +36,7 @@ class Product extends Controller
             $new_product_id = $product->add_product($_POST['name'], main_image: $imageNew, base_price: $_POST['base_price'], sale_price: $_POST['sale_price'], description: $_POST['description'], category_id: $_POST['category_id']);
             $i = 0;
             foreach ($_FILES['image_detail']['name'] as   $value) {
-                $imageNew = $this->upload_image($value, $_FILES['image_detail']['name'][$i]);
+                $imageNew = $this->upload_image($value, $_FILES['image_detail']['tmp_name'][$i]);
                 $image->add_image_product($new_product_id, $imageNew);
                 $i++;
             }
@@ -58,17 +58,20 @@ class Product extends Controller
     {
         $product_variant = $this->model('M_product');
         $category = $this->model('M_category');
+        $image = $this->model('M_image');
         $data['title'] = "Update sản phẩm";
         $data['category'] = $category->get_category_all();
         $data['size'] = $product_variant->get_size_all();
         $data['color'] = $product_variant->get_color_all();
         $data['product'] = $product_variant->get_product_one($id);
         $data['list_product_variant'] = $product_variant->get_product_variant_by_id($id);
+        $data['image_detail'] = $image->get_image_by_product_id($id);
         $data['page'] = 'product/update_product';
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
                 case 'add-product-variant':
-                    $this->add_product_variant($id, $_POST['color'], $_POST['size'], $_POST['stock']);
+                    // var_dump($_POST);
+                    $this->add_product_variant($id, $_POST['color'],  $_POST['size'], $_POST['stock'], $_POST['image_selected']);
                     header("Location: " . _HOST . "/admin/product/update_product/" . $id);
                     break;
 
@@ -94,6 +97,16 @@ class Product extends Controller
                         description: $_POST['description'],
                         category_id: $_POST['category_id']
                     );
+                    // var_dump($_FILES['image_detail']['name']);
+                    if (isset($_FILES['image_detail'])) {
+                        $i = 0;
+                        $image = $this->model('M_image');
+                        foreach ($_FILES['image_detail']['name'] as   $value) {
+                            $imageNew = $this->upload_image($value, $_FILES['image_detail']['tmp_name'][$i]);
+                            $image->add_image_product($id, $imageNew);
+                            $i++;
+                        }
+                    }
                     header("Location: " . _HOST . "/admin/product/list-product");
                     break;
 
@@ -116,15 +129,15 @@ class Product extends Controller
         $product = $this->model('M_product');
         return $product->set_status_product($id, $status);
     }
-    public function add_product_variant($product_id, $color, $size, $stock)
+    public function add_product_variant($product_id, $color, $size, $stock, $image_id)
     {
         $product_variant = $this->model('M_product');
-        $temp = $product_variant->check_exist_product_variant($product_id, $color, $size);
+        $temp = $product_variant->check_exist_product_variant($product_id, $color, $size, $image_id);
         // var_dump($temp);
         if ($temp) {
             $product_variant->update_product_variant_exist($temp['product_variant_id'],  $stock);
         } else {
-            return $product_variant->add_product_variant($product_id, $color, $size, $stock);
+            return $product_variant->add_product_variant($product_id, $color, $size, $stock, $image_id);
         }
     }
     public function delete_product_variant($id)

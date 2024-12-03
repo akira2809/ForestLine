@@ -23,12 +23,7 @@
         background-color: #718355 !important;
     }
 
-    .navbar-brand {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: 8px;
-    }
+
 
     .saleprice {
         text-decoration: line-through;
@@ -60,58 +55,91 @@
         width: 100%;
         height: auto;
     }
-
-    /* .number-text-home {
-            font-family: 'Londrina Shadow', cursive;
-            font-size: 200px;
-            /* Kích thước font chữ mặc định cho desktop
-        }
-
-        /* Điều chỉnh font chữ cho màn hình nhỏ */
-    /* @media (max-width: 576px) {
-            .number-text-home {
-                font-size: 80px !important;
-            }
-        }  */
 </style>
 
+<?php
+// unset($_SESSION['cart']);
+// print_r($_SESSION['cart']);
+?>
 <div class="container p-0">
     <h2 class="mt-3">Giỏ hàng</h2>
     <hr>
     <div class="row m-0 p-0">
         <div class="col-lg-8 col-sm-12">
-            <div class="row">
-                <img class="col-lg-5" src="./public/imgs/spthanhtoan.png" alt="">
-                <div class="col-lg-5 col-sm-6 m-0 d-flex justify-content-between flex-column">
-                    <div>
-                        <h4>Polo Outerity Collection TÉ / Black</h4>
-                        <p>139.000 VNĐ <span class="saleprice">159.000 VNĐ</span></p>
-                        <p>Màu sắc: Đen</p>
-                        <p>Kích thước: M</p>
-                    </div>
-                    <div class="col-sm-6 d-flex flex-column">
-                        <div class="col-4 btn-group btn-custom mt-auto">
-                            <button type="button" class="btn btn-success">-</button>
-                            <button type="button" class="btn btn-success">1</button>
-                            <button type="button" class="btn btn-success">+</button>
+            <?php
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                $total_money = 0;
+                $ship = 25000;
+                foreach ($_SESSION['cart'] as $key => $value) {
+            ?>
+                    <div class="row">
+                        <img class="col-lg-5" src="<?= _HOST . 'uploads/' . $value['image'] ?>" alt="">
+                        <div class="col-lg-5 col-sm-6 m-0 d-flex justify-content-between flex-column">
+                            <div>
+                                <h4><?= $value['name'] ?></h4>
+                                <?= $value['sale_price'] > 0 ?
+                                    ' <p>' . number_format($value['base_price'], 0, 0.0)  . ' VNĐ / <span class="saleprice">' . number_format($value['sale_price'], 0, 0.0) . ' VNĐ</span></p>'
+                                    : '<p>' . number_format($value['sale_price'], 0, 0.0)  . ' VNĐ </p>' ?>
+
+                                <p>Màu sắc: <span><?= $value['color_name'] ?></span></p>
+                                <p>Kích thước: <span><?= $value['size_name'] ?></span></p>
+                            </div>
+                            <div class="col-sm-6 d-flex flex-column">
+                                <form action="<?= _HOST . 'cart/update-cart/' . $key ?>" method="post">
+                                    <div class="col-4 btn-group btn-custom mt-auto">
+                                        <input type="submit" name="desc" class="btn btn-success" value="-" />
+                                        <input type="text" class="border border-light text-center" id="quantity" name="quantity" value="<?= $value['quantity'] ?>" readonly />
+                                        <input type="submit" name="asc" class="btn btn-success" value="+" />
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 text-end d-flex justify-content-between flex-column">
+                            <div>
+                                <i class="fa-solid fa-pencil"></i>
+                                <i class="fa-regular fa-heart px-3"></i>
+                                <a href="<?= _HOST . 'cart/remove-cart/' . $key ?>">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+
+                            </div>
+                            <h5 class="col-sm-12 d-flex flex-column"><?php
+                                                                        if (!$value['sale_price'] > 0) {
+                                                                            echo number_format($value['sale_price'] * $value['quantity'], 0, 0.0);
+                                                                        } else {
+                                                                            echo number_format($value['base_price'] * $value['quantity'], 0, 0.0);
+                                                                        }
+                                                                        ?></h5>
                         </div>
                     </div>
+                    <hr>
+            <?php
+                }
+            } else {
+                echo isset($result) ? '
+                <div class="mt-3 alert alert-info">
+                    ' . $result . '
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-end d-flex justify-content-between flex-column">
-                    <div>
-                        <i class="fa-solid fa-pencil"></i>
-                        <i class="fa-regular fa-heart px-3"></i>
-                        <i class="fa-solid fa-xmark"></i>
-                    </div>
-                    <h5 class="col-sm-12 d-flex flex-column">139.000 VND</h5>
-                </div>
-            </div>
+                ' : '<div class="mt-3 alert alert-info">
+                    Giỏ hàng trống 
+                </div>';
+            }
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                if (!$value['sale_price'] > 0) {
+                    $total_money += $value['sale_price'] * $value['quantity'];
+                } else {
+                    $total_money += $value['base_price'] * $value['quantity'];
+                }
+            }
+            ?>
+
         </div>
         <div class="col-lg-4 col-sm-12  mt-3">
             <p class="text-left bgp p-3">THÔNG TIN ĐƠN HÀNG</p>
-            <p class="d-flex justify-content-between">Tổng tiền <span>139000 VND</span></p>
-            <p class="d-flex justify-content-between">Phí vận chuyển <span>0 VND</span></p>
-            <p class="d-flex justify-content-between">Tổng <span>139000 VND</span></p>
+            <p class="d-flex justify-content-between">Tổng tiền <span><?= isset($total_money) ? number_format($total_money, 0, 0.0) : 0 ?> VND</span></p>
+            <p class="d-flex justify-content-between">Phí vận chuyển <span><?= isset($ship) ? number_format($ship, 0, 0.0) : 0 ?> VND</span></p>
+            <p class="d-flex justify-content-between">Tổng <span><?= isset($total_money) ? number_format($total_money + $ship, 0, 0.0) : 0  ?> VND</span></p>
             <a href="<?= _HOST ?>/checkout">
                 <button type="button" class="col-12 btn btn-custom btn-block1">Tiến hành thanh toán</button>
             </a>

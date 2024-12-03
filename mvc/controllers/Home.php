@@ -1,10 +1,16 @@
 <?php
 class Home extends Controller
 {
+    public $model_product;
+    public $model_category;
+    public function __construct()
+    {
+        $this->model_product = $this->model('M_product');
+    }
     public function index()
     {
-        // Mailer::send('huynvps39718@gmail.com', 'test mail', 'This is the HTML message body <b>in bold!</b>');
-
-        $this->view('layout/layout_client');
+        $data['product_new'] = $this->model_product->get_product_by_count(4);
+        $data['page'] = 'home';
+        $this->view('layout/layout_client', $data);
     }
 }

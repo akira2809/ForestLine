@@ -1,5 +1,5 @@
 <?php
-class App
+class App extends Controller
 {
 
     protected $controller = 'home';
@@ -21,9 +21,9 @@ class App
                     unset($url[$key - 1]);
                 }
                 $fillUrl = rtrim($urlCheck, '/');
+
                 if (file_exists('./mvc/controllers/' . $fillUrl . '.php')) {
                     $urlCheck = $fillUrl;
-
                     break;
                 }
             }
@@ -37,7 +37,7 @@ class App
                 unset($url[0]);
                 require_once './mvc/controllers/' . $urlCheck . '.php';
             } else {
-                $this->loadError('404');
+                $this->load_error('404');
                 die();
             }
         }
@@ -54,7 +54,7 @@ class App
         if (method_exists($this->controller, $this->action)) {
             call_user_func_array([new $this->controller, $this->action], $this->params);
         } else {
-            $this->loadError('404');
+            $this->load_error('404');
             die();
         }
     }
@@ -66,9 +66,5 @@ class App
             // return explode("/", trim($url, "/"));
             return explode("/", filter_var(trim($url, "/")));
         }
-    }
-    public function loadError($name)
-    {
-        require_once './mvc/error/' . $name . '.php';
     }
 }

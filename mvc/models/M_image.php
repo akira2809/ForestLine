@@ -11,4 +11,9 @@ class M_image
         $sql = "INSERT INTO image (product_id,image) VALUES (?,?)";
         return $this->conn->insert($sql, [$product_id, $image]);
     }
+    public function get_image_by_product_id($product_id)
+    {
+        $sql = "SELECT * FROM image WHERE product_id = ?";
+        return $this->conn->getAll($sql, [$product_id]);
+    }
 }
