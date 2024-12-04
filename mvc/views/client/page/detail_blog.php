@@ -78,7 +78,6 @@
             ?>                         
                 <div class="row">
                     <div class="col-lg-1">
-                      <p ><?= $value['user_id']?> </p>
                         <img width="65" src="<?=  _HOST . 'uploads/'.  $blog['image_blog'] ?>" alt="">
                     </div>
                     <div class="col-lg-11">
