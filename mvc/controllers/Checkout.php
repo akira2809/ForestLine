@@ -35,7 +35,7 @@ class Checkout extends Controller
             $voucher_id = $_POST['voucher_id'];
             $this->model_voucher->update_usage_limit_by_voucher_id($voucher_id);
         }
-        $order_id = (int) $this->model_order->add_order(
+        $order_id = $this->model_order->add_order(
             $_SESSION['user_login']['user_id'],
             $_POST['user_name'],
             $_POST['phone_number'],
@@ -49,6 +49,7 @@ class Checkout extends Controller
             } else {
                 $price = $value['base_price'];
             }
+            echo 'oke';
 
             $this->add_order_detail(
                 $order_id,
@@ -65,7 +66,7 @@ class Checkout extends Controller
             $payOS = new PayOS(_CLIENT_ID, _API_KEY, _CHECKSUM_KEY);
             $paymentData = [
                 'orderCode' => (int) $order_id,
-                'amount' => (int) $_POST['total_money'],
+                'amount' => 2000,
                 'description' => 'Thanh toán: ' . $order_id,
                 'returnUrl' => _HOST . 'profile',
                 'cancelUrl' => _HOST . 'profile'
@@ -85,7 +86,7 @@ class Checkout extends Controller
                 echo 'Lỗi: ' . $e->getMessage();
             }
         }
-        // header('location:' . _HOST . 'profile');
+        header('location:' . _HOST . 'profile');
     }
     public function add_order_detail($order_id, $product_variant_id, $quantity, $price)
     {
@@ -107,6 +108,5 @@ class Checkout extends Controller
     {
         $this->model_order->cancel_order($id);
         header('location:' . _HOST . 'profile');
-
     }
 }

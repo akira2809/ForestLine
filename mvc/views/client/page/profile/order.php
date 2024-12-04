@@ -56,7 +56,8 @@
         height: auto;
     }
 
-    .btn-cancel, .btn-rating:hover {
+    .btn-cancel,
+    .btn-rating:hover {
         border: var(--main-color) solid 1px;
         background: linear-gradient(to left, #fff 50%, var(--main-color) 50%);
         background-size: 200% 100%;
@@ -65,7 +66,8 @@
         transition: all 0.6s ease;
     }
 
-    .btn-cancel, .btn-rating {
+    .btn-cancel,
+    .btn-rating {
         background-position: right bottom;
         color: var(--main-color);
         border: var(--main-color) solid 1px;
@@ -76,41 +78,42 @@
         /* 100% / 5 */
         max-width: 20%;
     }
+
     div.stars {
         width: 270px;
         display: inline-block;
-      }
+    }
 
-      input.star {
+    input.star {
         display: none;
-      }
+    }
 
-      label.star {
+    label.star {
         float: right;
         padding: 0.1rem;
         font-size: 12px;
         color: #444;
         transition: all 0.2s;
-      }
+    }
 
-      input.star:checked ~ label.star:before {
+    input.star:checked~label.star:before {
         content: "\f005";
         color: #fd4;
         transition: all 0.25s;
-      }
+    }
 
-      input.star-5:checked ~ label.star:before {
+    input.star-5:checked~label.star:before {
         color: #fe7;
-      }
+    }
 
-      input.star-1:checked ~ label.star:before {
+    input.star-1:checked~label.star:before {
         color: #f62;
-      }
+    }
 
-      label.star:before {
+    label.star:before {
         content: "\f006";
         font-family: FontAwesome;
-      }
+    }
 </style>
 <?php
 $groupedOrders = [];
@@ -135,7 +138,7 @@ foreach ($order as $item) {
         'order_detail_id' => $item['order_detail_id'],
         'color_name' => $item['color_name'],
         'size_name' => $item['size_name'],
-        'image' => $item['main_image'],
+        'image' => $item['image'],
         'quantity' => $item['quantity'],
         'price' => $item['price'],
     ];
@@ -218,12 +221,12 @@ foreach ($order as $item) {
                                     <?php
                                     } elseif ($order['status'] == 'Delivered') {
                                     ?>
-                                      <button onclick="showReviewPopup('<?= $product['order_detail_id']?>','<?= $product['product_id']?>')"  class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
+                                        <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
                                     <?php
                                     } elseif ($order['status'] == 'Shipped') {
                                     ?>
-                                    <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
-                                    <?php 
+                                        <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
+                                    <?php
                                     }
                                     ?>
                                 </div>
@@ -232,9 +235,9 @@ foreach ($order as $item) {
                             ?>
                             <div class="row-fluid">
 
-                            <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
+                                <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
                                     <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
-                    
+
                                 </div>
                             </div>
                         </div>
@@ -243,79 +246,74 @@ foreach ($order as $item) {
                     }
                     ?>
                     <!-- Popup Đánh Giá -->
-<div id="reviewPopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Đánh giá sản phẩm</h5>
-                <button type="button" class="close" onclick="closeReviewPopup()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="reviewForm" method="post" action="<?= _HOST ?>review/add-review" >
-                    <div class="form-group">
-                        <label for="reviewText">Đánh giá của bạn:</label>
-                        <textarea id="reviewText" name="content" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
-                    </div>
+                    <div id="reviewPopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Đánh giá sản phẩm</h5>
+                                    <button type="button" class="close" onclick="closeReviewPopup()" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="reviewForm" method="post" action="<?= _HOST ?>review/add-review">
+                                        <div class="form-group">
+                                            <label for="reviewText">Đánh giá của bạn:</label>
+                                            <textarea id="reviewText" name="content" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
+                                        </div>
 
-                    <input type="text" name="order_detail_id" id="order_detail_id">
-                    <input type="text" name="product_id" id="product_id">
-                    <div class="form-group">
-                        <label for="reviewImage">Chọn ảnh:</label>
-                        <input type="file" name="images[]" id="reviewImage" class="form-control" accept="image/*" multiple>
+                                        <input type="text" name="order_detail_id" id="order_detail_id">
+                                        <input type="text" name="product_id" id="product_id">
+                                        <div class="form-group">
+                                            <label for="reviewImage">Chọn ảnh:</label>
+                                            <input type="file" name="images[]" id="reviewImage" class="form-control" accept="image/*" multiple>
+                                        </div>
+
+                                        <div class="stars mt-2">
+                                            <input
+                                                class="star star-5"
+                                                id="star-5"
+                                                type="radio"
+                                                name="star"
+                                                value="5" />
+                                            <label class="star star-5" for="star-5"></label>
+                                            <input
+                                                class="star star-4"
+                                                id="star-4"
+                                                type="radio"
+                                                name="star"
+                                                value="4" />
+                                            <label class="star star-4" for="star-4"></label>
+                                            <input
+                                                class="star star-3"
+                                                id="star-3"
+                                                type="radio"
+                                                name="star"
+                                                value="3" />
+                                            <label class="star star-3" for="star-3"></label>
+                                            <input
+                                                class="star star-2"
+                                                id="star-2"
+                                                type="radio"
+                                                name="star"
+                                                value="2" />
+                                            <label class="star star-2" for="star-2"></label>
+                                            <input
+                                                class="star star-1"
+                                                id="star-1"
+                                                type="radio"
+                                                name="star"
+                                                value="1" />
+                                            <label class="star star-1" for="star-1"></label>
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="stars mt-2">
-                        <input
-                        class="star star-5"
-                        id="star-5"
-                        type="radio"
-                        name="star"
-                        value="5"
-                        />
-                        <label class="star star-5" for="star-5"></label>
-                        <input
-                        class="star star-4"
-                        id="star-4"
-                        type="radio"
-                        name="star"
-                        value="4"
-                        />
-                        <label class="star star-4" for="star-4"></label>
-                        <input
-                        class="star star-3"
-                        id="star-3"
-                        type="radio"
-                        name="star"
-                        value="3"
-                        />
-                         <label class="star star-3" for="star-3"></label>
-                        <input
-                        class="star star-2"
-                        id="star-2"
-                        type="radio"
-                        name="star"
-                        value="2"
-                        />
-                        <label class="star star-2" for="star-2"></label>
-                        <input
-                        class="star star-1"
-                        id="star-1"
-                        type="radio"
-                        name="star"
-                        value="1"
-                        />
-                        <label class="star star-1" for="star-1"></label>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
                 </div>
 
 
@@ -325,7 +323,7 @@ foreach ($order as $item) {
     </div>
 </body>
 <script>
-    function showReviewPopup(orderId,productId) {
+    function showReviewPopup(orderId, productId) {
         document.getElementById('reviewPopup').style.display = 'block';
         window.currentOrderId = orderId;
         document.getElementById('product_id').value = productId
@@ -335,5 +333,5 @@ foreach ($order as $item) {
     function closeReviewPopup() {
         document.getElementById('reviewPopup').style.display = 'none';
     }
-   closeReviewPopup();
+    closeReviewPopup();
 </script>
