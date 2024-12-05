@@ -81,8 +81,6 @@ foreach ($data as $key => $item) {
 }
 
 $product_json = json_encode($product_variants);
-
-
 ?>
 <article>
     <div class="container">
@@ -217,7 +215,7 @@ $product_json = json_encode($product_variants);
                 </div>
             </div>
         </div>
-        <div class="col mt-2">
+        <!-- <div class="col mt-2">
             <h6>SẢN PHẨM KẾT HỢP:</h6>
         </div>
         <div
@@ -259,8 +257,8 @@ $product_json = json_encode($product_variants);
                     </div>
                 </div>
             </div>
-        </div>
-        <div
+        </div> -->
+        <!-- <div
             class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 spkh g-3 mt-1">
             <div class="col">
                 <div class="box">
@@ -299,67 +297,34 @@ $product_json = json_encode($product_variants);
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="col mt-3">
             <h6>SẢN PHẨM TƯƠNG TỰ:</h6>
         </div>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 sptt">
-            <div class="col">
-                <div class="box">
-                    <img
-                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                        alt=""
-                        class="img-fluid" />
-                    <p>
-                        Áo thun <br />
-                        Outerity <br />
-                        <span>179.000đ</span>
-                        <span><del>200.000đ</del></span>
-                    </p>
+            <?php
+            foreach ($list_product_in_category as $product) {
+            ?>
+                <div class="col">
+                    <div class="box">
+                        <a href="<?= _HOST . 'detail/' . $product['product_id'] ?>">
+                            <img
+                                src="<?= _HOST . 'uploads/' . $product['main_image'] ?>"
+                                alt=""
+                                class="img-fluid" />
+                        </a>
+                        <div>
+                            <p><?= $product['name'] ?></p>
+                            <span>179.000đ</span>
+                            <span><del>200.000đ</del></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="box">
-                    <img
-                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                        alt=""
-                        class="img-fluid" />
-                    <p>
-                        Áo thun <br />
-                        Outerity <br />
-                        <span>179.000đ</span>
-                        <span><del>200.000đ</del></span>
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="box">
-                    <img
-                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                        alt=""
-                        class="img-fluid" />
-                    <p>
-                        Áo thun <br />
-                        Outerity <br />
-                        <span>179.000đ</span>
-                        <span><del>200.000đ</del></span>
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="box">
-                    <img
-                        src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                        alt=""
-                        class="img-fluid" />
-                    <p>
-                        Áo thun <br />
-                        Outerity <br />
-                        <span>179.000đ</span>
-                        <span><del>200.000đ</del></span>
-                    </p>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
+
+
         </div>
         <div class="col mt-2">
             <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
@@ -371,6 +336,7 @@ $product_json = json_encode($product_variants);
     const colorInputs = document.querySelectorAll('input[name="color_id"]');
     const sizeInputs = document.querySelectorAll('input[name="size_id"]');
     console.log(productVariants)
+
     function updateSizes(selectedColorId) {
         const sizeId = selectedColorId;
         const listSize = productVariants.filter((item) => {

@@ -61,6 +61,7 @@ class Product extends Controller
     {
         $product_variant = $this->model('M_product');
         $category = $this->model('M_category');
+        $collection = $this->model('M_collection');
 
 
         $image = $this->model('M_image');
@@ -157,7 +158,6 @@ class Product extends Controller
         } else {
 
             return $product_variant->add_product_variant($product_id, $color, $size, $stock, $image_id);
-
         }
     }
     public function delete_product_variant($id)

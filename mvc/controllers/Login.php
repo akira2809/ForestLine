@@ -105,7 +105,6 @@ class Login extends Controller
         ];
         $data['page'] = 'signup';
         $this->view('layout/layout_client', $data);
-
     }
     public function verify_email()
     {
@@ -127,7 +126,7 @@ class Login extends Controller
             } else {
                 echo "Token hợp lệ!";
                 $this->model_login->active_account($result->user_id);
-                header("Location:" . _HOST);
+                header("Location:" . _HOST . 'login');
             }
         } catch (Exception $e) {
             // Nếu có lỗi, có thể là token không hợp lệ hoặc không thể giải mã
@@ -149,7 +148,6 @@ class Login extends Controller
                 } else {
                     header("Location:" . _HOST);
                 }
-
             } else {
                 $_SESSION['admin_login'] = $user;
                 header("Location:" . _HOST . 'admin/dashboard');
@@ -170,5 +168,4 @@ class Login extends Controller
         unset($_SESSION['user_login']);
         header('Location:' . _HOST);
     }
-
 }

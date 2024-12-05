@@ -134,6 +134,7 @@ foreach ($order as $item) {
 
     $groupedOrders[$orderId]['products'][] = [
         'name' => $item['name'],
+        'review' => $item['review'],
         'product_id' => $item['product_id'],
         'order_detail_id' => $item['order_detail_id'],
         'color_name' => $item['color_name'],
@@ -214,32 +215,33 @@ foreach ($order as $item) {
                                     <div class="col-lg-4 d-flex flex-column justify-content-center align-items-end pt-3 px-3 col-sm-3">
                                         <p><?= number_format($product['price'], 0, 0.0) ?> VNĐ</p>
                                     </div>
-                                    <?php
-                                    if ($order['status'] == 'Pending') {
-                                    ?>
-                                        <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
-                                    <?php
-                                    } elseif ($order['status'] == 'Delivered') {
-                                    ?>
-                                        <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
-                                    <?php
-                                    } elseif ($order['status'] == 'Shipped') {
-                                    ?>
-                                        <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
-                                    <?php
-                                    }
-                                    ?>
+
+                                </div>
+
+                                <div class="row-fluid">
+
+                                    <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
+                                        <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
+                                        <?php
+                                        if ($order['status'] == 'Pending') {
+                                        ?>
+                                            <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>"> <button class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</button> </a>
+                                        <?php
+                                        } elseif ($order['status'] == 'Delivered' && $product['review'] == 0) {
+                                        ?>
+                                            <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
+                                        <?php
+                                        } elseif ($order['status'] == 'Shipped') {
+                                        ?>
+                                            <a href="<?= _HOST . 'profile/set-status/' . $order['order_id'] . '/Delivered' ?>"><button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button></a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             <?php
                             }
                             ?>
-                            <div class="row-fluid">
-
-                                <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
-                                    <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
-
-                                </div>
-                            </div>
                         </div>
                     <?php
                         $i++;
@@ -262,8 +264,8 @@ foreach ($order as $item) {
                                             <textarea id="reviewText" name="content" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
                                         </div>
 
-                                        <input type="text" name="order_detail_id" id="order_detail_id">
-                                        <input type="text" name="product_id" id="product_id">
+                                        <input type="text" hidden name="order_detail_id" id="order_detail_id">
+                                        <input type="text" hidden name="product_id" id="product_id">
                                         <div class="form-group">
                                             <label for="reviewImage">Chọn ảnh:</label>
                                             <input type="file" name="images[]" id="reviewImage" class="form-control" accept="image/*" multiple>

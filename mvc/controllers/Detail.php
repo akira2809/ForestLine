@@ -16,11 +16,16 @@ class Detail extends Controller
     }
     public function index($id)
     {
+        $this->model_product->update_view($id);
         $data['product'] = $this->model_product->get_product_one($id);
         $data['image'] = $this->model_image->get_image_by_product_id($id);
         $data['color'] = $this->get_color_by_product_id($id);
         $data['size'] = $this->get_size_by_product_id($id);
         $data['data'] = $this->get_product_variant_by_product_id($id);
+        $data['list_product_in_category'] = $this->model_product->get_product_by_category_id($data['product']['category_id']);
+        if (count($data['list_product_in_category']) <= 1) {
+            $data['list_product_in_category'] = $this->model_product->get_product_best_view(4);
+        }
         $data['page'] = 'detail';
         $this->view('layout/layout_client', $data);
     }

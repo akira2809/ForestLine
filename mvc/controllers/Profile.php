@@ -21,6 +21,11 @@ class Profile extends Controller
         $this->model_order->update_payment_status($order_id, $payment_status);
         header('Location:' . _HOST . 'profile');
     }
+    public function set_status($order_id, $status)
+    {
+        $this->model_order->set_status($order_id, $status);
+        header("location: " . _HOST . 'profile');
+    }
 }
 $obj = new Profile();
 if (isset($_GET['status'])) {

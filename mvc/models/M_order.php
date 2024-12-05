@@ -38,7 +38,7 @@ class M_order
     }
     public function get_order_by_user_id($user_id)
     {
-        $sql = "SELECT orders.order_id,orders.user_id,orders.date,orders.status,image.image, order_detail.order_detail_id,
+        $sql = "SELECT orders.order_id,orders.user_id,orders.date,orders.status,image.image, order_detail.order_detail_id,order_detail.review,
         orders.user_name,orders.phone_number, orders.address, orders.voucher_id,product.name,product_variant.product_id,
         product_color.color_name, product_size.size_name,order_detail.quantity,order_detail.price,orders.total_money FROM orders
         INNER JOIN order_detail ON orders.order_id = order_detail.order_id
