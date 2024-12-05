@@ -65,18 +65,83 @@
         font-size: 16px;
         color: grey;
     }
+    div.stars {
+        width: 270px;
+        display: inline-block;
+      }
+
+      input.star {
+        display: none;
+      }
+
+      label.star {
+        float: right;
+        padding: 0.1rem;
+        font-size: 12px;
+        color: #444;
+        transition: all 0.2s;
+      }
+
+      input.star:checked ~ label.star:before {
+        content: "\f005";
+        color: #fd4;
+        transition: all 0.25s;
+      }
+
+      input.star-5:checked ~ label.star:before {
+        color: #fe7;
+      }
+
+      input.star-1:checked ~ label.star:before {
+        color: #f62;
+      }
+
+      label.star:before {
+        content: "\f006";
+        font-family: FontAwesome;
+      }
+      .avatar img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      /* .img-fluid {
+        width: 5rem;
+      } */
+      .name {
+        font-weight: 700;
+      }
 </style>
 <?php
-// var_dump(value: $data);
-foreach ($data as $key => $item) {
+$groupedReviews = [];
+
+foreach ($list_review as $item) {
+    $reviewId = $item['review_id'];
+    if (!isset($groupedReviews[$reviewId])) {
+        $groupedReviews[$reviewId] = [
+            'review_id' => $reviewId,
+            'content' => $item['content'],
+            'user_name' => $item['user_name'],
+            'rating' => $item['rating'],
+            'date' => $item['date'],
+            'review_image' => [],
+        ];
+    }
+
+    $groupedReviews[$reviewId]['review_image'][] = [
+        'review_image' => $item['review_image']
+    ];
+}
+
+foreach ($data as $item) {
     $product_variants[] = [
         'color_id' => $item['color_id'],
         'size_id' => $item['size_id'],
         'stock' => $item['stock'],
-        'image' => $item['image']
     ];
 }
 
+// Chuyển đổi sang JSON
 $product_json = json_encode($product_variants);
 
 ?>
@@ -105,7 +170,6 @@ $product_json = json_encode($product_variants);
                 <!-- Ảnh chính sẽ phóng to khi thu nhỏ màn hình -->
                 <div class="col-12 col-md-6">
                     <img
-                        id="main_image"
                         src="<?= _HOST . 'uploads/' . $product['main_image'] ?>"
                         alt=""
                         class="img-fluid" />
@@ -294,6 +358,59 @@ $product_json = json_encode($product_variants);
                 </div>
             </div>
         </div>
+
+        <div class="col mt-3">
+            <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
+        </div>
+        
+        <div class="row mb- rate-product">
+            <?php 
+            foreach ($groupedReviews as $review) { 
+                ?>
+          <div class="col-12 col-md-2 col-lg-1">
+            <div class="avatar">
+              <img class="image" src="/uploads/Spidey.webp" alt="" />
+            </div>
+          </div>
+          <div class="col-12 col-md-10 col-lg-11">
+            <span class="name"><?= $review['user_name'] ?></span>
+            <span class="day"><?= $review['date'] ?></span>
+            <div class="stars">
+   <div class="stars mt-2 d-flex justify-content-center">
+        <input class="star star-5" id="star-5" type="radio" name="star" <?= $review['rating'] == 5 ? 'checked' : '' ?> disabled />
+        <label class="star star-5" for="star-5"></label>
+    
+        <input class="star star-4" id="star-4" type="radio" name="star" <?= $review['rating'] == 4 ? 'checked' : '' ?> disabled />
+        <label class="star star-4" for="star-4"></label>
+    
+        <input class="star star-3" id="star-3" type="radio" name="star" <?= $review['rating'] == 3 ? 'checked' : '' ?> disabled />
+        <label class="star star-3" for="star-3"></label>
+    
+        <input class="star star-2" id="star-2" type="radio" name="star" <?= $review['rating'] == 2 ? 'checked' : '' ?> disabled />
+        <label class="star star-2" for="star-2"></label>
+    
+        <input class="star star-1" id="star-1" type="radio" name="star" <?= $review['rating'] == 1 ? 'checked' : '' ?> disabled />
+        <label class="star star-1" for="star-1"></label>
+   </div>
+</div>
+            <div class="content mb-2"><?= $review['content'] ?></div>
+            <div class="img-details d-flex flex-wrap">
+                <?php
+                foreach($review['review_image'] as $image) {
+                ?>
+                <img
+                class="img-fluid"
+                src="<?= _HOST . 'uploads/' . $image['review_image'] ?>"
+                alt=""
+                />
+                <?php
+                }
+                ?>
+            </div>
+          </div>
+          <?php } ?>
+        </div>
+
         <div class="col mt-3">
             <h6>SẢN PHẨM TƯƠNG TỰ:</h6>
         </div>
@@ -355,24 +472,19 @@ $product_json = json_encode($product_variants);
                 </div>
             </div>
         </div>
-        <div class="col mt-2">
-            <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
-        </div>
+       
     </div>
 </article>
 <script>
     const productVariants = <?= $product_json ?>;
     const colorInputs = document.querySelectorAll('input[name="color_id"]');
     const sizeInputs = document.querySelectorAll('input[name="size_id"]');
-    console.log(productVariants)
 
     function updateSizes(selectedColorId) {
         const sizeId = selectedColorId;
         const listSize = productVariants.filter((item) => {
             return item.color_id == sizeId
         })
-        console.log(listSize[0]);
-        document.getElementById('main_image').src = '<?= _HOST ?>' + 'uploads/' + listSize[0].image
         sizeInputs.forEach(sizeInput => {
             const isAvailable = listSize.some(variant =>
                 variant.size_id == sizeInput.value
@@ -390,7 +502,6 @@ $product_json = json_encode($product_variants);
         const listColor = productVariants.filter((item) => {
             return item.size_id == colorId
         })
-
         colorInputs.forEach(colorInput => {
             const isAvailable = listColor.some(variant =>
                 variant.color_id == colorInput.value
