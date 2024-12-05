@@ -52,12 +52,15 @@
             background-color: #ddd;
             /* Màu xám nhạt */
         }
+        body{
+            background-color:#F6FFEC;
+        }
     </style>
 </head>
 <?php require_once './mvc/views/client/block/header.php' ?>
 
 
-<body class="bg-light text-dark">
+<body style="background-color:#F6FFEC;">
 
 
     <?php
@@ -87,3 +90,4 @@
     integrity="sha384-cVKIPhGcueSaoS0GGSorP1Cz9KxrBvZ6b6fIOg3Uktj0K3s43IMf3/hk6if8/I0D"
     crossorigin="anonymous"></script>
 <script src="../public/js/main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

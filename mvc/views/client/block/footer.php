@@ -1,4 +1,4 @@
-<footer class="bg-light text-dark pt-5">
+<footer style="background-color:#F6FFEC;">
     <div class="container">
         <hr class="my-4">
         <div class="row">
