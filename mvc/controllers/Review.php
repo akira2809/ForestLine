@@ -30,14 +30,14 @@ class Review extends Controller
     {
 
         // var_dump( $_SESSION['user_login']['user_id']);
-        $review_id = $this->model_review->add_review($_POST['order_detail_id'],$_POST['content'], $_POST['star']);
+        $review_id = $this->model_review->add_review($_POST['order_detail_id'],$_POST['content'], $_POST['star'],$_POST['product_id']);
         $this->model_review->set_order_review($_POST['order_detail_id']);
         if(isset($_FILES['images']) && count($_FILES['images']['name']) > 0 && $_FILES['images']['name'][0] != ''){
             // echo 'oke';
             $i = 0;
-            foreach ($_FILES['images']['name'] as   $value) {
+            foreach ($_FILES['images']['name'] as $value) {
                 $imageNew = $this->upload_image($value, $_FILES['images']['tmp_name'][$i]);
-                $this->model_review->add_image_review($review_id, $_POST['product_id'] ,$imageNew);
+                $this->model_review->add_image_review($review_id,$imageNew);
                 $i++;
             }
         }
