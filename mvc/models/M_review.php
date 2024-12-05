@@ -11,6 +11,14 @@ class M_review
         $sql = "SELECT * FROM review WHERE status = 1";
         return  $this->conn->getAll($sql);
     }
+    public function get_review_by_product_id($id) 
+    {
+        $sql = "SELECT * FROM review
+        LEFT JOIN review_image ON review.review_id = review_image.review_id 
+        INNER JOIN user ON review.user_id = user.user_id
+        WHERE review.product_id = ?" ;
+        return $this->conn->getAll($sql, [$id]);  
+    }
     public function get_review_all_admin()
     {
         $sql = "SELECT * FROM review ORDER BY review_id DESC";
@@ -21,11 +29,11 @@ class M_review
         $sql = "SELECT * FROM review WHERE review_id = ?";
         return $this->conn->getOne($sql, [$id]);
     }
-    function add_review($order_detail_id,$content, $rating)
+    function add_review($order_detail_id,$content, $rating, $product_id)        
     {
         $user_id = $_SESSION['user_login']['user_id'];
-        $sql = "INSERT INTO review (order_detail_id,content, rating, user_id) values (?,?,?,?)";
-        return $this->conn->insert($sql, [$order_detail_id,$content, $rating, $user_id]);
+        $sql = "INSERT INTO review (order_detail_id,content, rating, user_id, product_id) values (?,?,?,?,?)";
+        return $this->conn->insert($sql, [$order_detail_id, $content, $rating, $user_id, $product_id]);
     }
     function edit_review($review_id, $content, $rating, $date, $image)
     {
@@ -43,10 +51,10 @@ class M_review
         WHERE review_id = ? ";
         return $this->conn->getAll($sql, [$id]);
     }
-    function add_image_review($review_id,$product_id,$review_image)
+    function add_image_review($review_id,$review_image)
     {
-        $sql = "INSERT INTO review_image (review_id,product_id,review_image) VALUES (?,?,?)";
-         return $this->conn->getAll($sql, [$review_id,$product_id,$review_image]);
+        $sql = "INSERT INTO review_image (review_id,review_image) VALUES (?,?,?)";
+         return $this->conn->getAll($sql, [$review_id,$review_image]);
     }
     function set_order_review($order_id)
     {
