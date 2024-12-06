@@ -68,14 +68,35 @@
 </style>
 <?php
 
-// var_dump(value: $data);
+// var_dump(value: $list_review);
+
+$groupedReviews = [];
+if (isset($list_review)) {
+    foreach ($list_review as $item) {
+        $reviewId = $item['review_id'];
+        if (!isset($groupedReviews[$reviewId])) {
+            $groupedReviews[$reviewId] = [
+                'review_id' => $reviewId,
+                'content' => $item['content'],
+                'user_name' => $item['user_name'],
+                'rating' => $item['rating'],
+                'date' => $item['date'],
+                'review_image' => [],
+            ];
+        }
+
+        $groupedReviews[$reviewId]['review_image'][] = [
+            'review_image' => $item['review_image']
+        ];
+    }
+}
+
 foreach ($data as $key => $item) {
 
     $product_variants[] = [
         'color_id' => $item['color_id'],
         'size_id' => $item['size_id'],
         'stock' => $item['stock'],
-
         'image' => $item['image']
     ];
 }
@@ -213,89 +234,67 @@ $product_json = json_encode($product_variants);
                 </div>
             </div>
         </div>
-        <!-- <div class="col mt-2">
-            <h6>SẢN PHẨM KẾT HỢP:</h6>
+
+        <div class="col mt-3">
+            <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
         </div>
-        <div
-            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 spkh g-3">
-            <div class="col">
-                <div class="box">
-                    <div class="col-3 d-inline-block">
-                        <div class="box">
-                            <img
-                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt="" />
-                        </div>
-                    </div>
-                    <div class="col d-inline-block">
-                        <div class="box">
-                            <p>Phông Labubu</p>
-                            <span>139.000VNĐ</span>
-                            <span><u>139.000VNĐ</u></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col">
-                <div class="box">
-                    <div class="col-3 d-inline-block">
-                        <div class="box">
-                            <img
-                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt="" />
-                        </div>
-                    </div>
-                    <div class="col d-inline-block">
-                        <div class="box">
-                            <p>Phông Labubu</p>
-                            <span>139.000VNĐ</span>
-                            <span><u>139.000VNĐ</u></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div
-            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 spkh g-3 mt-1">
-            <div class="col">
-                <div class="box">
-                    <div class="col-3 d-inline-block">
-                        <div class="box">
-                            <img
-                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt="" />
-                        </div>
-                    </div>
-                    <div class="col d-inline-block">
-                        <div class="box">
-                            <p>Phông Labubu</p>
-                            <span>139.000VNĐ</span>
-                            <span><u>139.000VNĐ</u></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row mb-3 rate-product">
+            <?php
+            foreach ($groupedReviews as $review) {
+            ?>
+                <div class="col-12 col-md-2 col-lg-1">
+                    <div class="avatar">
+                        <div class="row mb- rate-product">
+                            <?php
+                            foreach ($groupedReviews as $review) {
+                            ?>
+                                <div class="col-12 col-md-2 col-lg-1">
+                                    <div class="avatar">
+                                        <img class="image" src="/uploads/Spidey.webp" alt="" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-10 col-lg-11">
+                                    <span class="name"><?= $review['user_name'] ?></span>
+                                    <span class="day"><?= $review['date'] ?></span>
+                                    <div class="stars">
+                                        <div class="stars mt-2 d-flex justify-content-center">
+                                            <input class="star star-5" id="star-5" type="radio" name="star" <?= $review['rating'] == 5 ? 'checked' : '' ?> disabled />
+                                            <label class="star star-5" for="star-5"></label>
 
-            <div class="col">
-                <div class="box">
-                    <div class="col-3 d-inline-block">
-                        <div class="box">
-                            <img
-                                src="../public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
-                                alt="" />
-                        </div>
-                    </div>
-                    <div class="col d-inline-block">
-                        <div class="box">
-                            <p>Phông Labubu</p>
-                            <span>139.000VNĐ</span>
-                            <span><u>139.000VNĐ</u></span>
+                                            <input class="star star-4" id="star-4" type="radio" name="star" <?= $review['rating'] == 4 ? 'checked' : '' ?> disabled />
+                                            <label class="star star-4" for="star-4"></label>
+
+                                            <input class="star star-3" id="star-3" type="radio" name="star" <?= $review['rating'] == 3 ? 'checked' : '' ?> disabled />
+                                            <label class="star star-3" for="star-3"></label>
+
+                                            <input class="star star-2" id="star-2" type="radio" name="star" <?= $review['rating'] == 2 ? 'checked' : '' ?> disabled />
+                                            <label class="star star-2" for="star-2"></label>
+
+                                            <input class="star star-1" id="star-1" type="radio" name="star" <?= $review['rating'] == 1 ? 'checked' : '' ?> disabled />
+                                            <label class="star star-1" for="star-1"></label>
+                                        </div>
+                                    </div>
+                                    <div class="content mb-2"><?= $review['content'] ?></div>
+                                    <div class="img-details d-flex flex-wrap">
+                                        <?php
+                                        foreach ($review['review_image'] as $image) {
+                                        ?>
+                                            <img
+                                                class="img-fluid"
+                                                src="<?= _HOST . 'uploads/' . $image['review_image'] ?>"
+                                                alt="" />
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                        <?php }
+                        } ?>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> -->
+        </div>
         <div class="col mt-3">
             <h6>SẢN PHẨM TƯƠNG TỰ:</h6>
         </div>
@@ -321,11 +320,6 @@ $product_json = json_encode($product_variants);
             <?php
             }
             ?>
-
-
-        </div>
-        <div class="col mt-2">
-            <h6>ĐÁNH GIÁ SẢN PHẨM:</h6>
         </div>
     </div>
 </article>

@@ -215,7 +215,6 @@ foreach ($order as $item) {
                                     <div class="col-lg-4 d-flex flex-column justify-content-center align-items-end pt-3 px-3 col-sm-3">
                                         <p><?= number_format($product['price'], 0, 0.0) ?> VNĐ</p>
                                     </div>
-<<<<<<< Updated upstream
 
                                 </div>
 
@@ -238,120 +237,113 @@ foreach ($order as $item) {
                                         <?php
                                         }
                                         ?>
-=======
-                                    <div class="row-fluid">
 
-                                        <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
-                                            <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
-                                            <?php
-                                            if ($order['status'] == 'Pending') {
-                                            ?>
-                                                <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
-                                            <?php
-                                            } elseif ($order['status'] == 'Delivered') {
-                                            ?>
-                                                <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
-                                            <?php
-                                            } elseif ($order['status'] == 'Shipped') {
-                                            ?>
-                                                <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
-                                            <?php
-                                            }
-                                            ?>
+                                        <div class="row-fluid">
+
+                                            <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
+                                                <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
+                                                <?php
+                                                if ($order['status'] == 'Pending') {
+                                                ?>
+                                                    <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
+                                                <?php
+                                                } elseif ($order['status'] == 'Delivered') {
+                                                ?>
+                                                    <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
+                                                <?php
+                                                } elseif ($order['status'] == 'Shipped') {
+                                                ?>
+                                                    <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
->>>>>>> Stashed changes
                                     </div>
+                                <?php
+                            }
+                                ?>
                                 </div>
                             <?php
-                            }
+                            $i++;
+                        }
                             ?>
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
-                        </div>
-                    <?php
-                        $i++;
-                    }
-                    ?>
-                    <!-- Popup Đánh Giá -->
-                    <div id="reviewPopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Đánh giá sản phẩm</h5>
-                                    <button type="button" class="close" onclick="closeReviewPopup()" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="reviewForm" method="post" action="<?= _HOST ?>review/add-review">
-                                        <div class="form-group">
-                                            <label for="reviewText">Đánh giá của bạn:</label>
-                                            <textarea id="reviewText" name="content" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
+                            <!-- Popup Đánh Giá -->
+                            <div id="reviewPopup" class="modal" tabindex="-1" role="dialog" style="display: none;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Đánh giá sản phẩm</h5>
+                                            <button type="button" class="close" onclick="closeReviewPopup()" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
+                                        <div class="modal-body">
+                                            <form id="reviewForm" method="post" action="<?= _HOST ?>review/add-review" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="reviewText">Đánh giá của bạn:</label>
+                                                    <textarea id="reviewText" name="content" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
+                                                </div>
 
-                                        <input type="text" hidden name="order_detail_id" id="order_detail_id">
-                                        <input type="text" hidden name="product_id" id="product_id">
-                                        <div class="form-group">
-                                            <label for="reviewImage">Chọn ảnh:</label>
-                                            <input type="file" name="images[]" id="reviewImage" class="form-control" accept="image/*" multiple>
-                                        </div>
+                                                <input type="text" hidden name="order_detail_id" id="order_detail_id">
+                                                <input type="text" hidden name="product_id" id="product_id">
+                                                <div class="form-group">
+                                                    <label for="reviewImage">Chọn ảnh:</label>
+                                                    <input type="file" name="images[]" id="reviewImage" class="form-control" accept="image/*" multiple>
+                                                </div>
 
-                                        <div class="stars mt-2">
-                                            <input
-                                                class="star star-5"
-                                                id="star-5"
-                                                type="radio"
-                                                name="star"
-                                                value="5" />
-                                            <label class="star star-5" for="star-5"></label>
-                                            <input
-                                                class="star star-4"
-                                                id="star-4"
-                                                type="radio"
-                                                name="star"
-                                                value="4" />
-                                            <label class="star star-4" for="star-4"></label>
-                                            <input
-                                                class="star star-3"
-                                                id="star-3"
-                                                type="radio"
-                                                name="star"
-                                                value="3" />
-                                            <label class="star star-3" for="star-3"></label>
-                                            <input
-                                                class="star star-2"
-                                                id="star-2"
-                                                type="radio"
-                                                name="star"
-                                                value="2" />
-                                            <label class="star star-2" for="star-2"></label>
-                                            <input
-                                                class="star star-1"
-                                                id="star-1"
-                                                type="radio"
-                                                name="star"
-                                                value="1" />
-                                            <label class="star star-1" for="star-1"></label>
+                                                <div class="stars mt-2">
+                                                    <input
+                                                        class="star star-5"
+                                                        id="star-5"
+                                                        type="radio"
+                                                        name="star"
+                                                        value="5" />
+                                                    <label class="star star-5" for="star-5"></label>
+                                                    <input
+                                                        class="star star-4"
+                                                        id="star-4"
+                                                        type="radio"
+                                                        name="star"
+                                                        value="4" />
+                                                    <label class="star star-4" for="star-4"></label>
+                                                    <input
+                                                        class="star star-3"
+                                                        id="star-3"
+                                                        type="radio"
+                                                        name="star"
+                                                        value="3" />
+                                                    <label class="star star-3" for="star-3"></label>
+                                                    <input
+                                                        class="star star-2"
+                                                        id="star-2"
+                                                        type="radio"
+                                                        name="star"
+                                                        value="2" />
+                                                    <label class="star star-2" for="star-2"></label>
+                                                    <input
+                                                        class="star star-1"
+                                                        id="star-1"
+                                                        type="radio"
+                                                        name="star"
+                                                        value="1" />
+                                                    <label class="star star-1" for="star-1"></label>
+                                                </div>
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+
                 </div>
-
-
             </div>
-        </div>
 
-    </div>
+        </div>
 </body>
 <script>
     function showReviewPopup(orderId, productId) {

@@ -6,6 +6,7 @@ class Detail extends Controller
     public $model_image;
     public $model_color;
     public $model_size;
+    public $model_review;
     public function __construct()
     {
         $this->model_product = $this->model('M_product');
@@ -13,6 +14,7 @@ class Detail extends Controller
         $this->model_product_variant = $this->model('M_product_variant');
         $this->model_color = $this->model('M_color');
         $this->model_size = $this->model('M_size');
+        $this->model_review = $this->model('M_review');
     }
     public function index($id)
     {
@@ -21,6 +23,7 @@ class Detail extends Controller
         $data['image'] = $this->model_image->get_image_by_product_id($id);
         $data['color'] = $this->get_color_by_product_id($id);
         $data['size'] = $this->get_size_by_product_id($id);
+        $data['list_review'] = $this->model_review->get_review_by_product_id($id);
         $data['data'] = $this->get_product_variant_by_product_id($id);
         $data['list_product_in_category'] = $this->model_product->get_product_by_category_id($data['product']['category_id']);
         if (count($data['list_product_in_category']) <= 1) {
