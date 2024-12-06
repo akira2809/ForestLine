@@ -21,9 +21,11 @@ class Voucher extends Controller
         $voucher = $this->model_voucher->check_voucher($res);
         if ($voucher && $voucher['status'] == 1) {
             if ($voucher['day_start'] > $current_time || $voucher['day_end'] < $current_time) {
-                $data['result'] = "Thời gian sử dụng voucher từ $voucher[day_start] đến $voucher[day_end]";
+                $data['result'] = "Voucher này đã hết thời gian sử dụng";
             } else if ($voucher['usage_limit'] == 0) {
                 $data['result'] = "Số lượng sài voucher đã hết";
+            } else if ($voucher['min_order_value'] > $total_price) {
+                $data['result'] = "Giá trị đơn hàng phải lớn hơn $voucher[min_order_value] thì mới được sử dụng";
             } else {
                 $data['result'] = 'Đã áp dụng mã thành công';
                 $data['voucher_id']  = $voucher['voucher_id'];

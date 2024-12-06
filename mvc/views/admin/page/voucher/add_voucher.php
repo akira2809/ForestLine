@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="card-title">THÊM VOUCHER </div>
         </div>
-        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/voucher/handle-update-voucher' ?>" method="post">
+        <form class="needs-validation" novalidate action="<?= _HOST . 'admin/voucher/handle-add-voucher' ?>" method="post">
             <div class="row">
                 <div class="card-body">
                     <div class="row g-3 p-3">

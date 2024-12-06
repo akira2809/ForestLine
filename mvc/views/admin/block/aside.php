@@ -72,14 +72,11 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/voucher/list-voucher" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách voucher</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/voucher/add-voucher" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Thêm voucher</p>
                             </a> </li>
                     </ul>
                 </li>
@@ -93,15 +90,13 @@
                     </a>
                     <ul class="nav nav-treeview">
 
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/list-blog" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Tất cả bài viết</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
+                        <li class="nav-item"> <a href="<?= _HOST ?>admin/blog/add-blog" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Thêm bài viết</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
-                            </a> </li>
+
                     </ul>
                 </li>
                 <!--  -->
@@ -114,18 +109,12 @@
                     </a>
                     <ul class="nav nav-treeview">
 
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/listTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Tất cả tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="<?= _HOST ?>admin/dashboard/addTour" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Thêm tour</p>
-                            </a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Level 2</p>
+                        <li class="nav-item"> <a href="<?= _HOST ?>login/logout" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Đăng xuất</p>
                             </a> </li>
                     </ul>
                 </li>
-                
+
 
                 <!--  -->
 

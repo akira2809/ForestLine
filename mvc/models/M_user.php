@@ -28,4 +28,9 @@ class M_user
         $sql = "SELECT * FROM user WHERE email = ? AND password = ? AND active = 1";
         return $this->conn->getOne($sql, [$email, $password]);
     }
+    public function add_user($name, $email, $password, $role)
+    {
+        $sql = "INSERT INTO user (user_name,email, password,role,active) VALUES (?,?,?,1)";
+        return $this->conn->insert($sql, [$name, $email, $password, $role]);
+    }
 }

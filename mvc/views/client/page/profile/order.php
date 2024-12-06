@@ -217,7 +217,16 @@ foreach ($order as $item) {
                                     </div>
 
                                 </div>
+                                <div>
+                                    <?php
+                                    if ($order['status'] == 'Delivered' && $product['review'] == 0) {
+                                    ?>
+                                        <button style="width:100%" onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
 
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                                 <div class="row-fluid">
 
                                     <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
@@ -227,38 +236,12 @@ foreach ($order as $item) {
                                         ?>
                                             <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>"> <button class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</button> </a>
                                         <?php
-                                        } elseif ($order['status'] == 'Delivered' && $product['review'] == 0) {
-                                        ?>
-                                            <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
-                                        <?php
                                         } elseif ($order['status'] == 'Shipped') {
                                         ?>
                                             <a href="<?= _HOST . 'profile/set-status/' . $order['order_id'] . '/Delivered' ?>"><button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button></a>
                                         <?php
                                         }
                                         ?>
-
-                                        <div class="row-fluid">
-
-                                            <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
-                                                <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
-                                                <?php
-                                                if ($order['status'] == 'Pending') {
-                                                ?>
-                                                    <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
-                                                <?php
-                                                } elseif ($order['status'] == 'Delivered') {
-                                                ?>
-                                                    <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
-                                                <?php
-                                                } elseif ($order['status'] == 'Shipped') {
-                                                ?>
-                                                    <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
-                                                <?php
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
                                     </div>
                                 <?php
                             }

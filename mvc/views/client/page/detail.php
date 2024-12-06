@@ -243,36 +243,27 @@ $product_json = json_encode($product_variants);
             <?php
             foreach ($groupedReviews as $review) {
             ?>
-                <div class="col-12 col-md-2 col-lg-1">
+                <div class="col-12">
                     <div class="avatar">
-                        <div class="row mb- rate-product">
+                        <div class="row mb- rate-product d-flex justify-content-center align-item-center">
                             <?php
                             foreach ($groupedReviews as $review) {
                             ?>
-                                <div class="col-12 col-md-2 col-lg-1">
+                                <div style="--bs-gutter-x:0" class="col-12 col-md-2 col-lg-1">
                                     <div class="avatar">
-                                        <img class="image" src="/uploads/Spidey.webp" alt="" />
+                                        <img class="image" style="width:70%;border-radius: 50%;" src="<?= _HOST ?>uploads/user.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-10 col-lg-11">
                                     <span class="name"><?= $review['user_name'] ?></span>
                                     <span class="day"><?= $review['date'] ?></span>
                                     <div class="stars">
-                                        <div class="stars mt-2 d-flex justify-content-center">
-                                            <input class="star star-5" id="star-5" type="radio" name="star" <?= $review['rating'] == 5 ? 'checked' : '' ?> disabled />
-                                            <label class="star star-5" for="star-5"></label>
-
-                                            <input class="star star-4" id="star-4" type="radio" name="star" <?= $review['rating'] == 4 ? 'checked' : '' ?> disabled />
-                                            <label class="star star-4" for="star-4"></label>
-
-                                            <input class="star star-3" id="star-3" type="radio" name="star" <?= $review['rating'] == 3 ? 'checked' : '' ?> disabled />
-                                            <label class="star star-3" for="star-3"></label>
-
-                                            <input class="star star-2" id="star-2" type="radio" name="star" <?= $review['rating'] == 2 ? 'checked' : '' ?> disabled />
-                                            <label class="star star-2" for="star-2"></label>
-
-                                            <input class="star star-1" id="star-1" type="radio" name="star" <?= $review['rating'] == 1 ? 'checked' : '' ?> disabled />
-                                            <label class="star star-1" for="star-1"></label>
+                                        <div class="stars mb-2 ">
+                                            <?php
+                                            for ($i = 0; $i < $review['rating']; $i++) {
+                                                echo '<span><i style="color: yellow; font-weight: bold" class="fa-solid fa-star"></i></span';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="content mb-2"><?= $review['content'] ?></div>
@@ -280,10 +271,13 @@ $product_json = json_encode($product_variants);
                                         <?php
                                         foreach ($review['review_image'] as $image) {
                                         ?>
-                                            <img
-                                                class="img-fluid"
-                                                src="<?= _HOST . 'uploads/' . $image['review_image'] ?>"
-                                                alt="" />
+                                            <div style="width:100px; margin-right: 10px">
+                                                <img
+                                                    class="img-fluid"
+                                                    style="width:100%"
+                                                    src="<?= _HOST . 'uploads/' . $image['review_image'] ?>"
+                                                    alt="" />
+                                            </div>
                                         <?php
                                         }
                                         ?>
