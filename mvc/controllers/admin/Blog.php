@@ -33,7 +33,7 @@ class Blog extends Controller
             $imageNew = $this->upload_image($_FILES['image_blog']['name'], $_FILES['image_blog']['tmp_name']);
             $new_blog_id = $blog->add_blog(
              $_POST['title'], image_blog: $imageNew, content: $_POST['content'],
-             author: $_POST['author']);
+             author: $_SESSION['admin_login']['user_id']);
             $i = 0;
             foreach ($_FILES['image_detail']['name'] as $value) {
                 $imageNew = $this->upload_image($value, $_FILES['image_detail']['tmp_name'][$i]);

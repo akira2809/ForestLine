@@ -13,7 +13,12 @@ class M_blog
     }
     public function get_blog_all_admin()
     {
-        $sql = "SELECT * FROM blog ORDER BY blog_id DESC";
+        $sql = "SELECT b.blog_id, b.title, b.author, b.status, b.image_blog, b.date, b.content, u.user_name
+        FROM blog b 
+        INNER JOIN user u
+        ON b.author = u.user_id
+        ORDER BY blog_id DESC";
+
         return  $this->conn->getAll($sql);
     }
     function get_blog_one($id)

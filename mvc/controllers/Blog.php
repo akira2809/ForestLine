@@ -29,7 +29,7 @@ class Blog extends Controller
             $blog->add_blog_review(
                 $id,
                 $_SESSION['user_login']['user_id'],
-            $_POST['content']);     
+                $_POST['content']);     
                 header('location:' . _HOST . 'blog/detail_blog/' . $id);
      }
      public function detail_blog($id){
