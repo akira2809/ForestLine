@@ -97,7 +97,6 @@ class Login extends Controller
             $_SESSION['token'] = Token::create_token($payload);
         }
         $content = '<p>Cảm ơn bạn đã đăng ký! Vui lòng nhấp vào nút bên dưới để xác minh địa chỉ email của bạn:</p> <a href="' . _HOST . 'login/verify-email?token=' . $_SESSION['token'] . '">Verify Email</a>';
-        // echo $content;
         Mailer::send($_POST['email'], 'Xác nhận tài khoản', $content);
         $data['result'] = [
             'type' => 'info',
@@ -121,15 +120,12 @@ class Login extends Controller
                 $data['type'] = 'info';
                 $data['result'] = 'Thời gian xác nhận đã hết vui lòng bạn đăng ký lại !';
                 $this->view('layout/layout_client', $data);
-                // header("Location:" . _HOST . 'login/signup');
-
             } else {
                 echo "Token hợp lệ!";
                 $this->model_login->active_account($result->user_id);
                 header("Location:" . _HOST . 'login');
             }
         } catch (Exception $e) {
-            // Nếu có lỗi, có thể là token không hợp lệ hoặc không thể giải mã
             echo "Lỗi: " . $e->getMessage();
         }
     }

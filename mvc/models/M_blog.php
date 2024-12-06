@@ -13,7 +13,12 @@ class M_blog
     }
     public function get_blog_all_admin()
     {
-        $sql = "SELECT * FROM blog ORDER BY blog_id DESC";
+        $sql = "SELECT b.blog_id, b.title, b.author, b.status, b.image_blog, b.date, b.content, u.user_name
+        FROM blog b 
+        INNER JOIN user u
+        ON b.author = u.user_id
+        ORDER BY blog_id DESC";
+
         return  $this->conn->getAll($sql);
     }
     function get_blog_one($id)
@@ -45,9 +50,10 @@ class M_blog
     // blog_review
     public function get_blog_review_all()
     {
-        $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content
+        $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content, b.blog_id, b.blog_id
         FROM blog_review br JOIN user u
-        ON br.user_id = u.user_id ";
+        INNER JOIN blog b ON br.blog_id = b.blog_id  
+        INNER JOIN user u ON br.user_id = u.user_id ";
         return  $this->conn->getAll($sql);
     }
     function add_blog_review($blog_review,$user_id,$content)
