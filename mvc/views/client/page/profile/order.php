@@ -215,6 +215,7 @@ foreach ($order as $item) {
                                     <div class="col-lg-4 d-flex flex-column justify-content-center align-items-end pt-3 px-3 col-sm-3">
                                         <p><?= number_format($product['price'], 0, 0.0) ?> VNĐ</p>
                                     </div>
+<<<<<<< Updated upstream
 
                                 </div>
 
@@ -237,11 +238,39 @@ foreach ($order as $item) {
                                         <?php
                                         }
                                         ?>
+=======
+                                    <div class="row-fluid">
+
+                                        <div class="col-lg-12 p-2 col-sm-12 text-end py-2">
+                                            <h5><span style="color: var(--text-color);">Tổng tiền:</span> <?= number_format($order['total_money'], 0, 0.0) ?> VND</h5>
+                                            <?php
+                                            if ($order['status'] == 'Pending') {
+                                            ?>
+                                                <a onclick="return confirm('Bạn chắc chắn hủy đơn hàng này không')" href="<?= _HOST . 'checkout/cancel-order/' . $order['order_id'] ?>" class="btn-cancel p-2 d-inline-block text-decoration-none">Hủy đơn hàng</a>
+                                            <?php
+                                            } elseif ($order['status'] == 'Delivered') {
+                                            ?>
+                                                <button onclick="showReviewPopup('<?= $product['order_detail_id'] ?>','<?= $product['product_id'] ?>')" class="btn-rating p-2 d-inline-block text-decoration-none">Đánh giá sản phẩm</button>
+                                            <?php
+                                            } elseif ($order['status'] == 'Shipped') {
+                                            ?>
+                                                <button class="btn-rating p-2 d-inline-block text-decoration-none">Đã nhận được hàng</button>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+>>>>>>> Stashed changes
                                     </div>
                                 </div>
                             <?php
                             }
                             ?>
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                         </div>
                     <?php
                         $i++;
