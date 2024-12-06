@@ -50,9 +50,10 @@ class M_blog
     // blog_review
     public function get_blog_review_all()
     {
-        $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content
+        $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content, b.blog_id, b.blog_id
         FROM blog_review br JOIN user u
-        ON br.user_id = u.user_id ";
+        INNER JOIN blog b ON br.blog_id = b.blog_id  
+        INNER JOIN user u ON br.user_id = u.user_id ";
         return  $this->conn->getAll($sql);
     }
     function add_blog_review($blog_review,$user_id,$content)
