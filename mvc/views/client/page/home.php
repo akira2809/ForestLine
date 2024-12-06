@@ -226,15 +226,78 @@
             <div class="col-md-6">
                 <h2 class="mb-2">OUR FAVORITE GIFTS</h2>
                 <p class="mb-3">FOR GIRLS</p>
-                <div class="d-flex flex-column align-items-center">
-                    <!-- Right Image -->
-                    <img src="./public/imgs/Blue-Mens-Button-Up-Shirt-TCM4652-3562_4_0d553e6a-7689-4a5c-af07-df319f7c50eb.jpg"
-                        class="img-fluid w-" alt="Sản phẩm tiêu biểu">
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+
+                    <!-- Slides -->
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                                <img src="./public/imgs/duy_2870_d77c4b981e2943a088c27759064b8731_master.webp"
+                                    class=" custom-img" alt="Slide 1">
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                                <img src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                    class=" custom-img" alt="Slide 3">
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+                                <img src="./public/imgs/apo7005_1_b14dbf0c3ae64d3380dfdd3775c0ac30_master.webp"
+                                    class=" custom-img" alt="Slide 3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button> -->
                 </div>
             </div>
+
         </div>
 
         <style>
+            .custom-img {
+                max-width: 100%;
+                /* Đảm bảo ảnh không vượt quá khung chứa */
+                height: 100%;
+                /* Giữ chiều cao của ảnh bằng khung */
+                object-fit: fill;
+                /* Giữ toàn bộ ảnh trong khung mà không bị cắt */
+                border-radius: 10px;
+                /* Bo góc ảnh */
+            }
+
+            .carousel-item {
+                height: 400px;
+                /* Đặt chiều cao cố định cho các slide */
+            }
+
+
             .video-container {
                 position: relative;
                 width: 85%;
