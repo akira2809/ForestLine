@@ -19,7 +19,7 @@ class Blog extends Controller
     {
         $blog_review = $this->model('M_blog');
         $data['blog_review'] = $blog_review->get_blog_review_all_admin();
-        $data['page'] = 'blog/detail_blog';
+        $data['page'] = 'blog/detail_blog' ;
         $this->render($data);
     }
      /* thêm bình luận */     
@@ -34,7 +34,7 @@ class Blog extends Controller
      }
      public function detail_blog($id){
         $data['blog'] = $this->model_blog->get_blog_one($id);
-        $data['list_review_blog'] = $this->model_blog->get_blog_review_all_admin();
+        $data['list_review_blog'] = $this->model_blog->get_blog_review_all_admin($id);
 
         $data['page'] = 'detail_blog';
         $this->view('layout/layout_client', $data);
