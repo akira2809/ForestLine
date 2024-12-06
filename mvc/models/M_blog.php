@@ -51,7 +51,7 @@ class M_blog
     public function get_blog_review_all()
     {
         $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content, b.blog_id, b.blog_id
-        FROM blog_review br JOIN user u
+        FROM blog_review br 
         INNER JOIN blog b ON br.blog_id = b.blog_id  
         INNER JOIN user u ON br.user_id = u.user_id ";
         return  $this->conn->getAll($sql);
@@ -61,15 +61,15 @@ class M_blog
         $sql = "INSERT INTO blog_review (blog_id,user_id,content) values (?,?,?)/*  WHERE blog_id = ? */";
         return $this->conn->insert($sql, [$blog_review,$user_id,$content]);
     }
-    public function get_blog_review_all_admin()
+    public function get_blog_review_all_admin($id)
     {
         $sql = "SELECT br.blog_review_id, br.user_id, u.user_name, br.date, br.content
         FROM blog_review br 
         INNER JOIN blog b ON br.blog_id = b.blog_id  
         INNER JOIN user u
-        ON br.user_id = u.user_id 
+        ON br.user_id = u.user_id   where b.blog_id =?
         ORDER BY blog_review_id DESC";
-        return  $this->conn->getAll($sql);
+        return  $this->conn->getAll($sql, [$id]);
     }
     
     
