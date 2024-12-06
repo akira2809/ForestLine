@@ -20,8 +20,10 @@
     }
 </style>
 <article>
+    <div>
+        <img style="width: 100%" src="<?= _HOST . 'public/imgs/banner.png' ?>" alt="">
+    </div>
     <div class="container">
-
 
         <div class="product mt-5">
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 sptt">

@@ -19,7 +19,7 @@ class Voucher extends Controller
         $total_price = $_POST['total_price'];
         // echo $current_time;
         $voucher = $this->model_voucher->check_voucher($res);
-        if ($voucher) {
+        if ($voucher && $voucher['status'] == 1) {
             if ($voucher['day_start'] > $current_time || $voucher['day_end'] < $current_time) {
                 $data['result'] = "Thời gian sử dụng voucher từ $voucher[day_start] đến $voucher[day_end]";
             } else if ($voucher['usage_limit'] == 0) {

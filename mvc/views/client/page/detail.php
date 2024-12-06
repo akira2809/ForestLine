@@ -103,8 +103,6 @@ $product_json = json_encode($product_variants);
                     }
                     ?>
                 </div>
-
-                <!-- Ảnh chính sẽ phóng to khi thu nhỏ màn hình -->
                 <div class="col-12 col-md-6">
                     <img
 

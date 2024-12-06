@@ -14,9 +14,9 @@
     <link href="<?= _HOST ?>public/css/all.css" rel="stylesheet">
     <link href="<?= _HOST ?>public/css/style.css" rel="stylesheet">
     <style>
-        body {
-           color: #E9F5DB;
-        }
+        /* body {
+            color: #E9F5DB;
+        } */
 
         .navbar-custom {
             background-color: #718355 !important;
@@ -52,17 +52,16 @@
             background-color: #ddd;
             /* Màu xám nhạt */
         }
-        body{
-            background-color:#F6FFEC;
+
+        body {
+            background-color: #F6FFEC !important;
         }
     </style>
 </head>
 <?php require_once './mvc/views/client/block/header.php' ?>
 
 
-<body style="background-color:#F6FFEC;">
-
-
+<body class="text-dark">
     <?php
     if (isset($page)) {
 

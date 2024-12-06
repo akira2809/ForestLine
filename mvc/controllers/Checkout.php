@@ -85,8 +85,10 @@ class Checkout extends Controller
             } catch (Exception $e) {
                 echo 'Lỗi: ' . $e->getMessage();
             }
+        } else {
+
+            header('location:' . _HOST . 'profile');
         }
-        header('location:' . _HOST . 'profile');
     }
     public function add_order_detail($order_id, $product_variant_id, $quantity, $price)
     {
