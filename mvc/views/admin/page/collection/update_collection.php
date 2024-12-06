@@ -4,7 +4,7 @@
             <div class="card-title">Sửa Collection</div>
         </div>
         <form class="needs-validation" novalidate action="<?= _HOST . 'admin/collection/update_collection/' . $collection['collection_id'] ?>"
-            method="post" enctype="multipart/form-data">
+            method="post" enctype="multipart/form-data" id="editCollectionForm">
             <!-- Hidden để lưu ID của Collection -->
             <input type="hidden" name="collection_id" value="<?= htmlspecialchars($collection['collection_id']) ?>">
 
@@ -60,12 +60,26 @@
                 </div>
             </div>
 
-
-
             <!-- Nút lưu -->
             <div class="card-body">
-                <button class="btn btn-primary">Lưu thay đổi</button>
+                <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    // Bắt sự kiện khi gửi form
+    document.getElementById('editCollectionForm').addEventListener('submit', function (event) {
+        const form = this;
+
+        // Kiểm tra xem form có hợp lệ hay không
+        if (!form.checkValidity()) {
+            event.preventDefault(); // Ngăn gửi form
+            event.stopPropagation(); // Ngăn sự kiện lan rộng
+        }
+
+        // Thêm class 'was-validated' để hiển thị lỗi
+        form.classList.add('was-validated');
+    });
+</script>
