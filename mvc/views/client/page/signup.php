@@ -1,4 +1,3 @@
-<title>Document</title>
 <style>
     body {
         background-color: #f6ffec;
@@ -30,6 +29,7 @@
         font-size: 16px;
         border: 1px solid #ccc;
         outline: none;
+        transition: border-color 0.3s;
     }
 
     .input-box label {
@@ -51,6 +51,13 @@
 
     .input-box input:focus {
         border-color: #007bff;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
     }
 
     .links {
@@ -109,78 +116,85 @@
         font-size: 12px;
     }
 </style>
+
 <div class="container-fluid-lg">
     <div class="row h-100">
-        <div
-            class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center">
+        <div class="col-lg-8 col-md-12 d-flex justify-content-center align-items-center">
             <div class="login-register pt-5">
                 <div class="signin-register d-flex justify-content-between mb-1">
-
                     <a href="<?= _HOST . 'login' ?>">Sign In</a>
-
                     <a href="">Create Account</a>
                 </div>
                 <hr class="mb-4" />
-
-                <form class="form mt-3" action="<?= _HOST ?>/login/register" method="post">
-
-                    <?= isset($result) ? '<div class="alert alert-' . $result['type'] . ' ">' . $result['result'] . '</div>' : ''  ?>
+                <form class="form mt-3" action="<?= _HOST ?>/login/register" method="post" novalidate>
+                    <?= isset($result) ? '<div class="alert alert-' . $result['type'] . '">' . $result['result'] . '</div>' : '' ?>
                     <div class="input-box">
                         <input type="text" id="user_name" name="user_name" placeholder=" " required />
-                        <label for="user_name"><span>*</span>FIRST NAME</label>
-
+                        <label for="user_name"><span>*</span> FIRST NAME</label>
+                        <div class="error-message">Please enter your first name.</div>
                     </div>
                     <div class="input-box">
-                        <input type="text" id="email" placeholder=" " name="email" required />
+                        <input type="email" id="email" name="email" placeholder=" " required />
                         <label for="email"><span>*</span> EMAIL ADDRESS</label>
+                        <div class="error-message">Please enter a valid email address.</div>
                     </div>
                     <div class="input-box">
-                        <input type="text" id="password" placeholder=" " name="password" required />
-
-                        <label for=" password"><span>*</span>PASSWORD</label>
-
+                        <input type="password" id="password" name="password" placeholder=" " required />
+                        <label for="password"><span>*</span> PASSWORD</label>
+                        <div class="error-message">Please enter your password.</div>
                     </div>
-                    <input type="submit" value="Signin" />
+                    <input type="submit" value="Register" />
                 </form>
                 <div class="images d-flex w-100 pt-5">
                     <ul class="list-unstyled d-flex justify-content-between w-100">
-                        <li
-
-                            class=" me-3 d-flex flex-column align-items-center">
+                        <li class="me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Facebook_Logo_(2019).png" alt="" /></a>
                             <span class="mt-3">FACEBOOK</span>
                         </li>
-                        <li
-                            class=" me-3 d-flex flex-column align-items-center">
+                        <li class="me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Google__G__logo.svg.webp" alt="" /></a>
                             <span class="mt-3">GOOGLE</span>
                         </li>
-                        <li
-                            class=" me-3 d-flex flex-column align-items-center">
+                        <li class="me-3 d-flex flex-column align-items-center">
                             <a href=""><img src="<?= _HOST ?>public/imgs/Apple_logo_black.svg.png" alt="" /></a>
-
                             <span class="mt-3">APPLE</span>
                         </li>
                     </ul>
                 </div>
-                <div
-                    class="order mb-5 d-flex flex-column align-items-center justify-content-center">
-                    <span class="o1">ODER STATUS TRACKING</span>
+                <div class="order mb-5 d-flex flex-column align-items-center justify-content-center">
+                    <span class="o1">ORDER STATUS TRACKING</span>
                     <span class="o2 mt-1">Track your recent order below</span>
                     <span class="o3 mt-3">FIND MY ORDER</span>
                 </div>
             </div>
         </div>
-        <div
-            class="col-lg-4 col-md-12 d-flex flex-column align-items-center justify-content-center">
+        <div class="col-lg-4 col-md-12 d-flex flex-column align-items-center justify-content-center">
             <h2 class="text-black text-center mb-3">FL Account Benefits</h2>
-            <span class="text-black text-center mb-3">
-                Enjoy these complimentary benefits exclusive to our account holders
-            </span>
-            <img
-                class="image w-75 h-auto"
-                src="https://www.ralphlauren.com/on/demandware.static/-/Library-Sites-RalphLauren_NA_Library/en_US/v1732101595296/img/account/benefits/sign_in_enhancement_card2.jpg"
-                alt="" />
+            <span class="text-black text-center mb-3">Enjoy these complimentary benefits exclusive to our account holders</span>
+            <img class="image w-75 h-auto" src="https://www.ralphlauren.com/on/demandware.static/-/Library-Sites-RalphLauren_NA_Library/en_US/v1732101595296/img/account/benefits/sign_in_enhancement_card2.jpg" alt="" />
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector(".form").addEventListener("submit", function (event) {
+        const inputs = document.querySelectorAll("input[required]");
+        let valid = true;
+
+        inputs.forEach(input => {
+            const errorMessage = input.parentElement.querySelector(".error-message");
+            if (!input.value.trim()) {
+                errorMessage.style.display = "block";
+                input.style.borderColor = "red";
+                valid = false;
+            } else {
+                errorMessage.style.display = "none";
+                input.style.borderColor = "";
+            }
+        });
+
+        if (!valid) {
+            event.preventDefault(); // Dừng submit nếu có lỗi
+        }
+    });
+</script>
