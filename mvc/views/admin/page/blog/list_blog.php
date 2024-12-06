@@ -23,7 +23,7 @@
                     <td>
                         <img style="width:50px" src="<?= _HOST . 'uploads/' . $value['image_blog'] ?>" alt=">" />
                     </td>
-                    <td><?= $value['author'] ?></td>
+                    <td><?= $value['user_name'] ?></td>
                     <td><?= $value['date'] ?></td>
                     <td><?= $value['status'] == 1 ? 'Hiện' : 'Ẩn' ?></td>
                     

@@ -27,19 +27,7 @@
                                     Chọn hình ảnh
                                 </div>
                             </div>
-                            <div class="col-md-12"> <label for="validationCustom01" class="form-label">Tác giả</label>
-                                <input type="text" class="form-control" id="validationCustom01" name="author" placeholder="Nhập tên tác giả ..." required>
-                                <div class="invalid-feedback">
-                                    Nhập tên tác giả
-                                </div>
-                               <!--  <div class="col-md-12"> <label for="validationCustom01" class="form-label">Ngày tạo</label>
-                                <input type="date" class="form-control" id="validationCustom01" name="date" placeholder="Nhập ngày tạo ..." required>
-                                <div class="invalid-feedback">
-                                    Nhập ngày tạo
-                                </div>
-                            </div>   -->                                              
-                                                        
-                        </div> <!--end::Row-->
+                             <!--end::Row-->
                     </div> <!--end::Body--> <!--begin::Footer-->
                 </div>
            
