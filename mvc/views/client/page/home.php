@@ -99,7 +99,7 @@
     .carousel-indicators button {
         width: 70px;
         /* Chiều rộng 40px */
-        height: 70px;
+        height: 0px;
         /* Chiều cao 40px */
         border-radius: 10%;
         background-color: rgba(255, 255, 255, 0.5);
