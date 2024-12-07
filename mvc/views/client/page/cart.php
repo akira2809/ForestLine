@@ -137,7 +137,6 @@
                 } else {
                     $total_money += $value['base_price'] * $value['quantity'];
                 }
-
             }
             ?>
 
@@ -155,69 +154,7 @@
             <button type="button" class="col-12 btn btn-dark btn-block">PayPal</button>
         </div>
     </div>
-    <hr>
-    <!-- có thể bạn sẽ thích  -->
-    <div class="container">
-        <h2>Có thể bạn sẽ thích
-            <span class="btn-group btn-custom">
-                <button type="button" class="btn btn-success fw-bolder">
-                    < </button>
-                        <button type="button" class="btn btn-success fw-bolder">></button>
-            </span>
-        </h2>
-        <div class="row m-0 p-0">
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img class="" src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-        </div>
-        <div class="row m-0 p-0">
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img class="" src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-            <div class="col-lg-3 col-sm-3 m-0">
-                <img src="./public/imgs/spthanhtoan.png" alt="">
-                <p class="fw-bolder">Áo thun</p>
-                <p class="text-dark text-center fw-bolder">Tên áo</p>
-                <p style="color: var(--price-color);">139000 VND <span class="saleprice">187000 VND</span></p>
-            </div>
-        </div>
-    </div>
+
     <hr>
     <!-- Chương trình ưu đãi -->
     <div class="container py-3">

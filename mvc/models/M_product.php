@@ -15,7 +15,7 @@ class M_product
     }
     function get_product_all_client()
     {
-        $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id  WHERE status = 1 ORDER BY product.product_id DESC";
+        $sql = "SELECT * FROM product INNER JOIN category ON category.category_id = product.category_id  WHERE status = 1 ORDER BY product.product_id DESC LIMIT 8";
         return $this->conn->getAll($sql);
     }
 

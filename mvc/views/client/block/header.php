@@ -1,6 +1,3 @@
-
-
-
 <style>
     /* Hide search results container by default */
     #search-results {
@@ -316,7 +313,7 @@
                         <a class="nav-link" href="<?= _HOST ?>collection">Bộ sưu tập</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tin tức và khuyến mãi</a>
+                        <a class="nav-link" href="<?= _HOST ?>blog">Tin tức và khuyến mãi</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -351,8 +348,6 @@
 </header>
 
 <script>
-
-
     function searchInput() {
         const inputField = document.getElementById('search-input').value.trim();
         let formData = new FormData();
@@ -378,5 +373,4 @@
             xmlhttp.send(formData); // Sửa từ FormData thành formData
         }
     }
-
 </script>
